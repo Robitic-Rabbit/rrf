@@ -1490,29 +1490,6 @@ let address = "0x3B686118bF4272E132Bb5779747f51721e6E5afe";
 
 let ABIArmoury = [
 	{
-		"inputs": [
-			{
-				"internalType": "address[]",
-				"name": "receiver",
-				"type": "address[]"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "id",
-				"type": "uint256[]"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "quantity",
-				"type": "uint256[]"
-			}
-		],
-		"name": "airdrop",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
@@ -1554,6 +1531,225 @@ let ABIArmoury = [
 		"type": "event"
 	},
 	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256[]",
+				"name": "ids",
+				"type": "uint256[]"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256[]",
+				"name": "values",
+				"type": "uint256[]"
+			}
+		],
+		"name": "TransferBatch",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "TransferSingle",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "value",
+				"type": "string"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "URI",
+		"type": "event"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "fallback"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "MintingQuantity",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "OPERATOR_FILTER_REGISTRY",
+		"outputs": [
+			{
+				"internalType": "contract IOperatorFilterRegistry",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address[]",
+				"name": "receiver",
+				"type": "address[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "id",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "quantity",
+				"type": "uint256[]"
+			}
+		],
+		"name": "airdrop",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address[]",
+				"name": "accounts",
+				"type": "address[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "ids",
+				"type": "uint256[]"
+			}
+		],
+		"name": "balanceOfBatch",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -1578,9 +1774,162 @@ let ABIArmoury = [
 	},
 	{
 		"inputs": [],
+		"name": "callbackGasLimit",
+		"outputs": [
+			{
+				"internalType": "uint32",
+				"name": "",
+				"type": "uint32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "contractURI",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "deleteDefaultRoyalty",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "exists",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "freeMinted",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "free_mint_status",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			}
+		],
+		"name": "isApprovedForAll",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "lastRandomNumber",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "lastRequestId",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "max_ids",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "max_per_wallet",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -1630,29 +1979,146 @@ let ABIArmoury = [
 		"type": "function"
 	},
 	{
-		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "previousOwner",
-				"type": "address"
-			},
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "mintingAddress",
+		"outputs": [
 			{
-				"indexed": true,
 				"internalType": "address",
-				"name": "newOwner",
+				"name": "",
 				"type": "address"
 			}
 		],
-		"name": "OwnershipTransferred",
-		"type": "event"
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "numWords",
+		"outputs": [
+			{
+				"internalType": "uint32",
+				"name": "",
+				"type": "uint32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "premiumPercentageLink",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "premiumPercentageNative",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "publicSaleCost",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "public_mint_status",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "randomResult",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "renounceOwnership",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "requestConfirmations",
+		"outputs": [
+			{
+				"internalType": "uint16",
+				"name": "",
+				"type": "uint16"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -1666,6 +2132,35 @@ let ABIArmoury = [
 		"name": "resetTokenRoyalty",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_tokenId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_salePrice",
+				"type": "uint256"
+			}
+		],
+		"name": "royaltyInfo",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -1890,539 +2385,6 @@ let ABIArmoury = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "toggle_free_mint_status",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "toggle_public_mint_status",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256[]",
-				"name": "ids",
-				"type": "uint256[]"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256[]",
-				"name": "values",
-				"type": "uint256[]"
-			}
-		],
-		"name": "TransferBatch",
-		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "value",
-				"type": "uint256"
-			}
-		],
-		"name": "TransferSingle",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "string",
-				"name": "value",
-				"type": "string"
-			},
-			{
-				"indexed": true,
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			}
-		],
-		"name": "URI",
-		"type": "event"
-	},
-	{
-		"stateMutability": "payable",
-		"type": "fallback"
-	},
-	{
-		"inputs": [],
-		"name": "withdraw",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"stateMutability": "payable",
-		"type": "receive"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			}
-		],
-		"name": "balanceOf",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address[]",
-				"name": "accounts",
-				"type": "address[]"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "ids",
-				"type": "uint256[]"
-			}
-		],
-		"name": "balanceOfBatch",
-		"outputs": [
-			{
-				"internalType": "uint256[]",
-				"name": "",
-				"type": "uint256[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "callbackGasLimit",
-		"outputs": [
-			{
-				"internalType": "uint32",
-				"name": "",
-				"type": "uint32"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "contractURI",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			}
-		],
-		"name": "exists",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "free_mint_status",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "freeMinted",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			}
-		],
-		"name": "isApprovedForAll",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "lastRandomNumber",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "lastRequestId",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "max_ids",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "max_per_wallet",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "mintingAddress",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "MintingQuantity",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "name",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "numWords",
-		"outputs": [
-			{
-				"internalType": "uint32",
-				"name": "",
-				"type": "uint32"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "OPERATOR_FILTER_REGISTRY",
-		"outputs": [
-			{
-				"internalType": "contract IOperatorFilterRegistry",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "owner",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "premiumPercentageLink",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "premiumPercentageNative",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "public_mint_status",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "publicSaleCost",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "randomResult",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "requestConfirmations",
-		"outputs": [
-			{
-				"internalType": "uint16",
-				"name": "",
-				"type": "uint16"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_tokenId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_salePrice",
-				"type": "uint256"
-			}
-		],
-		"name": "royaltyInfo",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "bytes4",
@@ -2452,6 +2414,20 @@ let ABIArmoury = [
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "toggle_free_mint_status",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "toggle_public_mint_status",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -2489,6 +2465,19 @@ let ABIArmoury = [
 	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "uint256",
 				"name": "_id",
 				"type": "uint256"
@@ -2504,10 +2493,21 @@ let ABIArmoury = [
 		],
 		"stateMutability": "view",
 		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "withdraw",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
 	}
 ];
 
-let addressArmoury = "0x9c5a116e2dAd3047dc4660D19bc060d9C9dd29Ed";
+let addressArmoury = "0x94e843871398a138a243974aA069bd08DD40f5E2";
 //let address = "0xE7268C3BC66b4dA84925D16110aE81391F26061d";
 
 const maxSupply = 555;
@@ -2580,8 +2580,12 @@ const Home = () => {
 	const [_successMsg_remove, setSuccessMsg_remove] = useState(0);
 	const [_errorMsg_remove, setErrorMsg_remove] = useState(0);
 	const [_msg_loading, setMsg_loading] = useState(0);
+	const [_response, setResponse] = useState(0);
+	const [_responseUpdated, setResponseUpdated] = useState(0);
 
 	const { signMessageAsync } = useSignMessage();
+
+	const [imageUrls, setImageUrls] = useState({});
 
 	const weaponArray = [
 		"CarroTech",
@@ -2708,6 +2712,7 @@ const Home = () => {
 
 	const closeBtn2 = () => {
 		setErrorMsg(0);
+		setErrorMsg_remove(0);
 	}
 
 	const contract = {
@@ -2719,6 +2724,30 @@ const Home = () => {
 		address: addressArmoury,
 		abi: ABIArmoury
 	}
+
+	useEffect(() => {
+		const fetchImages = async () => {
+			const urls = {};
+			for (const tokenId of _tokenArray) {
+				try {
+					const response = await fetch(
+						`https://robotic-rabbit-metadata-live-replica01.s3.us-east-1.amazonaws.com/${tokenId}.json`
+					);
+					if (!response.ok) {
+						throw new Error(`Error fetching metadata for token ${tokenId}`);
+					}
+					const data = await response.json();
+					urls[tokenId] = data.image; // Store image URL from metadata
+				} catch (error) {
+					console.error(`Failed to load image for token ${tokenId}`, error);
+					urls[tokenId] = "fallback-image-url.png"; // Set a default image on error
+				}
+			}
+			setImageUrls(urls);
+		};
+
+		fetchImages();
+	}, [_tokenArray]);
 
 
 	async function removeTrait_SP() {
@@ -2752,20 +2781,29 @@ const Home = () => {
 			//console.log(response.data);
 			//console.log(response.data);
 			if (response.data = "CS_SPOkay") {
+				setMsg_loading(0);
 				setSuccessMsg_remove(1);
 				await new Promise(resolve => setTimeout(resolve, 2000));
 				window.location.reload(true);
 				setErrorMsg_remove(0);
-				setMsg_loading(0);
+				console.log("notification_sp: " + response.data);
+				setResponseUpdated(1);
+
 			} else {
 				//alert("Burning error");
+				setMsg_loading(0);
 				setErrorMsg_remove(1);
 				setSuccessMsg_remove(0);
-				setMsg_loading(0);
+				console.log("notification_sp: " + response.data);
+				setResponseUpdated(1);
 			}
 
 		} catch (err) {
 			console.log(err);
+			//console.log("notification_sp: " + err.response.data);
+			setMsg_loading(0);
+			setErrorMsg_remove(1);
+			setSuccessMsg_remove(0);
 		}
 
 	}
@@ -2800,17 +2838,18 @@ const Home = () => {
 
 			//console.log(response.data);
 			if (response.data == "CS_WGOkay") {
+				setMsg_loading(0);
+
 				setSuccessMsg_remove(1);
 				setErrorMsg_remove(0);
-				setMsg_loading(0);
 				await new Promise(resolve => setTimeout(resolve, 2000));
 				window.location.reload(true);
 
 			} else {
 				//alert("Burning error");
+				setMsg_loading(0);
 				setErrorMsg_remove(1);
 				setSuccessMsg_remove(0);
-				setMsg_loading(0);
 			}
 
 			if (response.data == "networkError") {
@@ -3198,12 +3237,12 @@ const Home = () => {
 				/*const data1 = await getBalanceOf();
 				setmyNFTWallet(Number(data1.data));
 				console.log("myNFTWallet :", data1.data);*/
-
+				
 				const data1 = await contract_721.methods.balanceOf(walletAddress).call()
 				setmyNFTWallet(Number(data1));
 				console.log("myNFTWallet :", data1);
 
-				setLoadingImgs(1);
+				
 
 				let tokenIdArray = [];
 
@@ -3230,6 +3269,7 @@ const Home = () => {
 
 		if (_connected) {
 			if (chain.id == 943) {
+				setLoadingImgs(1);
 				fetchData2();
 			}
 
@@ -3237,7 +3277,7 @@ const Home = () => {
 		}
 
 		// eslint-disable-next-line no-use-before-define
-	}, [showErrorDiv, statusError, _connected /*getBalance, getCost, getTotalSupply, nftMintingAmount*/]);
+	}, [showErrorDiv, statusError, _connected, _responseUpdated /*getBalance, getCost, getTotalSupply, nftMintingAmount*/]);
 
 	/*	const { data, refetch, isSuccess } = useContractReads({
 			contracts: [
@@ -3408,7 +3448,6 @@ const Home = () => {
 									<div className='load'>Loading...</div>
 								</div> :
 
-
 								<div className="nft-overlay">
 
 									{_tokenArray.map((tokenId, index) => (
@@ -3419,7 +3458,8 @@ const Home = () => {
 											}}>
 											<img
 												//src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnniw7Q92zB8NbAQW5whTVOGOOqVO6E7wM4A&s"} // Replace with your NFT image URL pattern
-												src={`https://robotic-rabbit-collection.s3.amazonaws.com/${tokenId}.png`} // Replace with your NFT image URL pattern
+												//src={`https://robotic-rabbit-collection.s3.amazonaws.com/${tokenId}.png`} // Replace with your NFT image URL pattern
+												src={imageUrls[tokenId]}
 												alt={`NFT ${tokenId}`}
 												className="nft-image"
 											/>
@@ -3442,61 +3482,82 @@ const Home = () => {
 								<>
 									{_choiceIndex < 3 ?
 										_choiceIndex === 0 ?
-											<div className="nft-overlay">
+											<div className="nft-overlay2">
+
+
 												{_tokenArray_1155.length > 0 ? (
-													_tokenArray_1155.map((token) => (
-														<div className="nft-card" key={token.tokenId} onClick={() => choosePower_SP(token.tokenId)}>
-															<img
-																src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`} // Replace with your NFT image URL pattern
-																alt={`NFT ${token.tokenId}`}
-																className="nft-image"
-															/>
-															<p className='nft-text'>Token ID: {token.tokenId}</p>
-															<p className='nft-text'>Balance: {token.balance.toString()}</p>
+													<>
+														<div className='choose2'>Choose a Special Power</div>
+														<div className="nft-grid">
+															{_tokenArray_1155.map((token) => (
+																<div className="nft-card" key={token.tokenId} onClick={() => choosePower_SP(token.tokenId)}>
+																	<img
+																		src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`} // Replace with your NFT image URL pattern
+																		alt={`NFT ${token.tokenId}`}
+																		className="nft-image"
+																	/>
+																	<p className='nft-text'>Token ID: {token.tokenId}</p>
+																	<p className='nft-text'>Balance: {token.balance.toString()}</p>
+																</div>
+															))}
 														</div>
-													))
+													</>
 												) : (
 													<p className='load2'>No NFTs found.</p>
 												)}
 
 											</div> :
-											<div className="nft-overlay">
+											<div className="nft-overlay2">
+ 
 												{_tokenArray_1155.length > 0 ? (
-													_tokenArray_1155.map((token) => (
-														<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
-															<img
-																src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`} // Replace with your NFT image URL pattern
-																alt={`NFT ${token.tokenId}`}
-																className="nft-image"
-															/>
-															<p className='nft-text'>Token ID: {token.tokenId}</p>
-															<p className='nft-text'>Balance: {token.balance.toString()}</p>
+													<>
+														<div className='choose2'>Choose a Weapon</div>
+														<div className="nft-grid">
+															{_tokenArray_1155.map((token) => (
+																<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
+																	<img
+																		src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`} // Replace with your NFT image URL pattern
+																		alt={`NFT ${token.tokenId}`}
+																		className="nft-image"
+																	/>
+																	<p className='nft-text'>Token ID: {token.tokenId}</p>
+																	<p className='nft-text'>Balance: {token.balance.toString()}</p>
+																</div>
+															))}
 														</div>
-													))
+													</>
 												) : (
 													<p className='load2'>No NFTs found.</p>
 												)}
 
-											</div> :
+											</div>
+										:
 
-										<div className="nft-overlay">
+										<div className="nft-overlay2">
+
 											{_tokenArray_1155.length > 0 ? (
-												_tokenArray_1155.map((token) => (
-													<div className="nft-card" key={token.tokenId} style={{ cursor: 'default' }}>
-														<img
-															src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`} // Replace with your NFT image URL pattern
-															alt={`NFT ${token.tokenId}`}
-															className="nft-image"
-														/>
-														<p className='nft-text'>Token ID: {token.tokenId}</p>
-														<p className='nft-text'>Balance: {token.balance.toString()}</p>
+												<>
+													<div className='choose'>All your Special Powers, Weapons and Gears</div>
+													<div className="nft-grid">
+														{_tokenArray_1155.map((token) => (
+															<div className="nft-card" key={token.tokenId} style={{ cursor: 'default' }}>
+																<img
+																	src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
+																	alt={`NFT ${token.tokenId}`}
+																	className="nft-image"
+																/>
+																<p className='nft-text'>Token ID: {token.tokenId}</p>
+																<p className='nft-text'>Balance: {token.balance.toString()}</p>
+															</div>
+														))}
 													</div>
-												))
+												</>
 											) : (
 												<p className='load2'>No NFTs found.</p>
 											)}
 
-										</div>}
+										</div>
+									}
 
 								</>
 							}
@@ -3569,6 +3630,20 @@ const Home = () => {
 						: null}
 
 					{_errorMsg > 0 ?
+						< div class="popup-containerIn">
+							<div class="popupIn">
+								<div class="popup-closeIn" onClick={closeBtn2}>×</div>
+
+								<div className='popupInTxt'>
+									<img id='checkImg' src={errorImg} />
+									<div className='errorMsg'>Network error</div>
+								</div>
+
+							</div>
+
+						</div> : null}
+
+					{_errorMsg_remove > 0 ?
 						< div class="popup-containerIn">
 							<div class="popupIn">
 								<div class="popup-closeIn" onClick={closeBtn2}>×</div>
