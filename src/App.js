@@ -19,7 +19,7 @@ import imagePic from './assets/image .png';
 import game from './assets/console.png';
 import check from './assets/check-mark.png';
 import errorImg from './assets/error.png';
-import Web3 from 'web3';
+import Web3_mm from 'web3';
 import Web3_1155 from 'web3';
 import axios from 'axios';
 
@@ -1487,7 +1487,6 @@ let ABI = [
 
 let address = "0x3B686118bF4272E132Bb5779747f51721e6E5afe";
 
-
 let ABIArmoury = [
 	{
 		"inputs": [],
@@ -2532,7 +2531,7 @@ const Home = () => {
 	//const transport = webSocket(websocketUrl);
 
 	const transport = webSocket('wss://pulsechain-testnet-rpc.publicnode.com')
-	const web3 = new Web3(Web3.givenProvider || 'https://pulsechain-testnet-rpc.publicnode.com');
+	const web3_mm = new Web3_mm(Web3_mm.givenProvider || 'https://pulsechain-testnet-rpc.publicnode.com');
 	const web3_1155 = new Web3_1155(Web3_1155.givenProvider || 'https://polygon-mainnet.infura.io/v3/9aad89c8e515457ab8b7805f5da593ea');
 
 	const publicClient = createPublicClient({
@@ -2559,14 +2558,17 @@ const Home = () => {
 	const [_tokenArray, setTokenArray] = useState([]);
 	const [_weaponDiv, setWeaponDiv] = useState(false);
 	const [specialPower, setSpecialPower] = useState("");
+	const [_drone, setDrone] = useState("");
 	const [weaponsAndGear, setWeaponsAndGear] = useState("");
 	const [error, setError] = useState(null);
 	const [_mintingWeapon, setMintingWeapon] = useState();
 	const [_mintingSpecial, setMintingSpecial] = useState();
+	const [_mintingDrones, setMintingDrones] = useState();
 	const [_storedTokenId, setStoredTokenId] = useState();
 	const [_selectedTokenId, setSelectedTokenId] = useState();
 	const [_mintingWeaponLength, setMintingWeaponLength] = useState(0);
 	const [_mintingSpecialLength, setMintingSpecialLength] = useState(0);
+	const [_mintingDronesLength, setMintingDronesLength] = useState(0);
 	const [_loadingImgs, setLoadingImgs] = useState(0);
 	const [_loadingImgs2, setLoadingImgs2] = useState(0);
 	const [_tokenArray_1155, setTokenArray_1155] = useState([]);
@@ -2633,7 +2635,10 @@ const Home = () => {
 	];
 
 	const setWeaponDivOpen = (tkId) => {
-		fetch(`https://robotic-rabbit-metadata-live-replica01.s3.us-east-1.amazonaws.com/${tkId}.json`)
+		fetch(`https://robotic-rabbit-metadata-live-replica04.s3.us-east-1.amazonaws.com/${tkId}.json?t=${Date.now()}`,
+			{ cache: "no-store" } // Ensures fresh fetch
+		)
+
 			.then((response) => {
 				if (!response.ok) {
 					throw new Error(`HTTP error! status: ${response.status}`);
@@ -2644,12 +2649,18 @@ const Home = () => {
 				const specialPowerTrait = data.attributes.find(
 					(attr) => attr.trait_type === "Special Power"
 				);
+
 				const weaponsAndGearTrait = data.attributes.find(
 					(attr) => attr.trait_type === "Weapons and Gear"
 				);
 
+				const droneTrait = data.attributes.find(
+					(attr) => attr.trait_type === "Drone"
+				);
+
 				setSpecialPower(specialPowerTrait ? specialPowerTrait.value : "Not found");
 				setWeaponsAndGear(weaponsAndGearTrait ? weaponsAndGearTrait.value : "Not found");
+				setDrone(droneTrait ? droneTrait.value : "Not found");
 
 				// Check if the "Weapons and Gear" trait contains multiple values and split them
 				const weaponValues = weaponsAndGearTrait ? weaponsAndGearTrait.value.split(',') : [];
@@ -2678,19 +2689,36 @@ const Home = () => {
 					})
 					.flat(); // Flatten the result to get a single array of indices
 
+				// Check if the "Weapons and Gear" trait contains multiple values and split them
+				const droneValues = droneTrait ? droneTrait.value.split(',') : [];
+				//const droneValues = droneTrait?.value ? [droneTrait.value] : [];
+
+
+
+				// Find matching indices for all weapon values
+				const matchingIndices_drone = droneValues
+					.map((droneValue) => {
+						// Trim extra spaces and check for matching indices
+						return weaponArray
+							.map((weapon, index) => weapon.includes(droneValue.trim()) ? index : -1)
+							.filter(index => index !== -1); // Filter out -1 (no match)
+					})
+					.flat(); // Flatten the result to get a single array of indices
 
 
 
 				console.log("Matching weapon indices:", matchingIndices); // Log all matching indices
 				console.log("Matching special indices:", matchingIndices_special); // Log all matching indices
-
+				console.log("Matching drone indices:", matchingIndices_drone); // Log all matching indices
 
 				setMintingWeapon(matchingIndices);
 				setMintingWeaponLength(matchingIndices.length);
 
-
 				setMintingSpecial(matchingIndices_special);
 				setMintingSpecialLength(matchingIndices_special.length);
+
+				setMintingDrones(matchingIndices_drone);
+				setMintingDronesLength(matchingIndices_drone.length);
 
 			})
 			.catch((err) => setError(err.message));
@@ -2699,8 +2727,6 @@ const Home = () => {
 		setWeaponDiv(true); // Open the div only if it's not already open
 
 	};
-
-
 
 	const weaponDivClose = () => {
 		setWeaponDiv(false);
@@ -2725,19 +2751,46 @@ const Home = () => {
 		abi: ABIArmoury
 	}
 
-	useEffect(() => {
+	/*useEffect(() => {
 		const fetchImages = async () => {
 			const urls = {};
 			for (const tokenId of _tokenArray) {
 				try {
 					const response = await fetch(
-						`https://robotic-rabbit-metadata-live-replica01.s3.us-east-1.amazonaws.com/${tokenId}.json`
+						`https://robotic-rabbit-metadata-live-replica04.s3.us-east-1.amazonaws.com/${tokenId}.json`						
 					);
 					if (!response.ok) {
 						throw new Error(`Error fetching metadata for token ${tokenId}`);
 					}
 					const data = await response.json();
 					urls[tokenId] = data.image; // Store image URL from metadata
+					console.log('URLS : ' + JSON.stringify(urls));
+				} catch (error) {
+					console.error(`Failed to load image for token ${tokenId}`, error);
+					urls[tokenId] = "fallback-image-url.png"; // Set a default image on error
+				}
+			}
+			setImageUrls(urls);
+		};
+
+		fetchImages();
+	}, [_tokenArray]);*/
+
+	useEffect(() => {
+		const fetchImages = async () => {
+			const urls = {};
+			for (const tokenId of _tokenArray) {
+				try {
+					const response = await fetch(
+						`https://robotic-rabbit-metadata-live-replica04.s3.us-east-1.amazonaws.com/${tokenId}.json?t=${Date.now()}`,
+						{ cache: "no-store" } // Ensures fresh fetch
+					);
+					if (!response.ok) {
+						throw new Error(`Error fetching metadata for token ${tokenId}`);
+					}
+					const data = await response.json();
+					urls[tokenId] = data.image; // Store image URL from metadata
+					console.log('URLS : ' + JSON.stringify(urls));
 				} catch (error) {
 					console.error(`Failed to load image for token ${tokenId}`, error);
 					urls[tokenId] = "fallback-image-url.png"; // Set a default image on error
@@ -2749,6 +2802,65 @@ const Home = () => {
 		fetchImages();
 	}, [_tokenArray]);
 
+	async function removeTrait_Drn() {
+
+		console.log("1")
+
+		//await switchChainToPoly();
+
+		console.log("2")
+
+		setConnected(true);
+
+		setMsg_loading(1);
+
+		console.log("_mintingSpecial_mint: " + _mintingSpecial);
+		console.log("selectedTokenId_server: " + _selectedTokenId);
+		console.log("_mintingSpecial_mint_toString: " + _mintingSpecial.toString());
+
+		try {
+			const response = await axios.post('http://localhost:3001/api/removeDrone', {
+				selectedTokenId_server: Number(_selectedTokenId),
+				mintingSpecial_server: _mintingDrones,
+				selectededNetwork: 137,
+				userAddress: walletAddress,
+				RECEIVED_DRONE_VALUE: _mintingDrones
+			}
+				, {
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				});
+
+			//console.log(response.data);
+			//console.log(response.data);
+			if (response.data = "CS_SPOkay") {
+				setMsg_loading(0);
+				setSuccessMsg_remove(1);
+				await new Promise(resolve => setTimeout(resolve, 2000));
+				window.location.reload(true);
+				setErrorMsg_remove(0);
+				console.log("notification_sp: " + response.data);
+				setResponseUpdated(1);
+
+			} else {
+				//alert("Burning error");
+				setMsg_loading(0);
+				setErrorMsg_remove(1);
+				setSuccessMsg_remove(0);
+				console.log("notification_sp: " + response.data);
+				setResponseUpdated(1);
+			}
+
+		} catch (err) {
+			console.log(err);
+			//console.log("notification_sp: " + err.response.data);
+			setMsg_loading(0);
+			setErrorMsg_remove(1);
+			setSuccessMsg_remove(0);
+		}
+
+	}
 
 	async function removeTrait_SP() {
 
@@ -2864,6 +2976,60 @@ const Home = () => {
 		}
 
 	}
+
+	async function handleConnectPoly_Drn() {
+		setWeaponDiv(false);
+		if (chain?.id !== 137) {
+			switchNetwork?.(137);
+		}
+
+		if (!walletAddress) {
+			alert("Please connect your wallet.");
+			return;
+		}
+
+		try {
+			//const message = `Sign this message to verify your wallet: ${walletAddress}`;
+			//const signature = await signMessageAsync({ message });	
+
+			setMsg_loading(1);
+			await fetch1155NFTs(2);
+
+			console.log("polygon");
+
+			// Send to backend
+			/*	const response = await axios.post("http://localhost:3001/api/burn_SP", {
+					message: message,
+					signature: signature,
+					selectedTokenId_server: Number(_selectedTokenId),
+					burningSpecial_server: _mintingWeapon,
+					selectededNetwork: 137
+	
+				}, {
+					headers: {
+						'Content-Type': 'application/json',
+					},
+	
+				});
+	
+	
+				if (response.data.success) {
+					setConnected(true);
+					alert("Signature verified!");
+				} else {
+					alert("Signature verification failed!");
+				}*/
+
+			//console.log(response.data);
+
+
+		} catch (error) {
+			console.error("Error signing message:", error);
+		}
+
+
+	}
+
 
 	async function handleConnectPoly_SP() {
 		setWeaponDiv(false);
@@ -3031,6 +3197,67 @@ const Home = () => {
 
 	}
 
+	async function choosePower_Drn(tkId) {
+		if (chain?.id !== 137) {
+			switchNetwork?.(137);
+		}
+
+		if (!walletAddress) {
+			alert("Please connect your wallet.");
+			return;
+		}
+
+		try {
+
+			setMsg_loading(1);
+
+			//const message = `Sign this message to verify your wallet: ${walletAddress}`;
+			//const signature = await signMessageAsync({ message });
+
+			console.log("polygon");
+			// Send to backend
+			const response = await axios.post("http://localhost:3001/api/addDrone", {
+				//message: message,
+				//signature: signature,
+				selectedTokenId_server: Number(_selectedTokenId),
+				mintingSpecial_server: Number(tkId),
+				selectedNetwork: '137',
+				userAddress_server: walletAddress,
+				RECEIVED_DRONE_VALUE: Number(tkId)
+			}, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+
+			});
+
+
+			if (response.data == "SPOkay") {
+				setConnected(true);
+				//alert("Burning successful!");
+				setSuccessMsg(1);
+				setErrorMsg(0);
+				setMsg_loading(0);
+			} else {
+				//alert("Burning error");
+				setErrorMsg(1);
+				setSuccessMsg(0);
+				setMsg_loading(0);
+			}
+
+			if (response.data == "networkError") {
+				setErrorMsg_remove(1);
+				setSuccessMsg_remove(0);
+				setMsg_loading(0);
+			}
+
+		} catch (error) {
+			console.error("Error signing message:", error);
+		}
+
+
+	}
+
 	async function choosePower_WP(tkId) {
 		if (chain?.id !== 137) {
 			switchNetwork?.(137);
@@ -3125,10 +3352,11 @@ const Home = () => {
 			const contract_1155 = new web3_1155.eth.Contract(ABIArmoury, addressArmoury);
 			let tokenIdArray_1155 = [];
 			const specialPowers = [27, 31, 32, 28, 29, 31, 30]; // Define special weapons
+			const droneList = [39, 40, 41]; // Define special weapons
 
 			setLoadingImgs2(1);
 
-			for (let x = 0; x < 41; x++) {
+			for (let x = 0; x <= 41; x++) {
 				const balance1155 = await contract_1155.methods.balanceOf(walletAddress, x).call();
 
 				if (parseInt(balance1155) > 0) {
@@ -3139,10 +3367,15 @@ const Home = () => {
 							// Push only special weapons
 							tokenIdArray_1155.push({ tokenId: x, balance: balance1155 });
 						}
-						else if (choiceIndex === 1 && !specialPowers.includes(x)) {
+						else if (choiceIndex === 1 && !specialPowers.includes(x) && !droneList.includes(x)) {
 							// Push only normal weapons (excluding special ones)
 							tokenIdArray_1155.push({ tokenId: x, balance: balance1155 });
 						}
+						else if (choiceIndex === 2 && droneList.includes(x)) {
+							// Push only drones (excluding special ones)
+							tokenIdArray_1155.push({ tokenId: x, balance: balance1155 });
+						}
+
 					}
 
 					console.log(`Token ID_1155 fetched: ${x} - Balance: ${balance1155}`);
@@ -3212,7 +3445,7 @@ const Home = () => {
 
 	useEffect(() => {
 
-		const contract_721 = new web3.eth.Contract(ABI, address);
+		const contract_721 = new web3_mm.eth.Contract(ABI, address);
 
 		if (statusError) {
 			const timer = setTimeout(() => {
@@ -3237,12 +3470,10 @@ const Home = () => {
 				/*const data1 = await getBalanceOf();
 				setmyNFTWallet(Number(data1.data));
 				console.log("myNFTWallet :", data1.data);*/
-				
+
 				const data1 = await contract_721.methods.balanceOf(walletAddress).call()
 				setmyNFTWallet(Number(data1));
 				console.log("myNFTWallet :", data1);
-
-				
 
 				let tokenIdArray = [];
 
@@ -3398,41 +3629,20 @@ const Home = () => {
 	};
 
 	return (
-		<div className='wrapperMain'>
-			<div className='nav'>
-				<img className='logoH' src={logo} />
-				{_connected ? (
-					<button class="connect" onClick={() => disconnectWallet()}>
-						{walletAddress === "" ? "Connect Wallet" : shortenAddress(walletAddress)}
-					</button>
-				) : (
-					<button class="connect" onClick={() => { open(); }}>Wallet</button>
-				)}
-			</div>
-			<div className='wrapperMain2'>
+		<div>
 
-				<div class="menu-container">
-					<div class="menu-header"></div>
-					<div class="menu">
-						<ul class="menu-items">
-							<li class="menu-item active" id='fontH'>
-								<span class="icon"><img src={imagePic} /></span> Inventory
-							</li>
-							<li class="menu-item" id='fontH'>
-								<span class="icon"><img src={user} /></span> Setting
-							</li>
-							<li class="menu-item" id='fontH'>
-								<span class="icon"><img src={game} /></span> Play to Mint
-							</li>
-						</ul>
-						<div class="logo-section">
-							<img src={robo} alt="Robotic Rabbit Logo" class="logo" />
-						</div>
-					</div>
-				</div>
+			<div className='wrapperMain'>
+
 				<div className="Wrpperr">
 					<div className="in-header">
-						<h1>Inventory</h1>
+						<div id="headerH1">Inventory</div>
+						{_connected ? (
+							<button class="connect" onClick={() => disconnectWallet()}>
+								{walletAddress === "" ? "Connect Wallet" : shortenAddress(walletAddress)}
+							</button>
+						) : (
+							<button class="connect" onClick={() => { open(); }}>Wallet</button>
+						)}
 					</div>
 
 					<div className="set-image">
@@ -3475,13 +3685,13 @@ const Home = () => {
 							{/* Background image */}
 							<img src={inventory} alt="Inventory Background" className="inventory-image" />
 
-							{_loadingImgs2 > 0 ?
+							{/*_loadingImgs2 > 0 ?
 								<div className="nft-overlay">
 									<div className='load'>Loading...</div>
 								</div> :
 								<>
 									{_choiceIndex < 3 ?
-										_choiceIndex === 0 ?
+										<>_choiceIndex === 0 ?
 											<div className="nft-overlay2">
 
 
@@ -3506,9 +3716,11 @@ const Home = () => {
 													<p className='load2'>No NFTs found.</p>
 												)}
 
-											</div> :
+											</div>:
+											
+											_choiceIndex === 1 ?
 											<div className="nft-overlay2">
- 
+
 												{_tokenArray_1155.length > 0 ? (
 													<>
 														<div className='choose2'>Choose a Weapon</div>
@@ -3530,8 +3742,34 @@ const Home = () => {
 													<p className='load2'>No NFTs found.</p>
 												)}
 
+											</div>:
+
+											<div className="nft-overlay2">
+
+
+												{_tokenArray_1155.length > 0 ? (
+													<>
+														<div className='choose2'>Choose a Drone</div>
+														<div className="nft-grid">
+															{_tokenArray_1155.map((token) => (
+																<div className="nft-card" key={token.tokenId} onClick={() => choosePower_Drn(token.tokenId)}>
+																	<img
+																		src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`} // Replace with your NFT image URL pattern
+																		alt={`NFT ${token.tokenId}`}
+																		className="nft-image"
+																	/>
+																	<p className='nft-text'>Token ID: {token.tokenId}</p>
+																	<p className='nft-text'>Balance: {token.balance.toString()}</p>
+																</div>
+															))}
+														</div>
+													</>
+												) : (
+													<p className='load2'>No NFTs found.</p>
+												)}
+
 											</div>
-										:
+									 </>:
 
 										<div className="nft-overlay2">
 
@@ -3560,7 +3798,116 @@ const Home = () => {
 									}
 
 								</>
-							}
+							*/}
+
+							{_loadingImgs2 > 0 ? (
+								<div className="nft-overlay">
+									<div className='load'>Loading...</div>
+								</div>
+							) : (
+								<>
+									{_choiceIndex === 0 && (
+										<div className="nft-overlay2">
+											{_tokenArray_1155.length > 0 ? (
+												<>
+													<div className='choose2'>Choose a Special Power</div>
+													<div className="nft-grid">
+														{_tokenArray_1155.map((token) => (
+															<div className="nft-card" key={token.tokenId} onClick={() => choosePower_SP(token.tokenId)}>
+																<img
+																	src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
+																	alt={`NFT ${token.tokenId}`}
+																	className="nft-image"
+																/>
+																<p className='nft-text'>Token ID: {token.tokenId}</p>
+																<p className='nft-text'>Balance: {token.balance.toString()}</p>
+															</div>
+														))}
+													</div>
+												</>
+											) : (
+												<p className='load2'>No NFTs found.</p>
+											)}
+										</div>
+									)}
+
+									{_choiceIndex === 1 && (
+										<div className="nft-overlay2">
+											{_tokenArray_1155.length > 0 ? (
+												<>
+													<div className='choose2'>Choose a Weapon</div>
+													<div className="nft-grid">
+														{_tokenArray_1155.map((token) => (
+															<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
+																<img
+																	src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
+																	alt={`NFT ${token.tokenId}`}
+																	className="nft-image"
+																/>
+																<p className='nft-text'>Token ID: {token.tokenId}</p>
+																<p className='nft-text'>Balance: {token.balance.toString()}</p>
+															</div>
+														))}
+													</div>
+												</>
+											) : (
+												<p className='load2'>No NFTs found.</p>
+											)}
+										</div>
+									)}
+
+									{_choiceIndex === 2 && (
+										<div className="nft-overlay2">
+											{_tokenArray_1155.length > 0 ? (
+												<>
+													<div className='choose2'>Choose a Drone</div>
+													<div className="nft-grid">
+														{_tokenArray_1155.map((token) => (
+															<div className="nft-card" key={token.tokenId} onClick={() => choosePower_Drn(token.tokenId)}>
+																<img
+																	src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
+																	alt={`NFT ${token.tokenId}`}
+																	className="nft-image"
+																/>
+																<p className='nft-text'>Token ID: {token.tokenId}</p>
+																<p className='nft-text'>Balance: {token.balance.toString()}</p>
+															</div>
+														))}
+													</div>
+												</>
+											) : (
+												<p className='load2'>No NFTs found.</p>
+											)}
+										</div>
+									)}
+
+									{_choiceIndex >= 3 && (
+										<div className="nft-overlay2">
+											{_tokenArray_1155.length > 0 ? (
+												<>
+													<div className='choose'>All your Special Powers, Weapons and Gears</div>
+													<div className="nft-grid">
+														{_tokenArray_1155.map((token) => (
+															<div className="nft-card" key={token.tokenId} style={{ cursor: 'default' }}>
+																<img
+																	src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
+																	alt={`NFT ${token.tokenId}`}
+																	className="nft-image"
+																/>
+																<p className='nft-text'>Token ID: {token.tokenId}</p>
+																<p className='nft-text'>Balance: {token.balance.toString()}</p>
+															</div>
+														))}
+													</div>
+												</>
+											) : (
+												<p className='load2'>No NFTs found.</p>
+											)}
+										</div>
+									)}
+								</>
+							)}
+
 						</div>
 
 
@@ -3605,6 +3952,23 @@ const Home = () => {
 											{weaponsAndGear !== "None" ?
 												<div><button onClick={removeTrait_WG}>Remove</button></div> :
 												<div><button onClick={handleConnectPoly_WP}>Add</button></div>
+											}
+										</p>
+
+										<p className='removeSection'>
+											<div><strong>Drone:</strong> {_drone}</div>
+											{_mintingDrones && _mintingDrones.length > 0 ? (
+												<img
+													src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${_mintingDrones[0]}.png`}
+													alt="Drone"
+												/>
+											) : (
+												<div></div>
+											)}
+
+											{_drone !== "None" && _drone !== 'Not found' ?
+												<div><button onClick={removeTrait_Drn}>Remove</button></div> :
+												<div><button onClick={handleConnectPoly_Drn}>Add</button></div>
 											}
 										</p>
 									</div>
@@ -3670,8 +4034,8 @@ const Home = () => {
 
 
 				</div>
-			</div>
-		</div >
+			</div >
+		</div>
 	)
 
 }
