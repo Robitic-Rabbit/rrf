@@ -27,7 +27,7 @@ jobs:
         run: npm i --legacy-peer-deps
 
       - name: Build the project
-        run: npm run build
+        run: npm run build --ignore-scripts
 
       - name: Upload to S3
         uses: jakejarvis/s3-sync-action@v0.5.1
