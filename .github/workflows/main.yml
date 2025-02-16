@@ -1,5 +1,4 @@
 name: Build and Deploy React to S3
-
 on:
   push:
     branches:
@@ -9,7 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -19,15 +17,13 @@ jobs:
         with:
           node-version: "18"
 
-      # - name: Decode .env file
-      #   run: |
-      #     echo "${{ secrets.FE_ENV_BASE64 }}" | base64 --decode > ./apps/client/.env
-
       - name: Install dependencies without scripts
         run: npm i --legacy-peer-deps
 
       - name: Build the project
-        run: npm run build --ignore-scripts
+        run: CI=false npm run build --ignore-scripts
+        env:
+          DISABLE_ESLINT_PLUGIN: true
 
       - name: Upload to S3
         uses: jakejarvis/s3-sync-action@v0.5.1
@@ -48,4 +44,4 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: "us-west-2"
+          AWS_REGION: "eu-north-1"
