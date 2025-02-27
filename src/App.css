@@ -71,7 +71,6 @@
 }
 
 
-
 body,
 html {
   font-weight: normal;
@@ -121,6 +120,35 @@ h6 {
   background: currentColor;
   animation: l6 2s infinite;
 }
+
+.refresg-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex; /* Use flexbox for centering */
+  justify-content: center;
+  align-items: center;
+  background: rgb(48,192,108);
+  background: linear-gradient(90deg, rgba(48,192,108,1) 0%, rgba(26,103,59,1) 51%, rgba(0,17,7,1) 100%);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.txtR {
+  text-align: center;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+}
+
 
 @keyframes l6 {
   100% {
@@ -492,7 +520,7 @@ h6 {
 }
 
 .removeSection img {
-  width: 50%;
+  width: 30%;
   margin: 10px;
   margin-left: auto;
   margin-right: auto;
