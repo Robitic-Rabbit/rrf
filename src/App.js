@@ -19,6 +19,7 @@ import imagePic from './assets/image .png';
 import game from './assets/console.png';
 import check from './assets/check-mark.png';
 import errorImg from './assets/error.png';
+import refresh from './assets/refresh.png';
 import Web3_mm from 'web3';
 import Web3_1155 from 'web3';
 import axios from 'axios';
@@ -3860,13 +3861,14 @@ const Home = () => {
 								</>
 							*/}
 
-							{_showElements > 0 ?
-								<div></div> :
-								<button className='refresg-overlay' onClick={showElements}>
-									<div className='txtR'>Show all the elements</div>
-								</button>
+							{_connected ?
+								_showElements > 0 ?
+									<div></div> :
+									<button className='refresg-overlay' onClick={showElements}>
+										<div className='txtR'>Show all items</div>
+									</button> : null}
 
-							}
+
 
 							{_showElements > 0 ?
 								<>
