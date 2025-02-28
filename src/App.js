@@ -19,6 +19,7 @@ import imagePic from './assets/image .png';
 import game from './assets/console.png';
 import check from './assets/check-mark.png';
 import errorImg from './assets/error.png';
+import refresh from './assets/refresh.png';
 import Web3_mm from 'web3';
 import Web3_1155 from 'web3';
 import axios from 'axios';
@@ -3703,11 +3704,9 @@ const Home = () => {
 
 					<div className="set-image">
 
-						<div className="inventory-container">
-							{/* Background image */}
-							<img src={inventory} alt="Inventory Background" className="inventory-image" />
+						<div className={`inventory-container ${_showElements < 1 ? "blurred" : ""}`}>
 
-							{/* Overlay NFTs */}
+							<img src={inventory} alt="Inventory Background" className="inventory-image" />
 
 							{_loadingImgs > 0 ?
 								<div className="nft-overlay">
@@ -3717,9 +3716,9 @@ const Home = () => {
 								<div className="nft-overlay">
 
 									{_tokenArray.map((tokenId, index) => (
-										<div key={index} className="nft-card" onClick={() => handleClick(tokenId)}
+										<div key={index} className="nft-card" onClick={_showElements < 1 ? undefined : () => handleClick(tokenId)}
 											style={{
-												cursor: "pointer",
+												cursor: _showElements < 1 ? "not-allowed" : "pointer",
 												backgroundColor: selectedToken === tokenId ? "#02e25f70" : "transparent",
 											}}>
 											<img
@@ -3736,129 +3735,12 @@ const Home = () => {
 								</div>
 							}
 
-							{/*_loadingImgsBtn > 0 ?
-								<img className='refresg-overlay ' onClick={refreshWeb} src={refresh} /> : null
-							*/}
 						</div>
 
 						<div className="inventory-container">
 							{/* Background image */}
 							<img src={inventory} alt="Inventory Background" className="inventory-image" />
 
-							{/*_loadingImgs2 > 0 ?
-								<div className="nft-overlay">
-									<div className='load'>Loading...</div>
-								</div> :
-								<>
-									{_choiceIndex < 3 ?
-										<>_choiceIndex === 0 ?
-											<div className="nft-overlay2">
-
-
-												{_tokenArray_1155.length > 0 ? (
-													<>
-														<div className='choose2'>Choose a Special Power</div>
-														<div className="nft-grid">
-															{_tokenArray_1155.map((token) => (
-																<div className="nft-card" key={token.tokenId} onClick={() => choosePower_SP(token.tokenId)}>
-																	<img
-																		src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`} // Replace with your NFT image URL pattern
-																		alt={`NFT ${token.tokenId}`}
-																		className="nft-image"
-																	/>
-																	<p className='nft-text'>Token ID: {token.tokenId}</p>
-																	<p className='nft-text'>Balance: {token.balance.toString()}</p>
-																</div>
-															))}
-														</div>
-													</>
-												) : (
-													<p className='load2'>No NFTs found.</p>
-												)}
-
-											</div>:
-											
-											_choiceIndex === 1 ?
-											<div className="nft-overlay2">
-
-												{_tokenArray_1155.length > 0 ? (
-													<>
-														<div className='choose2'>Choose a Weapon</div>
-														<div className="nft-grid">
-															{_tokenArray_1155.map((token) => (
-																<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
-																	<img
-																		src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`} // Replace with your NFT image URL pattern
-																		alt={`NFT ${token.tokenId}`}
-																		className="nft-image"
-																	/>
-																	<p className='nft-text'>Token ID: {token.tokenId}</p>
-																	<p className='nft-text'>Balance: {token.balance.toString()}</p>
-																</div>
-															))}
-														</div>
-													</>
-												) : (
-													<p className='load2'>No NFTs found.</p>
-												)}
-
-											</div>:
-
-											<div className="nft-overlay2">
-
-
-												{_tokenArray_1155.length > 0 ? (
-													<>
-														<div className='choose2'>Choose a Drone</div>
-														<div className="nft-grid">
-															{_tokenArray_1155.map((token) => (
-																<div className="nft-card" key={token.tokenId} onClick={() => choosePower_Drn(token.tokenId)}>
-																	<img
-																		src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`} // Replace with your NFT image URL pattern
-																		alt={`NFT ${token.tokenId}`}
-																		className="nft-image"
-																	/>
-																	<p className='nft-text'>Token ID: {token.tokenId}</p>
-																	<p className='nft-text'>Balance: {token.balance.toString()}</p>
-																</div>
-															))}
-														</div>
-													</>
-												) : (
-													<p className='load2'>No NFTs found.</p>
-												)}
-
-											</div>
-									 </>:
-
-										<div className="nft-overlay2">
-
-											{_tokenArray_1155.length > 0 ? (
-												<>
-													<div className='choose'>All your Special Powers, Weapons and Gears</div>
-													<div className="nft-grid">
-														{_tokenArray_1155.map((token) => (
-															<div className="nft-card" key={token.tokenId} style={{ cursor: 'default' }}>
-																<img
-																	src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
-																	alt={`NFT ${token.tokenId}`}
-																	className="nft-image"
-																/>
-																<p className='nft-text'>Token ID: {token.tokenId}</p>
-																<p className='nft-text'>Balance: {token.balance.toString()}</p>
-															</div>
-														))}
-													</div>
-												</>
-											) : (
-												<p className='load2'>No NFTs found.</p>
-											)}
-
-										</div>
-									}
-
-								</>
-							*/}
 
 							{_connected ?
 								_showElements > 0 ?
