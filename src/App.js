@@ -2859,7 +2859,7 @@ const Home = () => {
 		console.log("_mintingSpecial_mint_toString: " + _mintingSpecial.toString());
 
 		try {
-			const response = await axios.post('http://localhost:3001/api/removeDrone', {
+			const response = await axios.post('http://44.246.133.131/api/removeDrone', {
 				selectedTokenId_server: Number(_selectedTokenId),
 				mintingSpecial_server: _mintingDrones,
 				selectededNetwork: 137,
@@ -2918,7 +2918,7 @@ const Home = () => {
 		console.log("_mintingSpecial_mint_toString: " + _mintingSpecial.toString());
 
 		try {
-			const response = await axios.post('http://localhost:3001/api/changeSyndicateMetadata_SP', {
+			const response = await axios.post('http://44.246.133.131/api/changeSyndicateMetadata_SP', {
 				selectedTokenId_server: Number(_selectedTokenId),
 				mintingSpecial_server: _mintingSpecial,
 				selectededNetwork: 137,
@@ -2976,7 +2976,7 @@ const Home = () => {
 		console.log("_mintingWeapon_mint_toString: " + _mintingWeapon.toString());
 
 		try {
-			const response = await axios.post('http://localhost:3001/api/changeSyndicateMetadata_WG', {
+			const response = await axios.post('http://44.246.133.131/api/changeSyndicateMetadata_WG', {
 				selectedTokenId_server: Number(_selectedTokenId),
 				mintingWeapon_server: _mintingWeapon,
 				selectededNetwork: 137,
@@ -3038,7 +3038,7 @@ const Home = () => {
 			console.log("polygon");
 
 			// Send to backend
-			/*	const response = await axios.post("http://localhost:3001/api/burn_SP", {
+			/*	const response = await axios.post("http://44.246.133.131/api/burn_SP", {
 					message: message,
 					signature: signature,
 					selectedTokenId_server: Number(_selectedTokenId),
@@ -3092,7 +3092,7 @@ const Home = () => {
 			console.log("polygon");
 
 			// Send to backend
-			/*	const response = await axios.post("http://localhost:3001/api/burn_SP", {
+			/*	const response = await axios.post("http://44.246.133.131/api/burn_SP", {
 					message: message,
 					signature: signature,
 					selectedTokenId_server: Number(_selectedTokenId),
@@ -3146,7 +3146,7 @@ const Home = () => {
 			console.log("polygon");
 
 			// Send to backend
-			/*	const response = await axios.post("http://localhost:3001/api/burn_SP", {
+			/*	const response = await axios.post("http://44.246.133.131/api/burn_SP", {
 					message: message,
 					signature: signature,
 					selectedTokenId_server: Number(_selectedTokenId),
@@ -3195,7 +3195,7 @@ const Home = () => {
 
 			console.log("polygon");
 			// Send to backend
-			const response = await axios.post("http://localhost:3001/api/burn_SP", {
+			const response = await axios.post("http://44.246.133.131/api/burn_SP", {
 				//message: message,
 				//signature: signature,
 				selectedTokenId_server: Number(_selectedTokenId),
@@ -3263,7 +3263,7 @@ const Home = () => {
 			console.log("_drn_RECEIVED_DRONE_VALUE :" + Number(tkId));
 
 			// Send to backend
-			const response = await axios.post("http://localhost:3001/api/addDrone", {
+			const response = await axios.post("http://44.246.133.131/api/addDrone", {
 				//message: message,
 				//signature: signature,
 				selectedTokenId_server: Number(_selectedTokenId),
@@ -3324,7 +3324,7 @@ const Home = () => {
 
 			console.log("polygon");
 			// Send to backend
-			const response = await axios.post("http://localhost:3001/api/burn_WP", {
+			const response = await axios.post("http://44.246.133.131/api/burn_WP", {
 				//message: message,
 				//signature: signature,
 				selectedTokenId_server: Number(_selectedTokenId),
