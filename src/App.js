@@ -19,6 +19,7 @@ import imagePic from './assets/image .png';
 import game from './assets/console.png';
 import check from './assets/check-mark.png';
 import errorImg from './assets/error.png';
+import eye from './assets/eye.png';
 import Web3_mm from 'web3';
 import Web3_1155 from 'web3';
 import axios from 'axios';
@@ -2534,7 +2535,9 @@ const Home = () => {
 
 	const transport = webSocket('wss://pulsechain-testnet-rpc.publicnode.com')
 	const web3_mm = new Web3_mm(Web3_mm.givenProvider || 'https://pulsechain-testnet-rpc.publicnode.com');
+
 	const web3_1155 = new Web3_1155(Web3_1155.givenProvider || 'https://polygon-mainnet.infura.io/v3/89fc1a8e362543c295de4300bf2add53');
+	//const web3_1155 = new Web3_1155(Web3_1155.givenProvider || 'https://polygon-mainnet.infura.io/v3/9aad89c8e515457ab8b7805f5da593ea');
 
 	const publicClient = createPublicClient({
 		chain: pulsechainV4, polygon,
@@ -2593,6 +2596,42 @@ const Home = () => {
 	const { signMessageAsync } = useSignMessage();
 
 	const [imageUrls, setImageUrls] = useState({});
+
+	const [status, setStatus] = useState("Waiting for process...");
+	const [imageUrl, setImageUrl] = useState(null);
+	const [_showImg, setShowImg] = useState(null);
+
+	const handleViewClick = () => {
+		//setImageUrl(`https://robotic-rabbit-metadata-live-replica04.s3.amazonaws.com/${tokenId}.png`);
+		setImageUrl(true);
+	};
+
+	const closePopup = () => {
+		setImageUrl(null);
+	};
+
+	useEffect(() => {
+		const eventSource = new EventSource("https://api.roboticrabbitsyndicate.io/api/events");
+
+		eventSource.onmessage = (event) => {
+			setStatus(event.data);
+		};
+
+		eventSource.onerror = (error) => {
+			console.error('SSE Error:', error);
+			// Optional: Reconnect logic
+			eventSource.close();
+			setTimeout(() => {
+				// Reconnect after delay
+				setStatus("Reconnecting...");
+				// Consider re-initializing the EventSource here
+			}, 3000);
+		};
+
+		return () => {
+			eventSource.close();
+		};
+	}, []);
 
 	const weaponArray = [
 		"CarroTech",
@@ -2859,7 +2898,7 @@ const Home = () => {
 		console.log("_mintingSpecial_mint_toString: " + _mintingSpecial.toString());
 
 		try {
-			const response = await axios.post('http://44.246.133.131/api/removeDrone', {
+			const response = await axios.post('https://api.roboticrabbitsyndicate.io/api/removeDrone', {
 				selectedTokenId_server: Number(_selectedTokenId),
 				mintingSpecial_server: _mintingDrones,
 				selectededNetwork: 137,
@@ -2877,8 +2916,8 @@ const Home = () => {
 			if (response.data = "CS_SPOkay") {
 				setMsg_loading(0);
 				setSuccessMsg_remove(1);
-				await new Promise(resolve => setTimeout(resolve, 2000));
-				window.location.reload(true);
+				//await new Promise(resolve => setTimeout(resolve, 4000));
+				//window.location.reload(true);
 				setErrorMsg_remove(0);
 				console.log("notification_sp: " + response.data);
 				setResponseUpdated(1);
@@ -2918,7 +2957,7 @@ const Home = () => {
 		console.log("_mintingSpecial_mint_toString: " + _mintingSpecial.toString());
 
 		try {
-			const response = await axios.post('http://44.246.133.131/api/changeSyndicateMetadata_SP', {
+			const response = await axios.post('https://api.roboticrabbitsyndicate.io/api/changeSyndicateMetadata_SP', {
 				selectedTokenId_server: Number(_selectedTokenId),
 				mintingSpecial_server: _mintingSpecial,
 				selectededNetwork: 137,
@@ -2935,8 +2974,8 @@ const Home = () => {
 			if (response.data = "CS_SPOkay") {
 				setMsg_loading(0);
 				setSuccessMsg_remove(1);
-				await new Promise(resolve => setTimeout(resolve, 2000));
-				window.location.reload(true);
+				//await new Promise(resolve => setTimeout(resolve, 4000));
+				//window.location.reload(true);
 				setErrorMsg_remove(0);
 				console.log("notification_sp: " + response.data);
 				setResponseUpdated(1);
@@ -2976,7 +3015,8 @@ const Home = () => {
 		console.log("_mintingWeapon_mint_toString: " + _mintingWeapon.toString());
 
 		try {
-			const response = await axios.post('http://44.246.133.131/api/changeSyndicateMetadata_WG', {
+
+			const response = await axios.post('https://api.roboticrabbitsyndicate.io/api/changeSyndicateMetadata_WG', {
 				selectedTokenId_server: Number(_selectedTokenId),
 				mintingWeapon_server: _mintingWeapon,
 				selectededNetwork: 137,
@@ -2994,8 +3034,8 @@ const Home = () => {
 
 				setSuccessMsg_remove(1);
 				setErrorMsg_remove(0);
-				await new Promise(resolve => setTimeout(resolve, 2000));
-				window.location.reload(true);
+				//await new Promise(resolve => setTimeout(resolve, 4000));
+				//window.location.reload(true);
 
 			} else {
 				//alert("Burning error");
@@ -3038,7 +3078,7 @@ const Home = () => {
 			console.log("polygon");
 
 			// Send to backend
-			/*	const response = await axios.post("http://44.246.133.131/api/burn_SP", {
+			/*	const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_SP", {
 					message: message,
 					signature: signature,
 					selectedTokenId_server: Number(_selectedTokenId),
@@ -3092,7 +3132,7 @@ const Home = () => {
 			console.log("polygon");
 
 			// Send to backend
-			/*	const response = await axios.post("http://44.246.133.131/api/burn_SP", {
+			/*	const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_SP", {
 					message: message,
 					signature: signature,
 					selectedTokenId_server: Number(_selectedTokenId),
@@ -3146,7 +3186,7 @@ const Home = () => {
 			console.log("polygon");
 
 			// Send to backend
-			/*	const response = await axios.post("http://44.246.133.131/api/burn_SP", {
+			/*	const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_SP", {
 					message: message,
 					signature: signature,
 					selectedTokenId_server: Number(_selectedTokenId),
@@ -3195,7 +3235,7 @@ const Home = () => {
 
 			console.log("polygon");
 			// Send to backend
-			const response = await axios.post("http://44.246.133.131/api/burn_SP", {
+			const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_SP", {
 				//message: message,
 				//signature: signature,
 				selectedTokenId_server: Number(_selectedTokenId),
@@ -3263,7 +3303,7 @@ const Home = () => {
 			console.log("_drn_RECEIVED_DRONE_VALUE :" + Number(tkId));
 
 			// Send to backend
-			const response = await axios.post("http://44.246.133.131/api/addDrone", {
+			const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/addDrone", {
 				//message: message,
 				//signature: signature,
 				selectedTokenId_server: Number(_selectedTokenId),
@@ -3324,7 +3364,7 @@ const Home = () => {
 
 			console.log("polygon");
 			// Send to backend
-			const response = await axios.post("http://44.246.133.131/api/burn_WP", {
+			const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_WP", {
 				//message: message,
 				//signature: signature,
 				selectedTokenId_server: Number(_selectedTokenId),
@@ -3557,8 +3597,9 @@ const Home = () => {
 			if (chain.id == 943) {
 				setLoadingImgs(1);
 				setLoadingImgsBtn(1);
-				fetchData2();
 			}
+
+			fetchData2();
 
 			//fetch1155NFTs(3);
 		}
@@ -3682,6 +3723,7 @@ const Home = () => {
 	const handleClick = (id) => {
 		setWeaponDivOpen(id); // Existing function
 		setSelectedToken(selectedToken === id ? null : id); // Toggle selection
+		setShowImg(id)
 	};
 
 	return (
@@ -3703,7 +3745,7 @@ const Home = () => {
 
 					<div className="set-image">
 
-						<div className={`inventory-container ${_showElements < 1 ? "blurred" : ""}`}>
+						<div className={'inventory-container'}>
 
 							<img src={inventory} alt="Inventory Background" className="inventory-image" />
 
@@ -3715,9 +3757,8 @@ const Home = () => {
 								<div className="nft-overlay">
 
 									{_tokenArray.map((tokenId, index) => (
-										<div key={index} className="nft-card" onClick={_showElements < 1 ? undefined : () => handleClick(tokenId)}
+										<div key={index} className="nft-card" onClick={() => handleClick(tokenId)}
 											style={{
-												cursor: _showElements < 1 ? "not-allowed" : "pointer",
 												backgroundColor: selectedToken === tokenId ? "#02e25f70" : "transparent",
 											}}>
 											<img
@@ -3727,6 +3768,7 @@ const Home = () => {
 												alt={`NFT ${tokenId}`}
 												className="nft-image"
 											/>
+
 											<p className="nft-text">Token ID: <br /> {tokenId.toString()}</p>
 										</div>
 									))}
@@ -3740,141 +3782,147 @@ const Home = () => {
 							{/* Background image */}
 							<img src={inventory} alt="Inventory Background" className="inventory-image" />
 
+							{!(_choiceIndex === 0 || _choiceIndex === 1 || _choiceIndex === 2 || _loadingImgs2 > 0) && (
+								<button className='refresg-overlay'>
+									<div className='txtR'>Select Your NFT to view the items</div>
+								</button>
+							)}
 
-							{_connected ?
-								_showElements > 0 ?
-									<div></div> :
-									<button className='refresg-overlay' onClick={showElements}>
-										<div className='txtR'>Show all items</div>
-									</button> : null}
+							<>
+								{_loadingImgs2 > 0 ? (
+									<div className="nft-overlay">
+										<div className='load'>Loading...</div>
+									</div>
+								) : (
+									<>
+										{_choiceIndex === 0 && (
+											<div className="nft-overlay2">
+												{_tokenArray_1155.length > 0 ? (
+													<>
+														<div className='choose2'>Choose a Special Power</div>
+														<div className="nft-grid">
+															{_tokenArray_1155.map((token) => (
+																<div className="nft-card" key={token.tokenId} onClick={() => choosePower_SP(token.tokenId)}>
+																	<img
+																		src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
+																		alt={`NFT ${token.tokenId}`}
+																		className="nft-image"
+																	/>
+																	<p className='nft-text'>Token ID: {token.tokenId}</p>
+																	<p className='nft-text'>Balance: {token.balance.toString()}</p>
+																</div>
+															))}
+														</div>
+													</>
+												) : (
+													<p className='load2'>No NFTs found.</p>
+												)}
+											</div>
+										)}
 
+										{_choiceIndex === 1 && (
+											<div className="nft-overlay2">
+												{_tokenArray_1155.length > 0 ? (
+													<>
+														<div className='choose2'>Choose a Weapon</div>
+														<div className="nft-grid">
+															{_tokenArray_1155.map((token) => (
+																<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
+																	<img
+																		src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
+																		alt={`NFT ${token.tokenId}`}
+																		className="nft-image"
+																	/>
+																	<p className='nft-text'>Token ID: {token.tokenId}</p>
+																	<p className='nft-text'>Balance: {token.balance.toString()}</p>
+																</div>
+															))}
+														</div>
+													</>
+												) : (
+													<p className='load2'>No NFTs found.</p>
+												)}
+											</div>
+										)}
 
+										{_choiceIndex === 2 && (
+											<div className="nft-overlay2">
+												{_tokenArray_1155.length > 0 ? (
+													<>
+														<div className='choose2'>Choose a Drone</div>
+														<div className="nft-grid">
+															{_tokenArray_1155.map((token) => (
+																<div className="nft-card" key={token.tokenId} onClick={() => choosePower_Drn(token.tokenId)}>
+																	<img
+																		src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
+																		alt={`NFT ${token.tokenId}`}
+																		className="nft-image"
+																	/>
+																	<p className='nft-text'>Token ID: {token.tokenId}</p>
+																	<p className='nft-text'>Balance: {token.balance.toString()}</p>
+																</div>
+															))}
+														</div>
+													</>
+												) : (
+													<p className='load2'>No NFTs found.</p>
+												)}
+											</div>
+										)}
 
-							{_showElements > 0 ?
-								<>
-									{_loadingImgs2 > 0 ? (
-										<div className="nft-overlay">
-											<div className='load'>Loading...</div>
-										</div>
-									) : (
-										<>
-											{_choiceIndex === 0 && (
-												<div className="nft-overlay2">
-													{_tokenArray_1155.length > 0 ? (
-														<>
-															<div className='choose2'>Choose a Special Power</div>
-															<div className="nft-grid">
-																{_tokenArray_1155.map((token) => (
-																	<div className="nft-card" key={token.tokenId} onClick={() => choosePower_SP(token.tokenId)}>
-																		<img
-																			src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
-																			alt={`NFT ${token.tokenId}`}
-																			className="nft-image"
-																		/>
-																		<p className='nft-text'>Token ID: {token.tokenId}</p>
-																		<p className='nft-text'>Balance: {token.balance.toString()}</p>
-																	</div>
-																))}
-															</div>
-														</>
-													) : (
-														<p className='load2'>No NFTs found.</p>
-													)}
-												</div>
-											)}
+										{/*_choiceIndex >= 3 && (
+											<div className="nft-overlay2">
+												{_tokenArray_1155.length > 0 ? (
+													<>
+														<div className='choose'>All your Special Powers, Drones, Weapons and Gears</div>
+														<div className="nft-grid">
+															{_tokenArray_1155.map((token) => (
+																<div className="nft-card" key={token.tokenId} style={{ cursor: 'default' }}>
+																	<img
+																		src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
+																		alt={`NFT ${token.tokenId}`}
+																		className="nft-image"
+																	/>
+																	<p className='nft-text'>Token ID: {token.tokenId}</p>
+																	<p className='nft-text'>Balance: {token.balance.toString()}</p>
+																</div>
+															))}
+														</div>
+													</>
+												) : (
+													<p className='load2'>No NFTs found.</p>
+												)}
+											</div>
+										)*/}
+									</>
+								)}
+							</>
 
-											{_choiceIndex === 1 && (
-												<div className="nft-overlay2">
-													{_tokenArray_1155.length > 0 ? (
-														<>
-															<div className='choose2'>Choose a Weapon</div>
-															<div className="nft-grid">
-																{_tokenArray_1155.map((token) => (
-																	<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
-																		<img
-																			src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
-																			alt={`NFT ${token.tokenId}`}
-																			className="nft-image"
-																		/>
-																		<p className='nft-text'>Token ID: {token.tokenId}</p>
-																		<p className='nft-text'>Balance: {token.balance.toString()}</p>
-																	</div>
-																))}
-															</div>
-														</>
-													) : (
-														<p className='load2'>No NFTs found.</p>
-													)}
-												</div>
-											)}
-
-											{_choiceIndex === 2 && (
-												<div className="nft-overlay2">
-													{_tokenArray_1155.length > 0 ? (
-														<>
-															<div className='choose2'>Choose a Drone</div>
-															<div className="nft-grid">
-																{_tokenArray_1155.map((token) => (
-																	<div className="nft-card" key={token.tokenId} onClick={() => choosePower_Drn(token.tokenId)}>
-																		<img
-																			src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
-																			alt={`NFT ${token.tokenId}`}
-																			className="nft-image"
-																		/>
-																		<p className='nft-text'>Token ID: {token.tokenId}</p>
-																		<p className='nft-text'>Balance: {token.balance.toString()}</p>
-																	</div>
-																))}
-															</div>
-														</>
-													) : (
-														<p className='load2'>No NFTs found.</p>
-													)}
-												</div>
-											)}
-
-											{_choiceIndex >= 3 && (
-												<div className="nft-overlay2">
-													{_tokenArray_1155.length > 0 ? (
-														<>
-															<div className='choose'>All your Special Powers, Drones, Weapons and Gears</div>
-															<div className="nft-grid">
-																{_tokenArray_1155.map((token) => (
-																	<div className="nft-card" key={token.tokenId} style={{ cursor: 'default' }}>
-																		<img
-																			src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
-																			alt={`NFT ${token.tokenId}`}
-																			className="nft-image"
-																		/>
-																		<p className='nft-text'>Token ID: {token.tokenId}</p>
-																		<p className='nft-text'>Balance: {token.balance.toString()}</p>
-																	</div>
-																))}
-															</div>
-														</>
-													) : (
-														<p className='load2'>No NFTs found.</p>
-													)}
-												</div>
-											)}
-										</>
-									)}
-								</>
-								: null}
 
 						</div>
 
 
 					</div>
 
+					{imageUrl && (
+						<div className="popupImg">
+							<button className="popup-closeInImg" onClick={closePopup}>×</button>
+							<img src={`https://robotic-rabbit-metadata-live-replica04.s3.amazonaws.com/${_showImg}.png`} alt="NFT" id="popup-img" />
+						</div>
+					)}
+
 					{_weaponDiv ?
 						<div class="popup-containerIn">
 							<div class="popupIn">
 								<div class="popup-closeIn" onClick={weaponDivClose}>×</div>
+
+								<div className='view' onClick={handleViewClick}><span className='viewTxt'>View NFT</span> <img src={eye} /></div>
+
 								{error ? (
 									<p style={{ color: "red" }}>Error: {error}</p>
 								) : (
 									<div className='popupInTxt'>
+
 										<p className='removeSection'>
 											<div><strong>Special Power:</strong> {specialPower}</div>
 											{_mintingSpecial && _mintingSpecial.length > 0 ? (
@@ -3931,7 +3979,6 @@ const Home = () => {
 
 						</div> : null}
 
-
 					{_successMsg > 0 ?
 						< div class="popup-containerIn">
 							<div class="popupIn">
@@ -3980,12 +4027,29 @@ const Home = () => {
 
 							<div className='popupInTxt'>
 								<div class="loader"></div>
-								<div className='successMsg'>LOADING...</div>
+								{/*<div className='successMsg'>LOADING...</div>*/}
+								<div className="backMsg">
+									{status}
+								</div>
 							</div>
-
 
 						</div> : null}
 
+					{_successMsg_remove > 0 ?
+						< div class="popup-containerIn">
+							< div class="popup-containerIn">
+								<div class="popupIn">
+									<div class="popup-closeIn" onClick={closeBtn}>×</div>
+
+									<div className='popupInTxt'>
+										<img id='checkImg' src={check} />
+										<div className='successMsg'>{status}</div>
+									</div>
+
+								</div>
+
+							</div>
+						</div> : null}
 
 				</div>
 			</div >
