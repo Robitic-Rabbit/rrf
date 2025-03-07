@@ -3773,6 +3773,9 @@ const Home = () => {
 										</div>
 									))}
 
+									{_tokenArray.length < 1 && _connected ?
+										<p className='load2'>No NFTs found.</p> : null}
+
 								</div>
 							}
 
@@ -3782,12 +3785,27 @@ const Home = () => {
 							{/* Background image */}
 							<img src={inventory} alt="Inventory Background" className="inventory-image" />
 
-							{!(_choiceIndex === 0 || _choiceIndex === 1 || _choiceIndex === 2 || _loadingImgs2 > 0) && (
-								<button className='refresg-overlay'>
-									<div className='txtR'>Select Your NFT to view the items</div>
-								</button>
-							)}
 
+							{_connected ?
+								<>
+									{_tokenArray.length > 1 && _connected ?
+										<>
+											{!(_choiceIndex === 0 || _choiceIndex === 1 || _choiceIndex === 2 || _loadingImgs2 > 0) && (
+												<button className='refresg-overlay'>
+													<div className='txtR'>Select Your NFT to view the items</div>
+												</button>
+											)}
+										</> : <button className='refresg-overlay'>
+											<div className='txtR'>You need to have NFT to view the items</div>
+										</button>
+									}
+								</> :
+
+								<button className='refresg-overlay'>
+									<div className='txtR'>Connect your wallet to view the items</div>
+								</button>
+
+							}
 							<>
 								{_loadingImgs2 > 0 ? (
 									<div className="nft-overlay">
@@ -3815,7 +3833,7 @@ const Home = () => {
 														</div>
 													</>
 												) : (
-													<p className='load2'>No NFTs found.</p>
+													<p className='load2'>No Weapons, Special Powers, Drones found.</p>
 												)}
 											</div>
 										)}
