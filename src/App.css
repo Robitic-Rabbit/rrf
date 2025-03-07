@@ -128,21 +128,21 @@ h6 {
   display: flex; /* Use flexbox for centering */
   justify-content: center;
   align-items: center;
-  background: rgb(48,192,108);
-  background: linear-gradient(90deg, rgba(48,192,108,1) 0%, rgba(26,103,59,1) 51%, rgba(0,17,7,1) 100%);
-  color: white;
+  /*background: rgb(48,192,108);
+  background: linear-gradient(90deg, rgba(48,192,108,1) 0%, rgba(26,103,59,1) 51%, rgba(0,17,7,1) 100%);*/
+  color: rgb(179, 179, 179);
   border: none;
   cursor: pointer;
   width: fit-content;
-  cursor: pointer;
   font-size: 15px;
   border-radius: 50px;
+  width: 100%;
+  background-color: transparent;
 }
 
 .blurred {
   filter: blur(5px);
 }
-
 
 .showBtn{
   background-color: transparent;
@@ -150,6 +150,7 @@ h6 {
   color: rgb(255, 255, 255);
   font-size: 12px;
   font-weight: 400;
+  cursor: text;
 }
 
 .txtR {
@@ -158,10 +159,8 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-
+  cursor: text;
 }
-
 
 @keyframes l6 {
   100% {
@@ -458,7 +457,7 @@ h6 {
   font-family: 'American Captain', sans-serif;
 }
 
-.popupIn img {
+.popupIn img{
   width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -494,10 +493,12 @@ h6 {
   font-size: 25px;
   cursor: pointer;
   color: #fffdfd;
-  justify-content: flex-end;
-  margin-right: auto;
-  text-align: right;
   font-weight: bold;
+  width: fit-content;
+  display: flex;
+  justify-content: flex-end;
+  align-self: flex-end;
+  margin-left: auto;
 }
 
 .popupInTxt {
@@ -571,4 +572,62 @@ h6 {
 
 .connectNetwork:hover {
   background-color: #07b963;
+}
+
+.backMsg{
+  z-index: 100000;
+  position: relative;
+  color: white;
+}
+
+.view{
+  color: white;
+  width: fit-content;
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+ 
+.view span{
+  font-weight: 400;
+  margin-top: 3px;
+}
+
+.view img{
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+}
+
+
+.popupImg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.9);
+  padding: 20px;
+  padding-top: 0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+}
+
+#popup-img {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 8px;
+}
+
+.popup-closeInImg {
+  background: transparent;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+  color: white;
+  align-self: flex-end;
 }
