@@ -11,7 +11,7 @@ import robo from './assets/robo.png';
 import { Web3Button, Web3Modal, useWeb3Modal } from '@web3modal/react';
 import { mainnet, useDisconnect, useAccount, useContractRead, useContractReads, useContractWrite, useNetwork, usePublicClient, useSwitchNetwork, useWaitForTransaction, useSignMessage } from 'wagmi';
 import { createPublicClient, formatEther, http, parseEther, webSocket } from 'viem';
-import { pulsechainV4, polygon } from 'wagmi/chains';
+import { pulsechainV4, optimism } from 'wagmi/chains';
 import inventory from './assets/inventory.png';
 import Profilesidebar from './Pages/sidebar';
 import user from './assets/user.png';
@@ -19,6 +19,11 @@ import imagePic from './assets/image .png';
 import game from './assets/console.png';
 import check from './assets/check-mark.png';
 import errorImg from './assets/error.png';
+import BodyBlue from './assets/upgrades/BodyBlue.png';
+import EyesBlue from './assets/upgrades/EyesBlue.png';
+import HeadBlue from './assets/upgrades/HeadBlue.png';
+import MouthBlue from './assets/upgrades/MouthBlue.png';
+import SkullBlue from './assets/upgrades/Skull-Blue.png';
 import eye from './assets/eye.png';
 import Web3_mm from 'web3';
 import Web3_1155 from 'web3';
@@ -1492,6 +1497,29 @@ let address = "0x3B686118bF4272E132Bb5779747f51721e6E5afe";
 
 let ABIArmoury = [
 	{
+		"inputs": [
+			{
+				"internalType": "address[]",
+				"name": "receiver",
+				"type": "address[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "id",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "quantity",
+				"type": "uint256[]"
+			}
+		],
+		"name": "airdrop",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
@@ -1533,225 +1561,6 @@ let ABIArmoury = [
 		"type": "event"
 	},
 	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "previousOwner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "OwnershipTransferred",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256[]",
-				"name": "ids",
-				"type": "uint256[]"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256[]",
-				"name": "values",
-				"type": "uint256[]"
-			}
-		],
-		"name": "TransferBatch",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "value",
-				"type": "uint256"
-			}
-		],
-		"name": "TransferSingle",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "string",
-				"name": "value",
-				"type": "string"
-			},
-			{
-				"indexed": true,
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			}
-		],
-		"name": "URI",
-		"type": "event"
-	},
-	{
-		"stateMutability": "payable",
-		"type": "fallback"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "MintingQuantity",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "OPERATOR_FILTER_REGISTRY",
-		"outputs": [
-			{
-				"internalType": "contract IOperatorFilterRegistry",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address[]",
-				"name": "receiver",
-				"type": "address[]"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "id",
-				"type": "uint256[]"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "quantity",
-				"type": "uint256[]"
-			}
-		],
-		"name": "airdrop",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			}
-		],
-		"name": "balanceOf",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address[]",
-				"name": "accounts",
-				"type": "address[]"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "ids",
-				"type": "uint256[]"
-			}
-		],
-		"name": "balanceOfBatch",
-		"outputs": [
-			{
-				"internalType": "uint256[]",
-				"name": "",
-				"type": "uint256[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -1775,29 +1584,16 @@ let ABIArmoury = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "callbackGasLimit",
-		"outputs": [
+		"inputs": [
 			{
-				"internalType": "uint32",
-				"name": "",
-				"type": "uint32"
+				"internalType": "uint256[]",
+				"name": "traitIds",
+				"type": "uint256[]"
 			}
 		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "contractURI",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
+		"name": "degradeTraits",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -1808,130 +1604,10 @@ let ABIArmoury = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			}
-		],
-		"name": "exists",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "freeMinted",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [],
-		"name": "free_mint_status",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			}
-		],
-		"name": "isApprovedForAll",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "lastRandomNumber",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "lastRequestId",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "max_ids",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "max_per_wallet",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
+		"name": "incrementId",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -1950,6 +1626,13 @@ let ABIArmoury = [
 		"name": "mint",
 		"outputs": [],
 		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "mintAdmin",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -1984,143 +1667,44 @@ let ABIArmoury = [
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "",
+				"name": "quantity",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
 				"type": "uint256"
 			}
 		],
-		"name": "mintingAddress",
-		"outputs": [
+		"name": "mintOwner",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
 			{
+				"indexed": true,
 				"internalType": "address",
-				"name": "",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
 				"type": "address"
 			}
 		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "name",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "numWords",
-		"outputs": [
-			{
-				"internalType": "uint32",
-				"name": "",
-				"type": "uint32"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "owner",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "premiumPercentageLink",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "premiumPercentageNative",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "publicSaleCost",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "public_mint_status",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "randomResult",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
+		"name": "OwnershipTransferred",
+		"type": "event"
 	},
 	{
 		"inputs": [],
 		"name": "renounceOwnership",
 		"outputs": [],
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "requestConfirmations",
-		"outputs": [
-			{
-				"internalType": "uint16",
-				"name": "",
-				"type": "uint16"
-			}
-		],
-		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -2134,35 +1718,6 @@ let ABIArmoury = [
 		"name": "resetTokenRoyalty",
 		"outputs": [],
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_tokenId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_salePrice",
-				"type": "uint256"
-			}
-		],
-		"name": "royaltyInfo",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -2227,6 +1782,19 @@ let ABIArmoury = [
 			}
 		],
 		"name": "safeTransferFrom",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_idMatcher",
+				"type": "uint256"
+			}
+		],
+		"name": "set_idMatcher",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -2376,6 +1944,19 @@ let ABIArmoury = [
 	{
 		"inputs": [
 			{
+				"internalType": "uint256[]",
+				"name": "traitIds",
+				"type": "uint256[]"
+			}
+		],
+		"name": "setUpgradedTraits",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "string",
 				"name": "newuri",
 				"type": "string"
@@ -2384,6 +1965,639 @@ let ABIArmoury = [
 		"name": "setURI",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "toggle_free_mint_status",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "toggle_public_mint_status",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256[]",
+				"name": "ids",
+				"type": "uint256[]"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256[]",
+				"name": "values",
+				"type": "uint256[]"
+			}
+		],
+		"name": "TransferBatch",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "TransferSingle",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "value",
+				"type": "string"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "URI",
+		"type": "event"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "fallback"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "nftId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "traitId",
+				"type": "uint256"
+			}
+		],
+		"name": "upgradeTraitsByUser",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "withdraw",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address[]",
+				"name": "accounts",
+				"type": "address[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "ids",
+				"type": "uint256[]"
+			}
+		],
+		"name": "balanceOfBatch",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "callbackGasLimit",
+		"outputs": [
+			{
+				"internalType": "uint32",
+				"name": "",
+				"type": "uint32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "contractURI",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "exists",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "free_mint_status",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "freeMinted",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getUpgradedTraits",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "idMatcher",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			}
+		],
+		"name": "isApprovedForAll",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "traitId",
+				"type": "uint256"
+			}
+		],
+		"name": "isTraitUpgraded",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "nftId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "traitId",
+				"type": "uint256"
+			}
+		],
+		"name": "isTraitUpgradedOfTheNftId",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "lastRandomNumber",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "lastRequestId",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "max_ids",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "max_per_wallet",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "mintingAddress",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "MintingQuantity",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "numWords",
+		"outputs": [
+			{
+				"internalType": "uint32",
+				"name": "",
+				"type": "uint32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "OPERATOR_FILTER_REGISTRY",
+		"outputs": [
+			{
+				"internalType": "contract IOperatorFilterRegistry",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "path",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "premiumPercentageLink",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "premiumPercentageNative",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "public_mint_status",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "publicSaleCost",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "randomResult",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "requestConfirmations",
+		"outputs": [
+			{
+				"internalType": "uint16",
+				"name": "",
+				"type": "uint16"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_tokenId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_salePrice",
+				"type": "uint256"
+			}
+		],
+		"name": "royaltyInfo",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -2416,20 +2630,6 @@ let ABIArmoury = [
 			}
 		],
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "toggle_free_mint_status",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "toggle_public_mint_status",
-		"outputs": [],
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -2467,14 +2667,39 @@ let ABIArmoury = [
 	{
 		"inputs": [
 			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
+		"name": "upgradedTraitsArray",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "upgradedTraitsMap",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -2497,19 +2722,32 @@ let ABIArmoury = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "withdraw",
-		"outputs": [],
-		"stateMutability": "payable",
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "userTraitUpgrades",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
-	},
-	{
-		"stateMutability": "payable",
-		"type": "receive"
 	}
 ];
 
-let addressArmoury = "0x94e843871398a138a243974aA069bd08DD40f5E2";
+let addressArmoury = "0x6a2Df40f8C54d507533DA8E0CCB48891822042c2";
 //let address = "0xE7268C3BC66b4dA84925D16110aE81391F26061d";
 
 const maxSupply = 555;
@@ -2519,7 +2757,6 @@ const contractLink = () => {
 }
 
 const Home = () => {
-
 
 	const { open } = useWeb3Modal()
 	const { chain } = useNetwork()
@@ -2536,11 +2773,11 @@ const Home = () => {
 	const transport = webSocket('wss://pulsechain-testnet-rpc.publicnode.com')
 	const web3_mm = new Web3_mm(Web3_mm.givenProvider || 'https://pulsechain-testnet-rpc.publicnode.com');
 
-	const web3_1155 = new Web3_1155(Web3_1155.givenProvider || 'https://polygon-mainnet.infura.io/v3/89fc1a8e362543c295de4300bf2add53');
+	const web3_1155 = new Web3_1155(Web3_1155.givenProvider || 'https://holy-burned-sheet.optimism.quiknode.pro/f7e9efbb6f5a0385ae4c3a55b94bb67eca5e31bc/');
 	//const web3_1155 = new Web3_1155(Web3_1155.givenProvider || 'https://polygon-mainnet.infura.io/v3/9aad89c8e515457ab8b7805f5da593ea');
 
 	const publicClient = createPublicClient({
-		chain: pulsechainV4, polygon,
+		chain: pulsechainV4, optimism,
 		transport,
 	})
 
@@ -2592,14 +2829,369 @@ const Home = () => {
 	const [_response, setResponse] = useState(0);
 	const [_responseUpdated, setResponseUpdated] = useState(0);
 	const [_showElements, setShowElements] = useState(0);
+	const [showPopup, setShowPopup] = useState(false);
 
 	const { signMessageAsync } = useSignMessage();
 
 	const [imageUrls, setImageUrls] = useState({});
 
-	const [status, setStatus] = useState("Waiting for process...");
+	const [status, setStatus] = useState("");
 	const [imageUrl, setImageUrl] = useState(null);
 	const [_showImg, setShowImg] = useState(null);
+	const [imageLoaded, setImageLoaded] = useState(false);
+	const [loadingImg, setLoadingImg] = useState(false); // Track loading state
+	const [_upgradedTraitDetails, setUpgradedTraitDetails] = useState(false); // Track loading state
+	const [_upgradedTraitDetails2, setUpgradedTraitDetails2] = useState(false); // Track loading state
+
+	//const Web3 = require('web3'); 
+	//const web3 = new Web3(window.ethereum); // Use MetaMask's provider
+
+	const traitIdList = [
+		{ id: 1, type: 'Weapons and Gear', name: 'CarroTech' },
+		{ id: 2, type: 'Weapons and Gear', name: 'PiranhaPlant Blaster' },
+		{ id: 3, type: 'Weapons and Gear', name: 'CrimsonCollar Cape' },
+		{ id: 4, type: 'Weapons and Gear', name: 'CrashCable Cluster' },
+		{ id: 5, type: 'Weapons and Gear', name: 'HazeBlaze Hammer' },
+		{ id: 6, type: 'Weapons and Gear', name: "Poseidon's Poker" },
+		{ id: 7, type: 'Weapons and Gear', name: "Western Wrangler's Rifle" },
+		{ id: 8, type: 'Weapons and Gear', name: 'TimeTail Thrusters' },
+		{ id: 9, type: 'Weapons and Gear', name: 'CarrotKendo Katana' },
+		{ id: 10, type: 'Weapons and Gear', name: 'ForceHop Pouch' },
+		{ id: 11, type: 'Weapons and Gear', name: 'Golden Guardian Throne' },
+		{ id: 12, type: 'Weapons and Gear', name: 'Tactical Turret' },
+		{ id: 13, type: 'Weapons and Gear', name: 'Mutant Spine Spikes' },
+		{ id: 14, type: 'Weapons and Gear', name: 'GothamGuardian Cape' },
+		{ id: 15, type: 'Weapons and Gear', name: 'HareBot Helper' },
+		{ id: 16, type: 'Weapons and Gear', name: "Medusa's Pointed Pelerine" },
+		{ id: 17, type: 'Weapons and Gear', name: 'SpiderSlicer Claws' },
+		{ id: 18, type: 'Weapons and Gear', name: 'Stew Zapper Pack' },
+		{ id: 19, type: 'Weapons and Gear', name: 'Golden Pika Tail' },
+		{ id: 20, type: 'Weapons and Gear', name: "Jason's Terror Tools" },
+		{ id: 21, type: 'Weapons and Gear', name: 'RoboRabbit Cape' },
+		{ id: 22, type: 'Weapons and Gear', name: 'StellarSpike Spine' },
+		{ id: 23, type: 'Weapons and Gear', name: 'BrainBoost Tubing' },
+		{ id: 24, type: 'Weapons and Gear', name: 'SandStorm Sword' },
+		{ id: 25, type: 'Weapons and Gear', name: 'Flaming Phoenix Wings' },
+		{ id: 26, type: 'Weapons and Gear', name: 'BowlCape Drape' },
+		{ id: 27, type: 'Weapons and Gear', name: 'Toxic Inferno Cannons' },
+		{ id: 28, type: 'Weapons and Gear', name: 'WaterWrangler Whirl Power Box' },
+		{ id: 29, type: 'Weapons and Gear', name: 'Luminous Carrot Cascade Power Box' },
+		{ id: 30, type: 'Weapons and Gear', name: 'Lightning Lash Power Box' },
+		{ id: 31, type: 'Weapons and Gear', name: 'BlazeBarrage Power Box' },
+		{ id: 32, type: 'Weapons and Gear', name: 'Terra Ascension Aura Power Box' },
+		{ id: 33, type: 'Weapons and Gear', name: 'Quantum Leap' },
+		{ id: 34, type: 'Weapons and Gear', name: 'Fortune Falls Flurry Power Box' },
+		{ id: 35, type: 'Weapons and Gear', name: 'Diamond EarlyBird Scyche Special Weapon' },
+		{ id: 36, type: 'Weapons and Gear', name: 'MaxMint Mallet Special Weapon' },
+		{ id: 37, type: 'Weapons and Gear', name: 'Golden VIP AK47 Special Weapon' },
+		{ id: 38, type: 'Weapons and Gear', name: "Minter's Guardian Sword Special Weapon" },
+		{ id: 39, type: 'Weapons and Gear', name: 'Villain FoxFire Blade Special Weapon' },
+		{ id: 40, type: 'Weapons and Gear', name: 'SkyHopper Drone' },
+		{ id: 41, type: 'Weapons and Gear', name: 'SpectraFly Drone' },
+		{ id: 42, type: 'Weapons and Gear', name: 'GoldenGlider Drone' },
+
+		{ id: 43, type: 'Head', name: 'Alien Ape Controller' },
+		{ id: 44, type: 'Head', name: 'Alien Slimy Ears' },
+		{ id: 45, type: 'Head', name: 'BasicBolt BunnyEars' },
+		{ id: 46, type: 'Head', name: 'BendBunny Brink' },
+		{ id: 47, type: 'Head', name: 'Boxed Brain' },
+		{ id: 48, type: 'Head', name: "Brady's Brain Bracer" },
+		{ id: 49, type: 'Head', name: 'Brilliant Blue GoggleTop' },
+		{ id: 50, type: 'Head', name: 'Bronze StewBot Ears' },
+		{ id: 51, type: 'Head', name: 'BronzeBolt Helm' },
+		{ id: 52, type: 'Head', name: 'CaptainCam Cap' },
+		{ id: 53, type: 'Head', name: 'CarrotCrest Crown' },
+		{ id: 54, type: 'Head', name: 'CarrotCrown Cap' },
+		{ id: 55, type: 'Head', name: 'Carroteers Keffiyeh' },
+		{ id: 56, type: 'Head', name: 'CellShell Crest' },
+		{ id: 57, type: 'Head', name: 'CoralKing Crown' },
+		{ id: 58, type: 'Head', name: 'CyberCottontail Kabuto' },
+		{ id: 59, type: 'Head', name: 'Dark TronTopper Helmet' },
+		{ id: 60, type: 'Head', name: 'DroneDoc Dome' },
+		{ id: 61, type: 'Head', name: 'DuoDisk Dome' },
+		{ id: 62, type: 'Head', name: 'FireFull Helmet' },
+		{ id: 63, type: 'Head', name: 'FocusFrame Beanie' },
+		{ id: 64, type: 'Head', name: 'GeishaGear Helm' },
+		{ id: 65, type: 'Head', name: 'Golden PikaPeak' },
+		{ id: 66, type: 'Head', name: 'Golden Test Dummy Receptors' },
+		{ id: 67, type: 'Head', name: 'GreenGoggle Grizzle' },
+		{ id: 68, type: 'Head', name: 'Hooper Hears' },
+		{ id: 69, type: 'Head', name: 'Ice Intellect' },
+		{ id: 70, type: 'Head', name: "Jason's GreyMatter Glance" },
+		{ id: 71, type: 'Head', name: 'KingRabbit Crown' },
+		{ id: 72, type: 'Head', name: "Krusty's Crown" },
+		{ id: 73, type: 'Head', name: 'Laser Lid' },
+		{ id: 74, type: 'Head', name: 'LibertyLid Top Hat' },
+		{ id: 75, type: 'Head', name: 'LicenseLuck Beanie' },
+		{ id: 76, type: 'Head', name: 'MandoMecha Mantle' },
+		{ id: 77, type: 'Head', name: "Medusa's Hissing Mantle" },
+		{ id: 78, type: 'Head', name: 'Mega Helmet' },
+		{ id: 79, type: 'Head', name: 'Mockingjay Braid' },
+		{ id: 80, type: 'Head', name: 'Mutant Apex Cranium' },
+		{ id: 81, type: 'Head', name: 'NightKnight Noggin' },
+		{ id: 82, type: 'Head', name: "Rabbio's Helmet" },
+		{ id: 83, type: 'Head', name: 'RaggaeRabbit Cap' },
+		{ id: 84, type: 'Head', name: 'Rainbow Ice Helm' },
+		{ id: 85, type: 'Head', name: 'Royal Ronin Kabuto' },
+		{ id: 86, type: 'Head', name: 'SockHop Lucha Mask' },
+		{ id: 87, type: 'Head', name: "Sorcerer's Seer Cap" },
+		{ id: 88, type: 'Head', name: 'Steel Super Scalp' },
+		{ id: 89, type: 'Head', name: 'TronTopper Helmet' },
+		{ id: 90, type: 'Head', name: 'TurboTop Helmet' },
+		{ id: 91, type: 'Head', name: 'Western Felt Hat' },
+		{ id: 92, type: 'Head', name: 'White StewBot Ears' },
+		{ id: 93, type: 'Head', name: 'WolfShade Mystic Helm' },
+
+		{ id: 94, type: 'Eyes', name: 'Alien Abyss Oculars' },
+		{ id: 95, type: 'Eyes', name: 'Annoyed Baller' },
+		{ id: 96, type: 'Eyes', name: 'Armored Blinds' },
+		{ id: 97, type: 'Eyes', name: 'Awesomo Abyss Stare' },
+		{ id: 98, type: 'Eyes', name: 'BlazeSpiral Sight' },
+		{ id: 99, type: 'Eyes', name: 'Blue Side Eye' },
+		{ id: 100, type: 'Eyes', name: 'BronzeLooker Lenses' },
+		{ id: 101, type: 'Eyes', name: 'CitrusGlow Gaze' },
+		{ id: 102, type: 'Eyes', name: 'DummyDot Sight' },
+		{ id: 103, type: 'Eyes', name: 'eye' },
+		{ id: 104, type: 'Eyes', name: 'eyes08' },
+		{ id: 105, type: 'Eyes', name: 'eyes25' },
+		{ id: 106, type: 'Eyes', name: 'eyes26' },
+		{ id: 107, type: 'Eyes', name: 'eyes27' },
+		{ id: 108, type: 'Eyes', name: 'FuturaBend Focus' },
+		{ id: 109, type: 'Eyes', name: 'GandEyes Gaze' },
+		{ id: 110, type: 'Eyes', name: 'Geisha Optic Gaze' },
+		{ id: 111, type: 'Eyes', name: 'Golden Pika Peekers' },
+		{ id: 112, type: 'Eyes', name: 'Golden Solar Flare Visor' },
+		{ id: 113, type: 'Eyes', name: 'GothamGlare Gaze' },
+		{ id: 114, type: 'Eyes', name: 'Green Apathy Gaze' },
+		{ id: 115, type: 'Eyes', name: 'GreenGlow Glance' },
+		{ id: 116, type: 'Eyes', name: 'GridGlow Gaze' },
+		{ id: 117, type: 'Eyes', name: 'Icy Eyes' },
+		{ id: 118, type: 'Eyes', name: "Jason's MenacingMystery Glare" },
+		{ id: 119, type: 'Eyes', name: 'Lashed Look' },
+		{ id: 120, type: 'Eyes', name: 'LuchaLibre Look' },
+		{ id: 121, type: 'Eyes', name: 'Mean Green' },
+		{ id: 122, type: 'Eyes', name: 'MonoScope Vision' },
+		{ id: 123, type: 'Eyes', name: 'Mutant Mire Gaze' },
+		{ id: 124, type: 'Eyes', name: 'NeonNexus Gaze' },
+		{ id: 125, type: 'Eyes', name: 'OrangeOS Oculars' },
+		{ id: 126, type: 'Eyes', name: 'Pink Laser Patch Peeker' },
+		{ id: 127, type: 'Eyes', name: "Poseidon's Peepers" },
+		{ id: 128, type: 'Eyes', name: 'PyroPupil Peepers' },
+		{ id: 129, type: 'Eyes', name: 'Rainbow Ice Readers' },
+		{ id: 130, type: 'Eyes', name: 'RedRage Gaze' },
+		{ id: 131, type: 'Eyes', name: 'RoseRefractor Gaze' },
+		{ id: 132, type: 'Eyes', name: 'Scrutiny Stare' },
+		{ id: 133, type: 'Eyes', name: 'SeaSight Sensors' },
+		{ id: 134, type: 'Eyes', name: 'ShockGlare Stare' },
+		{ id: 135, type: 'Eyes', name: 'Side Eye' },
+		{ id: 136, type: 'Eyes', name: 'Steel Sights' },
+		{ id: 137, type: 'Eyes', name: 'StewieBot Stare' },
+		{ id: 138, type: 'Eyes', name: 'Super Seer' },
+		{ id: 139, type: 'Eyes', name: 'TiltedToke Twinkle' },
+		{ id: 140, type: 'Eyes', name: 'T-Scan Lenses' },
+		{ id: 141, type: 'Eyes', name: 'UnoDangle Damaged Optic' },
+		{ id: 142, type: 'Eyes', name: 'Zombie Sam Seeing' },
+
+		{ id: 143, type: 'Special Power', name: 'BlazeBarrage' },
+		{ id: 144, type: 'Special Power', name: 'Fortune Falls Flurry' },
+		{ id: 145, type: 'Special Power', name: 'Lightning Lash' },
+		{ id: 146, type: 'Special Power', name: 'Luminous Carrot Cascade' },
+		{ id: 147, type: 'Special Power', name: 'Quantum Leap' },
+		{ id: 148, type: 'Special Power', name: 'Terra Ascension Aura' },
+		{ id: 149, type: 'Special Power', name: 'WaterWrangler Whirl' },
+
+		{ id: 150, type: 'Background', name: 'Cyber Gray' },
+		{ id: 151, type: 'Background', name: 'Green' },
+		{ id: 152, type: 'Background', name: 'Lime Green' },
+		{ id: 153, type: 'Background', name: 'Mustard' },
+		{ id: 154, type: 'Background', name: 'Orange' },
+		{ id: 155, type: 'Background', name: 'Pink' },
+		{ id: 156, type: 'Background', name: 'Plum Purple' },
+		{ id: 157, type: 'Background', name: 'Red' },
+		{ id: 158, type: 'Background', name: 'Sky Blue' },
+		{ id: 159, type: 'Background', name: 'Tan' },
+		{ id: 160, type: 'Background', name: 'Teal' },
+		{ id: 161, type: 'Background', name: 'Violet' },
+
+		{ id: 162, type: 'Body', name: 'AirBunny Armor' },
+		{ id: 163, type: 'Body', name: 'Alien Armor' },
+		{ id: 164, type: 'Body', name: 'Amazonian Armor' },
+		{ id: 165, type: 'Body', name: 'Argentinian Armor' },
+		{ id: 166, type: 'Body', name: 'BareBionic Build' },
+		{ id: 167, type: 'Body', name: 'BatBunny Body Armor' },
+		{ id: 168, type: 'Body', name: 'BattlerBunny Bodysuit' },
+		{ id: 169, type: 'Body', name: 'BayBattler Body' },
+		{ id: 170, type: 'Body', name: 'Bedouin Bodyplate' },
+		{ id: 171, type: 'Body', name: 'Bendy Body' },
+		{ id: 172, type: 'Body', name: 'BeskarBunny Plate' },
+		{ id: 173, type: 'Body', name: 'BlazeBunny Mech Suit' },
+		{ id: 174, type: 'Body', name: 'BluTron Barrier' },
+		{ id: 175, type: 'Body', name: 'Carrotanium Armor' },
+		{ id: 176, type: 'Body', name: "Cell's Suit" },
+		{ id: 177, type: 'Body', name: 'CoinQuest Coverall' },
+		{ id: 178, type: 'Body', name: 'Cpt.Rabbit Artisan Armor' },
+		{ id: 179, type: 'Body', name: 'Dark Tron' },
+		{ id: 180, type: 'Body', name: 'FutureFlux Fit' },
+		{ id: 181, type: 'Body', name: "Geisha's Guarding Gown" },
+		{ id: 182, type: 'Body', name: 'Golden Dummy' },
+		{ id: 183, type: 'Body', name: 'Golden PikaGuard' },
+		{ id: 184, type: 'Body', name: 'GrayForge Armor' },
+		{ id: 185, type: 'Body', name: 'GreenForge Armor' },
+		{ id: 186, type: 'Body', name: 'Ice Armor' },
+		{ id: 187, type: 'Body', name: 'Juggernaut Jason' },
+		{ id: 188, type: 'Body', name: 'Levitate Lifter' },
+		{ id: 189, type: 'Body', name: 'LuchaBot' },
+		{ id: 190, type: 'Body', name: 'MagentaMach Armor' },
+		{ id: 191, type: 'Body', name: 'MegaRabbit Armor' },
+		{ id: 192, type: 'Body', name: 'Mutant Mech Mantle' },
+		{ id: 193, type: 'Body', name: 'PeaceLeaf Protector' },
+		{ id: 194, type: 'Body', name: 'Pearl StewBot Bod' },
+		{ id: 195, type: 'Body', name: 'PurpLuxe Plate' },
+		{ id: 196, type: 'Body', name: 'Rabbit-O Rig' },
+		{ id: 197, type: 'Body', name: 'Rainbow Ice Rig' },
+		{ id: 198, type: 'Body', name: 'RebelRed Archer' },
+		{ id: 199, type: 'Body', name: 'RoboRabbit' },
+		{ id: 200, type: 'Body', name: 'RoboRacer Rig' },
+		{ id: 201, type: 'Body', name: 'RoboWizard Robe' },
+		{ id: 202, type: 'Body', name: 'Royal Rabbit Robe' },
+		{ id: 203, type: 'Body', name: 'Royal Samurai Armor' },
+		{ id: 204, type: 'Body', name: 'RoyalSea Armor' },
+		{ id: 205, type: 'Body', name: 'RubyRonin Samurai Armor' },
+		{ id: 206, type: 'Body', name: 'SamCircuit Suit' },
+		{ id: 207, type: 'Body', name: 'Steel CircusSuit' },
+		{ id: 208, type: 'Body', name: 'SteelSentry Suit' },
+		{ id: 209, type: 'Body', name: 'StewBot Shell' },
+		{ id: 210, type: 'Body', name: 'StoneStare Suit' },
+		{ id: 211, type: 'Body', name: 'Teal TitanPlate' },
+		{ id: 212, type: 'Body', name: 'ThunderGod Guard' },
+		{ id: 213, type: 'Body', name: 'VioletVessle Vestiture' },
+		{ id: 214, type: 'Body', name: 'WoodenSherrif Shell' },
+
+		{ id: 215, type: 'Skull', name: 'Blue Gray' },
+		{ id: 216, type: 'Skull', name: 'Brown' },
+		{ id: 217, type: 'Skull', name: 'Charcoal Gray' },
+		{ id: 218, type: 'Skull', name: 'Garnet' },
+		{ id: 219, type: 'Skull', name: 'Gold' },
+		{ id: 220, type: 'Skull', name: 'Gray' },
+		{ id: 221, type: 'Skull', name: 'Green' },
+		{ id: 222, type: 'Skull', name: 'Purple' },
+		{ id: 223, type: 'Skull', name: 'Red' },
+		{ id: 224, type: 'Skull', name: 'Steel' },
+		{ id: 225, type: 'Skull', name: 'Teal' },
+
+		{ id: 226, type: 'Mouth', name: 'Ahhh Orate' },
+		{ id: 227, type: 'Mouth', name: 'Alien Activated Aperture' },
+		{ id: 228, type: 'Mouth', name: "Baller's Breath" },
+		{ id: 229, type: 'Mouth', name: 'Bendy Bite' },
+		{ id: 230, type: 'Mouth', name: 'Bewildered Buccal' },
+		{ id: 231, type: 'Mouth', name: 'BlazeBarrier Breather' },
+		{ id: 232, type: 'Mouth', name: 'BlipBloop Lips' },
+		{ id: 233, type: 'Mouth', name: 'BluntBunny Bite' },
+		{ id: 234, type: 'Mouth', name: 'BountyBreath Barrier' },
+		{ id: 235, type: 'Mouth', name: 'ButtonBros Bite' },
+		{ id: 236, type: 'Mouth', name: 'Cardboard Cutout Chatter' },
+		{ id: 237, type: 'Mouth', name: 'Carrot Chomp' },
+		{ id: 238, type: 'Mouth', name: 'CarrotGrenade Gnaw' },
+		{ id: 239, type: 'Mouth', name: 'Circus Smirk' },
+		{ id: 240, type: 'Mouth', name: 'CrimsonCloth Bandanna' },
+		{ id: 241, type: 'Mouth', name: 'Dark TronTalker' },
+		{ id: 242, type: 'Mouth', name: 'GadotGoddess Grin' },
+		{ id: 243, type: 'Mouth', name: "Geisha's Grin" },
+		{ id: 244, type: 'Mouth', name: 'Golden Grill Grin' },
+		{ id: 245, type: 'Mouth', name: 'Golden Spark Grin' },
+		{ id: 246, type: 'Mouth', name: 'Golden Test Dummy Chompers' },
+		{ id: 247, type: 'Mouth', name: 'Gridiron Guard' },
+		{ id: 248, type: 'Mouth', name: 'Icy Frostbite' },
+		{ id: 249, type: 'Mouth', name: "Jason's Jaw" },
+		{ id: 250, type: 'Mouth', name: 'Jolly Smile' },
+		{ id: 251, type: 'Mouth', name: 'Lip Nibble' },
+		{ id: 252, type: 'Mouth', name: 'Mocking Solo Smirk' },
+		{ id: 253, type: 'Mouth', name: 'Mutant Muncher' },
+		{ id: 254, type: 'Mouth', name: 'Nuclear Beam Blast' },
+		{ id: 255, type: 'Mouth', name: 'Nuclear Orange Blast' },
+		{ id: 256, type: 'Mouth', name: 'Nuclear PinkPulse Blast' },
+		{ id: 257, type: 'Mouth', name: 'Olympian Orate' },
+		{ id: 258, type: 'Mouth', name: 'Predator Furry Fangs' },
+		{ id: 259, type: 'Mouth', name: 'Rainbow Frostbite' },
+		{ id: 260, type: 'Mouth', name: 'Rainbow Rabbit Grill' },
+		{ id: 261, type: 'Mouth', name: 'RedRonin Mask' },
+		{ id: 262, type: 'Mouth', name: 'Royal Samurai Respire' },
+		{ id: 263, type: 'Mouth', name: 'Seagod Mask' },
+		{ id: 264, type: 'Mouth', name: 'Serpent Smirk' },
+		{ id: 265, type: 'Mouth', name: 'SideBite Smirk' },
+		{ id: 266, type: 'Mouth', name: 'SlyGuy Smirk' },
+		{ id: 267, type: 'Mouth', name: 'Smirk of Steel' },
+		{ id: 268, type: 'Mouth', name: 'Steadfast' },
+		{ id: 269, type: 'Mouth', name: 'Steel Lock Jaw' },
+		{ id: 270, type: 'Mouth', name: 'StewBot Smirk' },
+		{ id: 271, type: 'Mouth', name: 'TechCarrot Mask' },
+		{ id: 272, type: 'Mouth', name: 'TentaTaste Munch' },
+		{ id: 273, type: 'Mouth', name: 'Terrifying Titanium Teeth' },
+		{ id: 274, type: 'Mouth', name: 'Tron Teeth' },
+		{ id: 275, type: 'Mouth', name: 'Tropic Tongue' },
+		{ id: 276, type: 'Mouth', name: 'VisionVore Lazer' },
+		{ id: 277, type: 'Mouth', name: 'Wizard Whiskers' },
+		{ id: 278, type: 'Mouth', name: 'Zombie Sam Snarl' },
+
+		{ id: 279, type: 'Mouth', name: 'GoldenGlider' },
+		{ id: 280, type: 'Mouth', name: 'SkyHopper' },
+		{ id: 281, type: 'Mouth', name: 'SpectraFly' },
+	];
+
+	const generateFinalImage = (imageUrls) => {
+		if (imageUrls.length === 0) {
+			console.error("No images provided.");
+			return;
+		}
+
+		const canvas = document.createElement('canvas'); // Create a canvas dynamically
+		const ctx = canvas.getContext('2d');
+
+		const images = [];
+		let loadedImagesCount = 0;
+
+		// Load all images before drawing
+		imageUrls.forEach((url, index) => {
+			const img = new Image();
+			img.src = url;
+			img.crossOrigin = "anonymous"; // Ensures cross-origin images can be loaded properly
+			img.onload = () => {
+				images[index] = img;
+				loadedImagesCount++;
+
+				// When all images are loaded, draw them
+				if (loadedImagesCount === imageUrls.length) {
+					combineImages(images);
+				}
+			};
+		});
+
+		// Function to draw images in order
+		function combineImages(images) {
+			// Use the first image to set canvas size
+			canvas.width = images[0].width;
+			canvas.height = images[0].height;
+
+			// Draw images in the correct order
+			images.forEach((image) => {
+				ctx.drawImage(image, 0, 0);
+			});
+
+			// Convert to PNG and display it
+			const finalImageUrl = canvas.toDataURL('image/png');
+			displayFinalImage(finalImageUrl);
+		}
+
+		// Function to set the final image in the popup
+		function displayFinalImage(finalImageUrl) {
+			const finalImageElement = document.getElementById('finalImage');
+			if (finalImageElement) {
+				finalImageElement.src = finalImageUrl;
+			} else {
+				console.error("Image element not found.");
+			}
+		}
+	};
 
 	const handleViewClick = () => {
 		//setImageUrl(`https://robotic-rabbit-metadata-live-replica04.s3.amazonaws.com/${tokenId}.png`);
@@ -2611,7 +3203,7 @@ const Home = () => {
 	};
 
 	useEffect(() => {
-		const eventSource = new EventSource("https://api.roboticrabbitsyndicate.io/api/events");
+		const eventSource = new EventSource("http://localhost:3001/api/events");
 
 		eventSource.onmessage = (event) => {
 			setStatus(event.data);
@@ -2898,7 +3490,7 @@ const Home = () => {
 		console.log("_mintingSpecial_mint_toString: " + _mintingSpecial.toString());
 
 		try {
-			const response = await axios.post('https://api.roboticrabbitsyndicate.io/api/removeDrone', {
+			const response = await axios.post('http://localhost:3001/api/removeDrone', {
 				selectedTokenId_server: Number(_selectedTokenId),
 				mintingSpecial_server: _mintingDrones,
 				selectededNetwork: 137,
@@ -2957,7 +3549,7 @@ const Home = () => {
 		console.log("_mintingSpecial_mint_toString: " + _mintingSpecial.toString());
 
 		try {
-			const response = await axios.post('https://api.roboticrabbitsyndicate.io/api/changeSyndicateMetadata_SP', {
+			const response = await axios.post('http://localhost:3001/api/changeSyndicateMetadata_SP', {
 				selectedTokenId_server: Number(_selectedTokenId),
 				mintingSpecial_server: _mintingSpecial,
 				selectededNetwork: 137,
@@ -3016,7 +3608,7 @@ const Home = () => {
 
 		try {
 
-			const response = await axios.post('https://api.roboticrabbitsyndicate.io/api/changeSyndicateMetadata_WG', {
+			const response = await axios.post('http://localhost:3001/api/changeSyndicateMetadata_WG', {
 				selectedTokenId_server: Number(_selectedTokenId),
 				mintingWeapon_server: _mintingWeapon,
 				selectededNetwork: 137,
@@ -3078,7 +3670,7 @@ const Home = () => {
 			console.log("polygon");
 
 			// Send to backend
-			/*	const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_SP", {
+			/*	const response = await axios.post("http://localhost:3001/api/burn_SP", {
 					message: message,
 					signature: signature,
 					selectedTokenId_server: Number(_selectedTokenId),
@@ -3132,7 +3724,7 @@ const Home = () => {
 			console.log("polygon");
 
 			// Send to backend
-			/*	const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_SP", {
+			/*	const response = await axios.post("http://localhost:3001/api/burn_SP", {
 					message: message,
 					signature: signature,
 					selectedTokenId_server: Number(_selectedTokenId),
@@ -3186,7 +3778,7 @@ const Home = () => {
 			console.log("polygon");
 
 			// Send to backend
-			/*	const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_SP", {
+			/*	const response = await axios.post("http://localhost:3001/api/burn_SP", {
 					message: message,
 					signature: signature,
 					selectedTokenId_server: Number(_selectedTokenId),
@@ -3235,7 +3827,7 @@ const Home = () => {
 
 			console.log("polygon");
 			// Send to backend
-			const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_SP", {
+			const response = await axios.post("http://localhost:3001/api/burn_SP", {
 				//message: message,
 				//signature: signature,
 				selectedTokenId_server: Number(_selectedTokenId),
@@ -3303,7 +3895,7 @@ const Home = () => {
 			console.log("_drn_RECEIVED_DRONE_VALUE :" + Number(tkId));
 
 			// Send to backend
-			const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/addDrone", {
+			const response = await axios.post("http://localhost:3001/api/addDrone", {
 				//message: message,
 				//signature: signature,
 				selectedTokenId_server: Number(_selectedTokenId),
@@ -3364,7 +3956,7 @@ const Home = () => {
 
 			console.log("polygon");
 			// Send to backend
-			const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_WP", {
+			const response = await axios.post("http://localhost:3001/api/burn_WP", {
 				//message: message,
 				//signature: signature,
 				selectedTokenId_server: Number(_selectedTokenId),
@@ -3726,8 +4318,197 @@ const Home = () => {
 		setShowImg(id)
 	};
 
+	const getUpgradedTraits = async () => {
+		try {
+			//const upgradedTraits = await contract.methods.getUpgradedTraits().call();
+			const contract_1155 = new web3_1155.eth.Contract(ABIArmoury, addressArmoury);
+
+			const upgradedTraits = await contract_1155.methods.getUpgradedTraits().call();
+
+			console.log("Upgraded Traits:", upgradedTraits);
+			return upgradedTraits.map(id => Number(id)); // Convert BigNumber to Number
+		} catch (error) {
+			console.error("Error fetching upgraded traits:", error);
+			return [];
+		}
+	};
+
+
+	const fetchMetadata = async (tkId) => {
+		console.log("Fetching Metadata for Token ID:", tkId);
+		setLoadingImg(true); // Start loading
+
+		try {
+			// Fetch NFT metadata
+			const response = await fetch(`https://robotic-rabbit-metadata-live-replica04.s3.us-east-1.amazonaws.com/${tkId}.json?t=${Date.now()}`,
+				{ cache: "no-store" }
+			);
+			if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+			const data = await response.json();
+
+			if (data.attributes && Array.isArray(data.attributes)) {
+				// Map NFT traits to their IDs
+				const matchedTraits = data.attributes.map(attr => {
+					const match = traitIdList.find(trait => trait.type === attr.trait_type && attr.value.includes(trait.name));
+					return match ? match.id : null;
+				}).filter(id => id !== null);
+
+				console.log("Matched Traits:", matchedTraits);
+
+
+				const upgradedStatuses = await Promise.all(
+					matchedTraits.map(async (traitId) => {
+						try {
+							const contract_1155 = new web3_1155.eth.Contract(ABIArmoury, addressArmoury);
+							const isUpgraded = await contract_1155.methods.isTraitUpgradedOfTheNftId(tkId, traitId).call();
+							console.log("isUpgraded : " + isUpgraded);
+							await new Promise(resolve => setTimeout(resolve, 500));
+
+							return isUpgraded ? traitId : null;
+						} catch (error) {
+							console.error(`Error checking trait ${traitId}:`, error);
+							return null;
+						}
+					})
+				);
+
+				const userUpgradedMatches = upgradedStatuses.filter(id => id !== null);
+
+				const upgradedTraitsArray = userUpgradedMatches; // Store upgraded trait IDs in an array
+				console.log("Array of Upgraded Trait IDs:", upgradedTraitsArray);
+
+
+				// Fetch upgraded traits from blockchain
+				const upgradedTraits = await getUpgradedTraits();
+
+				console.log("1-- :" + upgradedTraits);
+
+				const upgradedTraitsNumbers = upgradedTraits.map(id => Number(id));
+
+				console.log("2-- :" + upgradedTraitsNumbers);
+
+
+				// Find upgraded traits in this NFT
+				const upgradedMatches = matchedTraits.filter(id => upgradedTraitsNumbers.includes(id));
+				console.log("3-- :" + upgradedMatches);
+
+
+				console.log("Upgraded Traits in this NFT:", upgradedMatches);
+
+				// Map upgraded trait IDs to their Type & Name
+				const upgradedTraitDetails = upgradedMatches.map(id => {
+					const trait = traitIdList.find(trait => trait.id === id);
+					return trait ? { type: trait.type, name: trait.name } : null;
+				}).filter(trait => trait !== null);
+
+				console.log("upgradedTraitDetails : " + JSON.stringify(upgradedTraitDetails));
+				setUpgradedTraitDetails(upgradedTraitDetails);
+
+
+				// Map upgraded trait IDs to their Type & Name
+				const upgradedTraitDetails2 = userUpgradedMatches.map(id => {
+					const trait = traitIdList.find(trait => trait.id === id);
+					return trait ? { type: trait.type, name: trait.name } : null;
+				}).filter(trait => trait !== null);
+
+				console.log("upgradedTraitDetails2 : " + JSON.stringify(upgradedTraitDetails2));
+				setUpgradedTraitDetails2(upgradedTraitDetails2);
+
+
+				fetch("http://localhost:3001/api/createUpgradeImg", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({ _upgradedTraitDetails: upgradedTraitDetails, _upgradedTraitDetails2: upgradedTraitDetails2 })
+				})
+					.then(response => response.json())
+					.then(data => {
+						if (data.image) {
+							document.getElementById("generatedImage").src = data.image;
+						} else {
+							console.error("Failed to receive image");
+						}
+					})
+					.catch(error => console.error("Error:", error));
+
+				console.log("Upgraded Trait Details:", upgradedTraitDetails);
+
+				//return upgradedImageUrls; // Return all matching image URLs
+			} else {
+				console.error("Invalid attributes format");
+			}
+
+			setLoadingImg(false);
+			//await new Promise(resolve => setTimeout(resolve, 2000));
+			setShowPopup(true);
+
+		} catch (err) {
+			console.error("Error fetching metadata:", err.message);
+		}
+	};
+
+
+	const sendUpgradeDetails = async (traitType, selectedUpgradedTrait, tokenId) => {
+
+		setConnected(true);
+
+		setMsg_loading(1);
+
+		const payload = {
+			_traitType: traitType,
+			_selectedUpgradedTrait: selectedUpgradedTrait,
+			_tokenId: Number(tokenId),
+			_userAddress: walletAddress
+		};
+
+		try {
+			const response = await fetch('http://localhost:3001/api/upgradeExistingTrait', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(payload)
+			});
+
+			if (!response.ok) {
+				throw new Error('Failed to upgrade trait');
+			}
+
+			const data = await response.json();
+			console.log('Final image path:', data.finalImagePath);
+			if (response.data = "CS_SPOkay") {
+				setMsg_loading(0);
+				setSuccessMsg_remove(1);
+				//await new Promise(resolve => setTimeout(resolve, 4000));
+				//window.location.reload(true);
+				setErrorMsg_remove(0);
+				console.log("notification_sp: " + response.data);
+				setResponseUpdated(1);
+
+			} else {
+				//alert("Burning error");
+				setMsg_loading(0);
+				setErrorMsg_remove(1);
+				setSuccessMsg_remove(0);
+				console.log("notification_sp: " + response.data);
+				setResponseUpdated(1);
+			}
+			// You can add further UI handling here
+		} catch (error) {
+			console.error('Error upgrading trait:', error);
+			setMsg_loading(0);
+			setErrorMsg_remove(1);
+			setSuccessMsg_remove(0);
+		}
+	};
+
+
+
 	return (
 		<div>
+			<canvas id="canvas" style={{ display: 'none' }}></canvas> {/* Canvas for image processing */}
 
 			<div className='wrapperMain'>
 
@@ -3929,12 +4710,54 @@ const Home = () => {
 						</div>
 					)}
 
+					{showPopup && (
+						<div className="popupImg">
+							<button className="popup-closeInImg" onClick={() => setShowPopup(false)}>×</button>
+
+							{/* Show "Loading..." until the image is loaded */}
+							{!imageLoaded && <p className='ldtxt'>Loading...</p>}
+
+							<img
+								id="generatedImage"
+								alt="Generated NFT"
+								onLoad={() => setImageLoaded(true)}
+								style={{ display: imageLoaded ? "block" : "none" }}
+							/>
+
+
+							{_upgradedTraitDetails && _upgradedTraitDetails.length > 0 && (
+								<div className='traitUpgradeMain'>
+									{_upgradedTraitDetails
+										.filter(trait =>
+											!["Background", "Special Power", "Weapons", "Gear"].includes(trait.type) &&
+											!_upgradedTraitDetails2.some(t2 => t2.type === trait.type) // Exclude matching trait types
+										)
+										.map((trait, index) => (
+											<button
+												key={index}
+												className="traitUpgrade"
+												onClick={() => sendUpgradeDetails(trait.type, trait.name, _showImg)}
+											>
+												{trait.type}
+											</button>
+										))
+									}
+								</div>
+							)}
+
+
+
+						</div>
+					)}
+
 					{_weaponDiv ?
 						<div class="popup-containerIn">
 							<div class="popupIn">
 								<div class="popup-closeIn" onClick={weaponDivClose}>×</div>
 
-								<div className='view' onClick={handleViewClick}><span className='viewTxt'>View NFT</span> <img src={eye} /></div>
+								<div className="upgrades" onClick={() => fetchMetadata(_showImg)}>
+									<span className="viewTxt">{loadingImg ? "Fetching..." : "Check Upgrades"}</span>
+								</div>
 
 								{error ? (
 									<p style={{ color: "red" }}>Error: {error}</p>
@@ -3993,12 +4816,15 @@ const Home = () => {
 										</p>
 									</div>
 								)}
+
+								<div className='view' onClick={handleViewClick}><span className='viewTxt'>View NFT</span> <img src={eye} /></div>
+
 							</div>
 
 						</div> : null}
 
 					{_successMsg > 0 ?
-						< div class="popup-containerIn">
+						< div id="dd" class="popup-containerIn">
 							<div class="popupIn">
 								<div class="popup-closeIn" onClick={closeBtn}>×</div>
 
@@ -4013,7 +4839,7 @@ const Home = () => {
 						: null}
 
 					{_errorMsg > 0 ?
-						< div class="popup-containerIn">
+						< div id="dd" class="popup-containerIn">
 							<div class="popupIn">
 								<div class="popup-closeIn" onClick={closeBtn2}>×</div>
 
@@ -4027,7 +4853,7 @@ const Home = () => {
 						</div> : null}
 
 					{_errorMsg_remove > 0 ?
-						< div class="popup-containerIn">
+						< div id="dd" class="popup-containerIn">
 							<div class="popupIn">
 								<div class="popup-closeIn" onClick={closeBtn2}>×</div>
 
@@ -4041,7 +4867,7 @@ const Home = () => {
 						</div> : null}
 
 					{_msg_loading > 0 ?
-						< div class="popup-containerIn2">
+						< div id="dd" class="popup-containerIn2">
 
 							<div className='popupInTxt'>
 								<div class="loader"></div>
@@ -4054,7 +4880,7 @@ const Home = () => {
 						</div> : null}
 
 					{_successMsg_remove > 0 ?
-						< div class="popup-containerIn">
+						< div id="dd" class="popup-containerIn">
 							< div class="popup-containerIn">
 								<div class="popupIn">
 									<div class="popup-closeIn" onClick={closeBtn}>×</div>
