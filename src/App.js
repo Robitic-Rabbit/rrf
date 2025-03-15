@@ -2747,7 +2747,7 @@ let ABIArmoury = [
 	}
 ];
 
-let addressArmoury = "0x6a2Df40f8C54d507533DA8E0CCB48891822042c2";
+let addressArmoury = "0xed5d97A21be6c65CB8D483a1B94619D843D9494d";
 //let address = "0xE7268C3BC66b4dA84925D16110aE81391F26061d";
 
 const maxSupply = 555;
@@ -3203,7 +3203,7 @@ const Home = () => {
 	};
 
 	useEffect(() => {
-		const eventSource = new EventSource("https://api.roboticrabbitsyndicate.io/api/events");
+		const eventSource = new EventSource("http://localhost:3001/api/events");
 
 		eventSource.onmessage = (event) => {
 			setStatus(event.data);
@@ -3490,7 +3490,7 @@ const Home = () => {
 		console.log("_mintingSpecial_mint_toString: " + _mintingSpecial.toString());
 
 		try {
-			const response = await axios.post('https://api.roboticrabbitsyndicate.io/api/removeDrone', {
+			const response = await axios.post('http://localhost:3001/api/removeDrone', {
 				selectedTokenId_server: Number(_selectedTokenId),
 				mintingSpecial_server: _mintingDrones,
 				selectededNetwork: 137,
@@ -3549,7 +3549,7 @@ const Home = () => {
 		console.log("_mintingSpecial_mint_toString: " + _mintingSpecial.toString());
 
 		try {
-			const response = await axios.post('https://api.roboticrabbitsyndicate.io/api/changeSyndicateMetadata_SP', {
+			const response = await axios.post('http://localhost:3001/api/changeSyndicateMetadata_SP', {
 				selectedTokenId_server: Number(_selectedTokenId),
 				mintingSpecial_server: _mintingSpecial,
 				selectededNetwork: 137,
@@ -3608,7 +3608,7 @@ const Home = () => {
 
 		try {
 
-			const response = await axios.post('https://api.roboticrabbitsyndicate.io/api/changeSyndicateMetadata_WG', {
+			const response = await axios.post('http://localhost:3001/api/changeSyndicateMetadata_WG', {
 				selectedTokenId_server: Number(_selectedTokenId),
 				mintingWeapon_server: _mintingWeapon,
 				selectededNetwork: 137,
@@ -3670,7 +3670,7 @@ const Home = () => {
 			console.log("polygon");
 
 			// Send to backend
-			/*	const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_SP", {
+			/*	const response = await axios.post("http://localhost:3001/api/burn_SP", {
 					message: message,
 					signature: signature,
 					selectedTokenId_server: Number(_selectedTokenId),
@@ -3724,7 +3724,7 @@ const Home = () => {
 			console.log("polygon");
 
 			// Send to backend
-			/*	const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_SP", {
+			/*	const response = await axios.post("http://localhost:3001/api/burn_SP", {
 					message: message,
 					signature: signature,
 					selectedTokenId_server: Number(_selectedTokenId),
@@ -3778,7 +3778,7 @@ const Home = () => {
 			console.log("polygon");
 
 			// Send to backend
-			/*	const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_SP", {
+			/*	const response = await axios.post("http://localhost:3001/api/burn_SP", {
 					message: message,
 					signature: signature,
 					selectedTokenId_server: Number(_selectedTokenId),
@@ -3827,7 +3827,7 @@ const Home = () => {
 
 			console.log("polygon");
 			// Send to backend
-			const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_SP", {
+			const response = await axios.post("http://localhost:3001/api/burn_SP", {
 				//message: message,
 				//signature: signature,
 				selectedTokenId_server: Number(_selectedTokenId),
@@ -3895,7 +3895,7 @@ const Home = () => {
 			console.log("_drn_RECEIVED_DRONE_VALUE :" + Number(tkId));
 
 			// Send to backend
-			const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/addDrone", {
+			const response = await axios.post("http://localhost:3001/api/addDrone", {
 				//message: message,
 				//signature: signature,
 				selectedTokenId_server: Number(_selectedTokenId),
@@ -3956,7 +3956,7 @@ const Home = () => {
 
 			console.log("polygon");
 			// Send to backend
-			const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_WP", {
+			const response = await axios.post("http://localhost:3001/api/burn_WP", {
 				//message: message,
 				//signature: signature,
 				selectedTokenId_server: Number(_selectedTokenId),
@@ -4416,7 +4416,7 @@ const Home = () => {
 				setUpgradedTraitDetails2(upgradedTraitDetails2);
 
 
-				fetch("https://api.roboticrabbitsyndicate.io/api/createUpgradeImg", {
+				fetch("http://localhost:3001/api/createUpgradeImg", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
@@ -4464,7 +4464,7 @@ const Home = () => {
 		};
 
 		try {
-			const response = await fetch('https://api.roboticrabbitsyndicate.io/api/upgradeExistingTrait', {
+			const response = await fetch('http://localhost:3001/api/upgradeExistingTrait', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -4725,7 +4725,7 @@ const Home = () => {
 							/>
 
 
-							{_upgradedTraitDetails && _upgradedTraitDetails.length > 0 && (
+							{imageLoaded && _upgradedTraitDetails && _upgradedTraitDetails.length > 0 && (
 								<div className='traitUpgradeMain'>
 									{_upgradedTraitDetails
 										.filter(trait =>
