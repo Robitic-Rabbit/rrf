@@ -98,6 +98,7 @@ h6 {
   font-weight: normal;
 }
 
+
 /* HTML: <div class="loader"></div> */
 .loader {
   width: 120px;
@@ -374,7 +375,11 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 5;
+}
+
+#dd{
+  z-index: 7;
+
 }
 
 .popup-containerIn2 {
@@ -580,6 +585,55 @@ h6 {
   color: white;
 }
 
+.upgrades{
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-bottom: 15px;
+  cursor: pointer;
+  background-color: #02e25f;
+  color: black;
+  border-radius: 5px;
+  padding: 10px;
+  width: fit-content;
+  transition: 0.2s ease-in-out;
+}
+
+.ldtxt{
+  color: #07b963;
+}
+
+.traitUpgrade{
+  background-color: #00ff75;
+  border: none;
+  padding: 7px;
+  justify-content: space-evenly;
+  margin: 10px;
+  border-radius: 5px;
+  transition: 0.2s ease-in-out;
+}
+
+.traitUpgrade:hover{
+  background-color: #03d163;
+}
+
+.traitUpgrade:active{
+  background-color: #029e4b;
+}
+
+.traitUpgradeMain{
+  background-color: #131313;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+
+
+.upgrades:hover{
+  background-color: #009e42;
+  color: rgb(255, 255, 255);
+}
+
 .view{
   color: white;
   width: fit-content;
@@ -588,6 +642,9 @@ h6 {
   margin-bottom: auto;
   margin-bottom: 5px;
   cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
 }
  
 .view span{
@@ -614,7 +671,7 @@ h6 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 1000;
+  z-index: 6;
 }
 
 #popup-img {
@@ -622,6 +679,11 @@ h6 {
   max-height: 80vh;
   border-radius: 8px;
 }
+
+#generatedImage{
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 8px;}
 
 .popup-closeInImg {
   background: transparent;
