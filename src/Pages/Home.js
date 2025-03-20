@@ -18,8 +18,6 @@ const ops = () => {
 	window.open("#");
 }
 
-//ENV WALLET : 0x1E510513540654Af3c383744c93B58e1417E957F
-
 let ABI = [
 	{
 		"inputs": [
@@ -1774,19 +1772,6 @@ let ABIArmoury = [
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "_idMatcher",
-				"type": "uint256"
-			}
-		],
-		"name": "set_idMatcher",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
 				"internalType": "address",
 				"name": "operator",
 				"type": "address"
@@ -2244,19 +2229,6 @@ let ABIArmoury = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "idMatcher",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -2460,19 +2432,6 @@ let ABIArmoury = [
 				"internalType": "address",
 				"name": "",
 				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "path",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
 			}
 		],
 		"stateMutability": "view",
@@ -2732,8 +2691,7 @@ let ABIArmoury = [
 	}
 ];
 
-let addressArmoury = "0xd192394C531F17Eecf8920AF1610Ef6fF47Cc65e";
-//let address = "0xE7268C3BC66b4dA84925D16110aE81391F26061d";
+let addressArmoury = "0x09A3CB8CcEb1d9e75f1a0a8EfCf10e2609F915D6";
 
 const maxSupply = 555;
 
@@ -2903,7 +2861,7 @@ const Home = () => {
 	};
 
 	useEffect(() => {
-		const eventSource = new EventSource("http://localhost:3001/api/events");
+		const eventSource = new EventSource("https://api.roboticrabbitsyndicate.io/api/events");
 
 		eventSource.onmessage = (event) => {
 			setStatus(event.data);
@@ -2932,7 +2890,7 @@ const Home = () => {
 
 	async function fetchTraitList() {
 		try {
-			const getTraitIdList = await axios.get('http://localhost:3001/api/traits');
+			const getTraitIdList = await axios.get('https://api.roboticrabbitsyndicate.io/api/traits');
 			setTraitIdList(getTraitIdList.data);
 			console.log("getTraitIdList : " + JSON.stringify(getTraitIdList.data));
 		} catch (err) {
@@ -2942,7 +2900,7 @@ const Home = () => {
 
 	async function fetchWeaponList() {
 		try {
-			const getWeapondList = await axios.get('http://localhost:3001/api/weapons');
+			const getWeapondList = await axios.get('https://api.roboticrabbitsyndicate.io/api/weapons');
 			setWeapondList(getWeapondList.data);
 			console.log("getWeapondList : " + JSON.stringify(getWeapondList.data));
 		} catch (err) {
@@ -2952,7 +2910,7 @@ const Home = () => {
 
 	async function fetchArmoryList() {
 		try {
-			const getArmoryList = await axios.get('http://localhost:3001/api/armories');
+			const getArmoryList = await axios.get('https://api.roboticrabbitsyndicate.io/api/armories');
 			setArmoryList(getArmoryList.data);
 			console.log("getArmoryList : " + JSON.stringify(getArmoryList.data));
 		} catch (err) {
@@ -3191,7 +3149,7 @@ const Home = () => {
 		console.log("_mintingSpecial_mint_toString: " + _mintingSpecial.toString());
 
 		try {
-			const response = await axios.post('http://localhost:3001/api/removeDrone', {
+			const response = await axios.post('https://api.roboticrabbitsyndicate.io/api/removeDrone', {
 				selectedTokenId_server: Number(_selectedTokenId),
 				mintingSpecial_server: _mintingDrones,
 				selectededNetwork: 137,
@@ -3250,7 +3208,7 @@ const Home = () => {
 		console.log("_mintingSpecial_mint_toString: " + _mintingSpecial.toString());
 
 		try {
-			const response = await axios.post('http://localhost:3001/api/changeSyndicateMetadata_SP', {
+			const response = await axios.post('https://api.roboticrabbitsyndicate.io/api/changeSyndicateMetadata_SP', {
 				selectedTokenId_server: Number(_selectedTokenId),
 				mintingSpecial_server: _mintingSpecial,
 				selectededNetwork: 137,
@@ -3309,7 +3267,7 @@ const Home = () => {
 
 		try {
 
-			const response = await axios.post('http://localhost:3001/api/changeSyndicateMetadata_WG', {
+			const response = await axios.post('https://api.roboticrabbitsyndicate.io/api/changeSyndicateMetadata_WG', {
 				selectedTokenId_server: Number(_selectedTokenId),
 				mintingWeapon_server: _mintingWeapon,
 				selectededNetwork: 137,
@@ -3373,7 +3331,7 @@ const Home = () => {
 			console.log("polygon");
 
 			// Send to backend
-			/*	const response = await axios.post("http://localhost:3001/api/burn_SP", {
+			/*	const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_SP", {
 					message: message,
 					signature: signature,
 					selectedTokenId_server: Number(_selectedTokenId),
@@ -3427,7 +3385,7 @@ const Home = () => {
 			console.log("polygon");
 
 			// Send to backend
-			/*	const response = await axios.post("http://localhost:3001/api/burn_SP", {
+			/*	const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_SP", {
 					message: message,
 					signature: signature,
 					selectedTokenId_server: Number(_selectedTokenId),
@@ -3482,7 +3440,7 @@ const Home = () => {
 			console.log("polygon");
 
 			// Send to backend
-			/*	const response = await axios.post("http://localhost:3001/api/burn_SP", {
+			/*	const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_SP", {
 					message: message,
 					signature: signature,
 					selectedTokenId_server: Number(_selectedTokenId),
@@ -3531,7 +3489,7 @@ const Home = () => {
 
 			console.log("polygon");
 			// Send to backend
-			const response = await axios.post("http://localhost:3001/api/burn_SP", {
+			const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_SP", {
 				//message: message,
 				//signature: signature,
 				selectedTokenId_server: Number(_selectedTokenId),
@@ -3599,7 +3557,7 @@ const Home = () => {
 			console.log("_drn_RECEIVED_DRONE_VALUE :" + Number(tkId));
 
 			// Send to backend
-			const response = await axios.post("http://localhost:3001/api/addDrone", {
+			const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/addDrone", {
 				//message: message,
 				//signature: signature,
 				selectedTokenId_server: Number(_selectedTokenId),
@@ -3660,7 +3618,7 @@ const Home = () => {
 
 			console.log("polygon");
 			// Send to backend
-			const response = await axios.post("http://localhost:3001/api/burn_WP", {
+			const response = await axios.post("https://api.roboticrabbitsyndicate.io/api/burn_WP", {
 				//message: message,
 				//signature: signature,
 				selectedTokenId_server: Number(_selectedTokenId),
@@ -4126,7 +4084,7 @@ const Home = () => {
 				setUpgradedTraitDetails2(upgradedTraitDetails2);
 
 
-				fetch("http://localhost:3001/api/createUpgradeImg", {
+				fetch("https://api.roboticrabbitsyndicate.io/api/createUpgradeImg", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
@@ -4174,7 +4132,7 @@ const Home = () => {
 		};
 
 		try {
-			const response = await fetch('http://localhost:3001/api/upgradeExistingTrait', {
+			const response = await fetch('https://api.roboticrabbitsyndicate.io/api/upgradeExistingTrait', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -4314,7 +4272,7 @@ const Home = () => {
 															{_tokenArray_1155.map((token) => (
 																<div className="nft-card" key={token.tokenId} onClick={() => choosePower_SP(token.tokenId)}>
 																	<img
-																		src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
+																		src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
 																		alt={`NFT ${token.tokenId}`}
 																		className="nft-image"
 																	/>
@@ -4339,7 +4297,7 @@ const Home = () => {
 															{_tokenArray_1155.map((token) => (
 																<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
 																	<img
-																		src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
+																		src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
 																		alt={`NFT ${token.tokenId}`}
 																		className="nft-image"
 																	/>
@@ -4364,7 +4322,7 @@ const Home = () => {
 															{_tokenArray_1155.map((token) => (
 																<div className="nft-card" key={token.tokenId} onClick={() => choosePower_Drn(token.tokenId)}>
 																	<img
-																		src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
+																		src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
 																		alt={`NFT ${token.tokenId}`}
 																		className="nft-image"
 																	/>
@@ -4389,7 +4347,7 @@ const Home = () => {
 															{_tokenArray_1155.map((token) => (
 																<div className="nft-card" key={token.tokenId} style={{ cursor: 'default' }}>
 																	<img
-																		src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
+																		src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
 																		alt={`NFT ${token.tokenId}`}
 																		className="nft-image"
 																	/>
@@ -4497,7 +4455,7 @@ const Home = () => {
 																	{_tokenArray_1155.map((token) => (
 																		<div className="nft-card" key={token.tokenId} onClick={() => choosePower_SP(token.tokenId)}>
 																			<img
-																				src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
+																				src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
 																				alt={`NFT ${token.tokenId}`}
 																				className="nft-image"
 																			/>
@@ -4526,7 +4484,7 @@ const Home = () => {
 																	{_tokenArray_1155.map((token) => (
 																		<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
 																			<img
-																				src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
+																				src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
 																				alt={`NFT ${token.tokenId}`}
 																				className="nft-image"
 																			/>
@@ -4554,7 +4512,7 @@ const Home = () => {
 																	{_tokenArray_1155.map((token) => (
 																		<div className="nft-card" key={token.tokenId} onClick={() => choosePower_Drn(token.tokenId)}>
 																			<img
-																				src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${token.tokenId}.png`}
+																				src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
 																				alt={`NFT ${token.tokenId}`}
 																				className="nft-image"
 																			/>
@@ -4648,7 +4606,7 @@ const Home = () => {
 											<div><strong>Special Power:</strong> {specialPower}</div>
 											{_mintingSpecial && _mintingSpecial.length > 0 && _mintingSpecial[0] ? (
 												<img
-													src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${_mintingSpecial[0]}.png`}
+													src={`https://armory-data.s3.us-east-2.amazonaws.com/${_mintingSpecial[0]}.png`}
 													alt="Special Power"
 												/>
 											) : (
@@ -4666,7 +4624,7 @@ const Home = () => {
 
 											{_mintingWeapon && _mintingWeapon.length > 0 && _mintingWeapon[0] ? (
 												<img
-													src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${_mintingWeapon[0]}.png`}
+													src={`https://armory-data.s3.us-east-2.amazonaws.com/${_mintingWeapon[0]}.png`}
 													alt="Weapons and Gear"
 												/>
 											) : (
@@ -4683,7 +4641,7 @@ const Home = () => {
 											<div><strong>Drone:</strong> {_drone}</div>
 											{_mintingDrones && _mintingDrones.length > 0 && _mintingDrones[0] ? (
 												<img
-													src={`https://tomato-imperial-woodpecker-85.mypinata.cloud/ipfs/bafybeia3h7qef76fdjzpwxguittc22e5osunusphtdtoit3hq4c2i3zahu/${_mintingDrones[0]}.png`}
+													src={`https://armory-data.s3.us-east-2.amazonaws.com/${_mintingDrones[0]}.png`}
 													alt="Drone"
 												/>
 											) : (
