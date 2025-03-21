@@ -2873,7 +2873,7 @@ const Home = () => {
 			eventSource.close();
 			setTimeout(() => {
 				// Reconnect after delay
-				setStatus("Reconnecting...");
+				setStatus("Loading & Reconnecting...");
 				// Consider re-initializing the EventSource here
 			}, 3000);
 		};
@@ -3167,6 +3167,8 @@ const Home = () => {
 			if (response.data = "CS_SPOkay") {
 				setMsg_loading(0);
 				setSuccessMsg_remove(1);
+				setStatus("Process Completed!");
+
 				//await new Promise(resolve => setTimeout(resolve, 4000));
 				//window.location.reload(true);
 				setErrorMsg_remove(0);
@@ -3225,6 +3227,7 @@ const Home = () => {
 			if (response.data = "CS_SPOkay") {
 				setMsg_loading(0);
 				setSuccessMsg_remove(1);
+				setStatus("Process Completed!");
 				//await new Promise(resolve => setTimeout(resolve, 4000));
 				//window.location.reload(true);
 				setErrorMsg_remove(0);
@@ -3284,6 +3287,8 @@ const Home = () => {
 				setMsg_loading(0);
 
 				setSuccessMsg_remove(1);
+				setStatus("Process Completed!");
+
 				setErrorMsg_remove(0);
 				//await new Promise(resolve => setTimeout(resolve, 4000));
 				//window.location.reload(true);
@@ -4149,6 +4154,8 @@ const Home = () => {
 			if (response.data = "CS_SPOkay") {
 				setMsg_loading(0);
 				setSuccessMsg_remove(1);
+				setStatus("Process Completed!");
+
 				//await new Promise(resolve => setTimeout(resolve, 4000));
 				//window.location.reload(true);
 				setErrorMsg_remove(0);
