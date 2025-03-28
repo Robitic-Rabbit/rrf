@@ -5,10 +5,10 @@ import { Web3Button, Web3Modal, useWeb3Modal } from '@web3modal/react';
 import { mainnet, useDisconnect, useAccount, useContractRead, useContractReads, useContractWrite, useNetwork, usePublicClient, useSwitchNetwork, useWaitForTransaction, useSignMessage } from 'wagmi';
 import { createPublicClient, formatEther, http, parseEther, webSocket } from 'viem';
 import { pulsechainV4, optimism } from 'wagmi/chains';
-import inventory from '../assets/inventory.png';
 import check from '../assets/check-mark.png';
 import errorImg from '../assets/error.png';
-import line from '../assets/inventory_2.png';
+import armory_line from '../assets/armory_line.png';
+import syndiacte_line from '../assets/syndicate_line.png';
 import eye from '../assets/eye.png';
 import Web3_mm from 'web3';
 import Web3_1155 from 'web3';
@@ -21,6 +21,8 @@ import scanner_success from '../assets/CarroTechScannerUI/IMG_3320.PNG';
 import scanner_success_mob from '../assets/CarroTechScannerUI/IMG_3315.PNG';
 import scanner_error from '../assets/CarroTechScannerUI/IMG_3319.PNG';
 import scanner_error_mob from '../assets/CarroTechScannerUI/IMG_3321.PNG';
+import syndiacte from '../assets/syndicate.png';
+import armory from '../assets/armory.png';
 
 const ops = () => {
 	window.open("#");
@@ -4170,12 +4172,12 @@ const Home = () => {
 
 								<div id="box1" className={'inventory-container'}>
 
-									<img src={inventory} alt="Inventory Background" className="inventory-image" />
+									<img src={syndiacte} alt="Inventory Background" className="inventory-image" />
 
 									{_loadingImgs > 0 ?
 										<div className="nft-overlay">
 											<div className='load'>Loading...</div>
-										</div> :
+										</div> : 
 
 
 										<div className="nft-overlay">
@@ -4211,7 +4213,7 @@ const Home = () => {
 								{_popDivOpen ?
 									<div className="inventory-container">
 										{/* Background image */}
-										<img id="box2" src={inventory} alt="Inventory Background" className="inventory-image" />
+										<img id="box2" src={armory} alt="Inventory Background" className="inventory-image" />
 
 
 										{_connected ?
@@ -4358,7 +4360,7 @@ const Home = () => {
 							<div className="set-image" id="forMob">
 
 								<div id="box1T" className='boxWraper'>
-									<img className='lineImg' src={line} />
+									<img className='lineImg' src={syndiacte_line} />
 									<div id="box1" className='inventory-container'>
 
 
@@ -4397,7 +4399,7 @@ const Home = () => {
 
 								{_popDivOpen ?
 									<div id="box2T" className='boxWraper2'>
-										<img className='lineImg' src={line} />
+										<img className='lineImg' src={armory_line} />
 
 										<div className="inventory-container2">
 											{/* Background image */}
