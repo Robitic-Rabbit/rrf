@@ -3908,7 +3908,7 @@ const Home = () => {
 	const fetchBalance = async () => {
 		try {
 			const contract_1155 = new web3_1155.eth.Contract(ABIArmoury, addressArmoury);
-			const carroTechNFTAmount = await contract_1155.methods.balanceOf(walletAddress, 0).call();
+			const carroTechNFTAmount = await contract_1155.methods.balanceOf(walletAddress, 16).call();
 
 			console.log("carroTechNFTAmount:", carroTechNFTAmount);
 			setCheckBalance(carroTechNFTAmount > 0);
