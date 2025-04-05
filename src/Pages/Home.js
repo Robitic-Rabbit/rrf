@@ -4,7 +4,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Web3Button, Web3Modal, useWeb3Modal } from '@web3modal/react';
 import { mainnet, useDisconnect, useAccount, useContractRead, useContractReads, useContractWrite, useNetwork, usePublicClient, useSwitchNetwork, useWaitForTransaction, useSignMessage } from 'wagmi';
 import { createPublicClient, formatEther, http, parseEther, webSocket } from 'viem';
-import { pulsechainV4, sepolia } from 'wagmi/chains';
+import { pulsechainV4, optimism } from 'wagmi/chains';
 import check from '../assets/check-mark.png';
 import errorImg from '../assets/error.png';
 import armory_line from '../assets/armory_line.png';
@@ -2701,7 +2701,7 @@ let ABIArmoury = [
 	}
 ];
 
-let addressArmoury = "0x4Eb2FCD9b1c024d3cA56c5fbD11457Cf91B6DD89";
+let addressArmoury = "0xFC373F27f231D1B797ABEDB1711381983c5F8b0B";
 
 const maxSupply = 555;
 
@@ -2726,11 +2726,11 @@ const Home = () => {
 	const transport = webSocket('wss://pulsechain-testnet-rpc.publicnode.com')
 	const web3_mm = new Web3_mm(Web3_mm.givenProvider || 'https://pulsechain-testnet-rpc.publicnode.com');
 
-	const web3_1155 = new Web3_1155(Web3_1155.givenProvider || 'https://sepolia.infura.io/v3/9aad89c8e515457ab8b7805f5da593ea');
+	const web3_1155 = new Web3_1155(Web3_1155.givenProvider || 'https://holy-burned-sheet.optimism.quiknode.pro/f7e9efbb6f5a0385ae4c3a55b94bb67eca5e31bc/');
 	//const web3_1155 = new Web3_1155(Web3_1155.givenProvider || 'https://polygon-mainnet.infura.io/v3/9aad89c8e515457ab8b7805f5da593ea');
 
 	const publicClient = createPublicClient({
-		chain: pulsechainV4, sepolia,
+		chain: pulsechainV4, optimism,
 		transport,
 	})
 
