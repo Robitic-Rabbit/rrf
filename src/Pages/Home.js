@@ -4661,7 +4661,7 @@ const Home = () => {
 							{_showAllArmories > 0 ?
 								<>
 									<div id="dd" class="popup-containerIn--2">
-										<div class="popupIn">
+										<div class="popupInNew">
 											<div class="popup-closeIn" onClick={closeBtn2}>×</div>
 
 
