@@ -4677,7 +4677,7 @@ const Home = () => {
 
 															>
 																<img
-																	src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}${token.tokenId === "0" ? ".WEBP" : ".png"}`}
+																	src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}${token.tokenId === 0 ? ".WEBP" : ".png"}`}
 																	alt={`NFT ${token.tokenId}`}
 																	className="nft-image"
 																/>
