@@ -4177,7 +4177,7 @@ const Home = () => {
 									{_loadingImgs > 0 ?
 										<div className="nft-overlay">
 											<div className='load'>Loading...</div>
-										</div> : 
+										</div> :
 
 
 										<div className="nft-overlay">
@@ -4677,10 +4677,11 @@ const Home = () => {
 
 															>
 																<img
-																	src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
+																	src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}${token.tokenId === "0" ? ".WEBP" : ".png"}`}
 																	alt={`NFT ${token.tokenId}`}
 																	className="nft-image"
 																/>
+
 																<p className='nft-text'>Token ID: {token.tokenId}</p>
 																<p className='nft-text'>Balance: {token.balance.toString()}</p>
 															</div>
