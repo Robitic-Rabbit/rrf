@@ -70,12 +70,47 @@
   font-display: swap;
 }
 
+/* Optional: Style scrollbar */
+.nft-gridNew::-webkit-scrollbar {
+  height: 8px;
+}
+
+.nft-gridNew::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nft-gridNew::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.nft-gridNew::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
 .nft-gridNew {
-  display: grid;
-  /* 4 items per row */
+  display: flex; /* Changed from grid to flex */
   gap: 10px;
-  margin-top: 15px;
-  overflow-x: auto;
+  padding: 10px 0; /* Add some vertical padding */
+  overflow-x: auto; /* Horizontal scrolling */
+  overflow-y: hidden; /* Prevent vertical scrolling */
+  white-space: nowrap; /* Prevent items from wrapping */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.popupInNew {
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 450px;
+  max-width: 90vw; /* Add this for better mobile responsiveness */
+  max-height: 90vh; /* Limit height */
+  overflow: hidden; /* Prevent overall scrolling */
+  animation: slideIn 0.3s ease-out;
+  background: rgba(255, 255, 255, 0.397);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .popup-containerIn--2 {
