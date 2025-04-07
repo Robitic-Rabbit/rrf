@@ -70,6 +70,15 @@
   font-display: swap;
 }
 
+.nft-gridNew {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* 4 items per row */
+  gap: 10px;
+  margin-top: 15px;
+  overflow-x: auto;
+}
+
 .popup-containerIn--2 {
   position: fixed;
   top: 0;
