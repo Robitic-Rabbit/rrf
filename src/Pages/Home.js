@@ -4278,7 +4278,7 @@ const Home = () => {
 																		{_tokenArray_1155.map((token) => (
 																			<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
 																				<img
-																					src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
+																					src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}${token.tokenId === 0 ? ".WEBP" : ".png"}`}
 																					alt={`NFT ${token.tokenId}`}
 																					className="nft-image"
 																				/>
@@ -4469,8 +4469,8 @@ const Home = () => {
 																			<div className="nft-overlay--2">
 																				{_tokenArray_1155.map((token) => (
 																					<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
-																						<img
-																							src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
+																																											<img
+																							src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}${token.tokenId === 0 ? ".WEBP" : ".png"}`}
 																							alt={`NFT ${token.tokenId}`}
 																							className="nft-image"
 																						/>
