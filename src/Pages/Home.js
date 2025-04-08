@@ -19,8 +19,8 @@ import scanner_2 from '../assets/CarroTechScannerUI/IMG_3316.PNG';
 import scanner_2_mob from '../assets/CarroTechScannerUI/IMG_3318.PNG';
 import scanner_success from '../assets/CarroTechScannerUI/IMG_3320.PNG';
 import scanner_success_mob from '../assets/CarroTechScannerUI/IMG_3315.PNG';
-import scanner_error from '../assets/CarroTechScannerUI/IMG_3319.PNG';
-import scanner_error_mob from '../assets/CarroTechScannerUI/IMG_3321.PNG';
+import scanner_error from '../assets/CarroTechScannerUI/IMG_3319.png';
+import scanner_error_mob from '../assets/CarroTechScannerUI/IMG_3321.png';
 import syndiacte from '../assets/syndicate.png';
 import armory from '../assets/armory.png';
 
@@ -3917,24 +3917,29 @@ const Home = () => {
 			setCheckBalance(false);
 		}
 	};
-
+	
 	const handleImageClick = async () => {
 		if (!_connected) return; // Don't proceed if wallet isn't connected
-
+	
 		if (currentImage === 'scanner_1') {
 			setCurrentImage('scanner_2');
 			setTimeout(async () => {
 				await fetchBalance();
 				if (checkBalance) {
 					setCurrentImage('scanner_success');
-					// Save that scanner is successfully passed
 					localStorage.setItem('scannerPassed', 'true');
 				} else {
 					setCurrentImage('scanner_error');
 				}
 			}, 5000);
 		}
+	
+		// If already on scanner_error and user clicks again
+		if (currentImage === 'scanner_error') {
+			window.location.href = 'https://syndicate-mint.vercel.app/';
+		}
 	};
+	
 
 	// Check if user has passed scanner and stored it in localStorage
 	useEffect(() => {
@@ -3951,8 +3956,8 @@ const Home = () => {
 				setFadeOut(true); // Trigger fade-out
 				setTimeout(() => {
 					setShowDetails(true); // Show other details after fade-out
-				}, 1500); // Wait for fade-out to complete
-			}, 1500); // Wait for 3 seconds before starting fade-out
+				}, 3500); // Wait for fade-out to complete
+			}, 3500); // Wait for 3 seconds before starting fade-out
 		}
 	}, [currentImage]);
 
@@ -4798,7 +4803,7 @@ const Home = () => {
 						<>
 							{_connected ? (
 								<>
-									<button className='checkAccess2' onClick={() => disconnectWallet()}
+									{/*<button className='checkAccess2' onClick={() => disconnectWallet()}
 										style={{
 											position: 'absolute',
 											top: '50%',
@@ -4808,7 +4813,7 @@ const Home = () => {
 										}}>
 										{walletAddress === "" ? "Connect Wallet" : shortenAddress(walletAddress)}
 										<br />
-									</button>
+									</button>*/}
 
 									<button class="connectNew" onClick={connectWalletScanner}
 										style={{
