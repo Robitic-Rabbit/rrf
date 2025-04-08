@@ -4275,10 +4275,10 @@ const Home = () => {
 																<>
 																	<div className='choose2'>Choose a Weapon</div>
 																	<div className="nft-grid">
-																		{_tokenArray_1155.map((token) => (
+																		{_tokenArray_1155.filter(token => token.tokenId !== 0).map((token) => (
 																			<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
 																				<img
-																					src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}${token.tokenId === 0 ? ".WEBP" : ".png"}`}
+																					src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
 																					alt={`NFT ${token.tokenId}`}
 																					className="nft-image"
 																				/>
@@ -4467,17 +4467,18 @@ const Home = () => {
 																			<div className='choose2'>Choose a Weapon</div>
 
 																			<div className="nft-overlay--2">
-																				{_tokenArray_1155.map((token) => (
-																					<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
-																																											<img
-																							src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}${token.tokenId === 0 ? ".WEBP" : ".png"}`}
-																							alt={`NFT ${token.tokenId}`}
-																							className="nft-image"
-																						/>
-																						<p className='nft-text'>Token ID: {token.tokenId}</p>
-																						<p className='nft-text'>Balance: {token.balance.toString()}</p>
-																					</div>
-																				))}
+																				{_tokenArray_1155.filter(token => token.tokenId !== 0)
+																					.map((token) => (
+																						<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
+																							<img
+																								src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
+																								alt={`NFT ${token.tokenId}`}
+																								className="nft-image"
+																							/>
+																							<p className='nft-text'>Token ID: {token.tokenId}</p>
+																							<p className='nft-text'>Balance: {token.balance.toString()}</p>
+																						</div>
+																					))}
 																			</div>
 																		</>
 																	) : (
