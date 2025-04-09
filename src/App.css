@@ -274,14 +274,19 @@ h6 {
     margin-top: -100px;
     color: white;
   }
-  
-  
+ 
+  .scanners img {
+    width: 400px;
+    height: auto;
+    object-fit: contain;
+  }
+
   .connectNew {
-    width: 90px; /* Or any fixed size */
-    height: 90px;
+    width: 60px; /* Or any fixed size */
+    height: 60px;
     padding: 0; /* Remove padding to maintain perfect circle */
-    font-size: 16px;
-    background-color: rgba(255, 255, 255, 0.281);
+    font-size: 12px;
+    background-color: rgba(255, 255, 255, 0.171);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -295,6 +300,7 @@ h6 {
     justify-content: center;
     margin-top: -30px;
   }
+  
   #forPc {
     display: none;
   }
@@ -949,13 +955,19 @@ h6 {
     color: white;
   }
   
-  
+  .scanners img {
+    width: 450px;
+    height: auto;
+    object-fit: contain;
+  }
+
+
   .connectNew {
-    width: 90px; /* Or any fixed size */
-    height: 90px;
+    width: 60px; /* Or any fixed size */
+    height: 60px;
     padding: 0; /* Remove padding to maintain perfect circle */
-    font-size: 16px;
-    background-color: rgba(255, 255, 255, 0.281);
+    font-size: 12px;
+    background-color: rgba(255, 255, 255, 0.171);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -967,7 +979,7 @@ h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -30px;
+    margin-top: -35px;
   }
   
   #forPc {
