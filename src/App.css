@@ -1,5 +1,5 @@
-@import url('https://fonts.cdnfonts.com/css/space-mono');
-@import url('https://fonts.cdnfonts.com/css/russo-one');
+@import url("https://fonts.cdnfonts.com/css/space-mono");
+@import url("https://fonts.cdnfonts.com/css/russo-one");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 @font-face {
@@ -126,8 +126,7 @@
   align-items: center;
 }
 
-
-.titleR{
+.titleR {
   color: #00ff66;
   text-align: center;
   font-size: 24px;
@@ -202,8 +201,6 @@
   /* Lighter green on hover */
 }
 
-
-
 /* Scrollbar Styling */
 .nft-overlay--2::-webkit-scrollbar {
   width: 12px;
@@ -247,7 +244,6 @@ body {
   --btn-orange: #07ac4b;
 }
 
-
 h1,
 h2,
 h3,
@@ -274,7 +270,7 @@ h6 {
     margin-top: -100px;
     color: white;
   }
- 
+
   .scanners img {
     width: 400px;
     height: auto;
@@ -300,7 +296,7 @@ h6 {
     justify-content: center;
     margin-top: -30px;
   }
-  
+
   #forPc {
     display: none;
   }
@@ -368,7 +364,7 @@ h6 {
 
   @keyframes l6 {
     100% {
-      inset: 0
+      inset: 0;
     }
   }
 
@@ -397,6 +393,8 @@ h6 {
   }
 
   .Wrpperr {
+    position: relative;
+    z-index: 1;
     justify-content: space-between;
     margin-left: auto;
     margin-right: auto;
@@ -418,6 +416,7 @@ h6 {
   }
 
   .wrapperMain {
+    position: relative;
     background-color: #000;
     display: flex;
     justify-content: center;
@@ -621,7 +620,6 @@ h6 {
 
   #dd {
     z-index: 7;
-
   }
 
   .popup-containerIn2 {
@@ -652,7 +650,6 @@ h6 {
     border: 2px solid rgba(255, 255, 255, 0.3);
   }
 
-
   .popupIn2 {
     padding-bottom: 20px;
     padding-left: 20px;
@@ -666,8 +663,6 @@ h6 {
     -webkit-backdrop-filter: blur(5px);
     border: 2px solid rgba(255, 255, 255, 0.3);
   }
-
-
 
   .popupIn2 {
     padding: 20px;
@@ -701,7 +696,7 @@ h6 {
     letter-spacing: 1px;
     color: #ffffff;
     text-align: center;
-    font-family: 'American Captain', sans-serif;
+    font-family: "American Captain", sans-serif;
   }
 
   .popupIn img {
@@ -870,7 +865,6 @@ h6 {
     display: flex;
   }
 
-
   .upgrades:hover {
     background-color: #009e42;
     color: rgb(255, 255, 255);
@@ -899,7 +893,6 @@ h6 {
     height: 30px;
     margin-left: 5px;
   }
-
 
   .popupImg {
     position: fixed;
@@ -938,7 +931,6 @@ h6 {
 }
 
 @media screen and (min-width: 500px) and (max-width: 767px) {
-
   .checkAccess2 {
     font-size: 14px;
     cursor: pointer;
@@ -954,13 +946,12 @@ h6 {
     margin-top: -100px;
     color: white;
   }
-  
+
   .scanners img {
     width: 450px;
     height: auto;
     object-fit: contain;
   }
-
 
   .connectNew {
     width: 60px; /* Or any fixed size */
@@ -981,7 +972,7 @@ h6 {
     justify-content: center;
     margin-top: -35px;
   }
-  
+
   #forPc {
     display: none;
   }
@@ -1049,7 +1040,7 @@ h6 {
 
   @keyframes l6 {
     100% {
-      inset: 0
+      inset: 0;
     }
   }
 
@@ -1078,6 +1069,8 @@ h6 {
   }
 
   .Wrpperr {
+    position: relative;
+    z-index: 1;
     justify-content: space-between;
     margin-left: auto;
     margin-right: auto;
@@ -1099,6 +1092,7 @@ h6 {
   }
 
   .wrapperMain {
+    position: relative;
     background-color: #000;
     display: flex;
     justify-content: center;
@@ -1265,7 +1259,6 @@ h6 {
     width: 90%;
   }
 
-
   .nft-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1283,7 +1276,6 @@ h6 {
     color: #00ff75;
     font-size: 18px;
     margin-bottom: 15px;
-
   }
 
   /* NFT Image */
@@ -1314,7 +1306,6 @@ h6 {
 
   #dd {
     z-index: 7;
-
   }
 
   .popup-containerIn2 {
@@ -1345,7 +1336,6 @@ h6 {
     border: 2px solid rgba(255, 255, 255, 0.3);
   }
 
-
   .popupIn2 {
     padding-bottom: 20px;
     padding-left: 20px;
@@ -1359,8 +1349,6 @@ h6 {
     -webkit-backdrop-filter: blur(5px);
     border: 2px solid rgba(255, 255, 255, 0.3);
   }
-
-
 
   .popupIn2 {
     padding: 20px;
@@ -1394,7 +1382,7 @@ h6 {
     letter-spacing: 1px;
     color: #ffffff;
     text-align: center;
-    font-family: 'American Captain', sans-serif;
+    font-family: "American Captain", sans-serif;
   }
 
   .popupIn img {
@@ -1563,7 +1551,6 @@ h6 {
     display: flex;
   }
 
-
   .upgrades:hover {
     background-color: #009e42;
     color: rgb(255, 255, 255);
@@ -1592,7 +1579,6 @@ h6 {
     height: 30px;
     margin-left: 5px;
   }
-
 
   .popupImg {
     position: fixed;
@@ -1631,7 +1617,6 @@ h6 {
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
-
   .checkAccess2 {
     font-size: 14px;
     cursor: pointer;
@@ -1647,8 +1632,7 @@ h6 {
     margin-top: -70px;
     color: white;
   }
-  
-  
+
   .connectNew {
     width: 90px; /* Or any fixed size */
     height: 90px;
@@ -1667,7 +1651,7 @@ h6 {
     align-items: center;
     justify-content: center;
   }
-  
+
   #forPc {
     display: none;
   }
@@ -1735,7 +1719,7 @@ h6 {
 
   @keyframes l6 {
     100% {
-      inset: 0
+      inset: 0;
     }
   }
 
@@ -1764,6 +1748,8 @@ h6 {
   }
 
   .Wrpperr {
+    position: relative;
+    z-index: 1;
     justify-content: space-between;
     margin-left: auto;
     margin-right: auto;
@@ -1785,6 +1771,7 @@ h6 {
   }
 
   .wrapperMain {
+    position: relative;
     background-color: #000;
     display: flex;
     justify-content: center;
@@ -1918,7 +1905,6 @@ h6 {
     white-space: nowrap;
     /* Ensures all items are in one line */
     margin-left: 7px;
-
   }
 
   /* NFT Card */
@@ -1987,7 +1973,6 @@ h6 {
 
   #dd {
     z-index: 7;
-
   }
 
   .popup-containerIn2 {
@@ -2018,7 +2003,6 @@ h6 {
     border: 2px solid rgba(255, 255, 255, 0.3);
   }
 
-
   .popupIn2 {
     padding-bottom: 20px;
     padding-left: 20px;
@@ -2032,8 +2016,6 @@ h6 {
     -webkit-backdrop-filter: blur(5px);
     border: 2px solid rgba(255, 255, 255, 0.3);
   }
-
-
 
   .popupIn2 {
     padding: 20px;
@@ -2067,7 +2049,7 @@ h6 {
     letter-spacing: 1px;
     color: #ffffff;
     text-align: center;
-    font-family: 'American Captain', sans-serif;
+    font-family: "American Captain", sans-serif;
   }
 
   .popupIn img {
@@ -2265,7 +2247,6 @@ h6 {
     margin-left: 5px;
   }
 
-
   .popupImg {
     position: fixed;
     top: 50%;
@@ -2305,7 +2286,6 @@ h6 {
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
-
   .checkAccess2 {
     font-size: 14px;
     cursor: pointer;
@@ -2321,8 +2301,7 @@ h6 {
     margin-top: -70px;
     color: white;
   }
-  
-  
+
   .connectNew {
     width: 90px; /* Or any fixed size */
     height: 90px;
@@ -2341,7 +2320,7 @@ h6 {
     align-items: center;
     justify-content: center;
   }
-  
+
   #forMob {
     display: none;
   }
@@ -2413,7 +2392,7 @@ h6 {
 
   @keyframes l6 {
     100% {
-      inset: 0
+      inset: 0;
     }
   }
 
@@ -2441,8 +2420,9 @@ h6 {
     justify-content: space-between;
   }
 
-
   .Wrpperr {
+    position: relative;
+    z-index: 1;
     justify-content: space-between;
     margin-left: auto;
     margin-right: auto;
@@ -2451,10 +2431,10 @@ h6 {
 
   .set-image {
     justify-content: space-between;
-
   }
 
   .wrapperMain {
+    position: relative;
     background-color: #000;
     display: flex;
     justify-content: center;
@@ -2540,7 +2520,6 @@ h6 {
     display: inline-block;
     margin-right: auto;
     margin-left: auto;
-
   }
 
   /* Background Image */
@@ -2566,7 +2545,6 @@ h6 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-
   }
 
   /* NFT Card */
@@ -2634,7 +2612,6 @@ h6 {
 
   #dd {
     z-index: 7;
-
   }
 
   .popup-containerIn2 {
@@ -2665,7 +2642,6 @@ h6 {
     border: 2px solid rgba(255, 255, 255, 0.3);
   }
 
-
   .popupIn2 {
     padding-bottom: 20px;
     padding-left: 20px;
@@ -2679,8 +2655,6 @@ h6 {
     -webkit-backdrop-filter: blur(5px);
     border: 2px solid rgba(255, 255, 255, 0.3);
   }
-
-
 
   .popupIn2 {
     padding: 20px;
@@ -2714,7 +2688,7 @@ h6 {
     letter-spacing: 1px;
     color: #ffffff;
     text-align: center;
-    font-family: 'American Captain', sans-serif;
+    font-family: "American Captain", sans-serif;
   }
 
   .popupIn img {
@@ -2883,7 +2857,6 @@ h6 {
     display: flex;
   }
 
-
   .upgrades:hover {
     background-color: #009e42;
     color: rgb(255, 255, 255);
@@ -2912,7 +2885,6 @@ h6 {
     height: 30px;
     margin-left: 5px;
   }
-
 
   .popupImg {
     position: fixed;
@@ -2952,7 +2924,6 @@ h6 {
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1919px) {
-
   .checkAccess2 {
     font-size: 14px;
     cursor: pointer;
@@ -2968,8 +2939,7 @@ h6 {
     margin-top: -70px;
     color: white;
   }
-  
-  
+
   .connectNew {
     width: 90px; /* Or any fixed size */
     height: 90px;
@@ -2988,7 +2958,7 @@ h6 {
     align-items: center;
     justify-content: center;
   }
-  
+
   #forMob {
     display: none;
   }
@@ -3060,7 +3030,7 @@ h6 {
 
   @keyframes l6 {
     100% {
-      inset: 0
+      inset: 0;
     }
   }
 
@@ -3088,8 +3058,9 @@ h6 {
     justify-content: space-between;
   }
 
-
   .Wrpperr {
+    position: relative;
+    z-index: 1;
     justify-content: space-between;
     margin-left: auto;
     margin-right: auto;
@@ -3098,10 +3069,10 @@ h6 {
 
   .set-image {
     justify-content: space-between;
-
   }
 
   .wrapperMain {
+    position: relative;
     background-color: #000;
     display: flex;
     justify-content: center;
@@ -3279,7 +3250,6 @@ h6 {
 
   #dd {
     z-index: 7;
-
   }
 
   .popup-containerIn2 {
@@ -3310,7 +3280,6 @@ h6 {
     border: 2px solid rgba(255, 255, 255, 0.3);
   }
 
-
   .popupIn2 {
     padding-bottom: 20px;
     padding-left: 20px;
@@ -3324,8 +3293,6 @@ h6 {
     -webkit-backdrop-filter: blur(5px);
     border: 2px solid rgba(255, 255, 255, 0.3);
   }
-
-
 
   .popupIn2 {
     padding: 20px;
@@ -3359,7 +3326,7 @@ h6 {
     letter-spacing: 1px;
     color: #ffffff;
     text-align: center;
-    font-family: 'American Captain', sans-serif;
+    font-family: "American Captain", sans-serif;
   }
 
   .popupIn img {
@@ -3528,7 +3495,6 @@ h6 {
     display: flex;
   }
 
-
   .upgrades:hover {
     background-color: #009e42;
     color: rgb(255, 255, 255);
@@ -3557,7 +3523,6 @@ h6 {
     height: 30px;
     margin-left: 5px;
   }
-
 
   .popupImg {
     position: fixed;
@@ -3597,7 +3562,6 @@ h6 {
 }
 
 @media screen and (min-width: 1920px) {
-
   .checkAccess2 {
     font-size: 14px;
     cursor: pointer;
@@ -3613,8 +3577,7 @@ h6 {
     margin-top: -70px;
     color: white;
   }
-  
-  
+
   .connectNew {
     width: 90px; /* Or any fixed size */
     height: 90px;
@@ -3633,7 +3596,7 @@ h6 {
     align-items: center;
     justify-content: center;
   }
-  
+
   #forMob {
     display: none;
   }
@@ -3705,7 +3668,7 @@ h6 {
 
   @keyframes l6 {
     100% {
-      inset: 0
+      inset: 0;
     }
   }
 
@@ -3733,8 +3696,9 @@ h6 {
     justify-content: space-between;
   }
 
-
   .Wrpperr {
+    position: relative;
+    z-index: 1;
     justify-content: space-between;
     margin-left: auto;
     margin-right: auto;
@@ -3743,10 +3707,10 @@ h6 {
 
   .set-image {
     justify-content: space-between;
-
   }
 
   .wrapperMain {
+    position: relative;
     background-color: #000;
     display: flex;
     justify-content: center;
@@ -3857,7 +3821,6 @@ h6 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-
   }
 
   /* NFT Card */
@@ -3924,7 +3887,6 @@ h6 {
 
   #dd {
     z-index: 7;
-
   }
 
   .popup-containerIn2 {
@@ -3955,7 +3917,6 @@ h6 {
     border: 2px solid rgba(255, 255, 255, 0.3);
   }
 
-
   .popupIn2 {
     padding-bottom: 20px;
     padding-left: 20px;
@@ -3969,8 +3930,6 @@ h6 {
     -webkit-backdrop-filter: blur(5px);
     border: 2px solid rgba(255, 255, 255, 0.3);
   }
-
-
 
   .popupIn2 {
     padding: 20px;
@@ -4004,7 +3963,7 @@ h6 {
     letter-spacing: 1px;
     color: #ffffff;
     text-align: center;
-    font-family: 'American Captain', sans-serif;
+    font-family: "American Captain", sans-serif;
   }
 
   .popupIn img {
@@ -4173,7 +4132,6 @@ h6 {
     display: flex;
   }
 
-
   .upgrades:hover {
     background-color: #009e42;
     color: rgb(255, 255, 255);
@@ -4202,7 +4160,6 @@ h6 {
     height: 30px;
     margin-left: 5px;
   }
-
 
   .popupImg {
     position: fixed;
