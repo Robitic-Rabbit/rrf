@@ -4,7 +4,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Web3Button, Web3Modal, useWeb3Modal } from '@web3modal/react';
 import { mainnet, useDisconnect, useAccount, useContractRead, useContractReads, useContractWrite, useNetwork, usePublicClient, useSwitchNetwork, useWaitForTransaction, useSignMessage } from 'wagmi';
 import { createPublicClient, formatEther, http, parseEther, webSocket } from 'viem';
-import { mainnet, base } from 'wagmi/chains';
+import { base } from 'wagmi/chains';
 import check from '../assets/check-mark.png';
 import errorImg from '../assets/error.png';
 import armory_line from '../assets/armory_line.png';
