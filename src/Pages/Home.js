@@ -3864,8 +3864,8 @@ const Home = () => {
 
 
 	async function handleConnect() {
-		if (chain.id !== 943) {
-			switchNetwork(943)
+		if (chain.id !== 1) {
+			switchNetwork(1)
 		}
 
 		/*if (localStorage.getItem('plsBtnClicked') !== 'plsBtn' && localStorage.getItem('plsConnected') !== 'pls') {
