@@ -4370,7 +4370,7 @@ const Home = () => {
 													}}>
 													<img
 														//src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnniw7Q92zB8NbAQW5whTVOGOOqVO6E7wM4A&s"} // Replace with your NFT image URL pattern
-														//src={`https://robotic-rabbit-metadata-live-replica05.s3.us-east-2.amazonaws.com/${tokenId}.png`} // Replace with your NFT image URL pattern
+														//src={`https://robotic-rabbit-collection.s3.amazonaws.com/${tokenId}.png`} // Replace with your NFT image URL pattern
 														src={imageUrls[tokenId]}
 														alt={`NFT ${tokenId}`}
 														className="nft-image"
@@ -4558,7 +4558,7 @@ const Home = () => {
 													}}>
 													<img
 														//src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnniw7Q92zB8NbAQW5whTVOGOOqVO6E7wM4A&s"} // Replace with your NFT image URL pattern
-														//src={`https://robotic-rabbit-metadata-live-replica05.s3.us-east-2.amazonaws.com/${tokenId}.png`} // Replace with your NFT image URL pattern
+														//src={`https://robotic-rabbit-collection.s3.amazonaws.com/${tokenId}.png`} // Replace with your NFT image URL pattern
 														src={imageUrls[tokenId]}
 														alt={`NFT ${tokenId}`}
 														className="nft-image"
