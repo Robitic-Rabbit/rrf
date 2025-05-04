@@ -3052,7 +3052,7 @@ const Home = () => {
 	};
 
 	const handleViewClick = () => {
-		//setImageUrl(`https://robotic-rabbit-metadata-live-replica05.s3.us-east-2.amazonaws.com/${tokenId}.png`);
+		//setImageUrl(`https://robotic-rabbit-collection.s3.amazonaws.com/${tokenId}.png`);
 		setImageUrl(true);
 	};
 
@@ -3130,7 +3130,7 @@ const Home = () => {
 	}
 
 	const setWeaponDivOpen = (tkId) => {
-		fetch(`https://robotic-rabbit-metadata-live-replica05.s3.us-east-2.amazonaws.com/${tkId}.json?t=${Date.now()}`,
+		fetch(`https://robotic-rabbit-collection.s3.amazonaws.com/${tkId}.json?t=${Date.now()}`,
 			{ cache: "no-store" } // Ensures fresh fetch
 		)
 
@@ -3270,7 +3270,7 @@ const Home = () => {
 				_tokenArray.map(async (tokenId) => {
 					try {
 						const response = await fetch(
-							`https://robotic-rabbit-metadata-live-replica05.s3.us-east-2.amazonaws.com/${tokenId}.json?t=${Date.now()}`,
+							`https://robotic-rabbit-collection.s3.amazonaws.com/${tokenId}.json?t=${Date.now()}`,
 							{ cache: "no-store" }
 						);
 						if (!response.ok) {
@@ -4159,7 +4159,7 @@ const Home = () => {
 
 		try {
 			// Fetch NFT metadata
-			const response = await fetch(`https://robotic-rabbit-metadata-live-replica05.s3.us-east-2.amazonaws.com/${tkId}.json?t=${Date.now()}`,
+			const response = await fetch(`https://robotic-rabbit-collection.s3.amazonaws.com/${tkId}.json?t=${Date.now()}`,
 				{ cache: "no-store" }
 			);
 			if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
@@ -4710,7 +4710,7 @@ const Home = () => {
 						{imageUrl && (
 							<div className="popupImg">
 								<button className="popup-closeInImg" onClick={closePopup}>×</button>
-								{/*<img src={`https://robotic-rabbit-metadata-live-replica05.s3.us-east-2.amazonaws.com/${_showImg}.png`} alt="NFT" id="popup-img" />*/}
+								{/*<img src={`https://robotic-rabbit-collection.s3.amazonaws.com/${_showImg}.png`} alt="NFT" id="popup-img" />*/}
 								<img src={_viewNFTImg} alt="NFT" id="popup-img" />
 							</div>
 						)}
