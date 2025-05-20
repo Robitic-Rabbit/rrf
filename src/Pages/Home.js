@@ -2902,7 +2902,7 @@ const Home = () => {
 	const transport = webSocket('wss://mainnet.infura.io/ws/v3/50597910853247b38793be4ec6b05dc8')
 	const web3_mm = new Web3_mm(Web3_mm.givenProvider || 'https://mainnet.infura.io/v3/50597910853247b38793be4ec6b05dc8');
 
-	const web3_1155 = new Web3_1155(Web3_1155.givenProvider || 'https://base-mainnet.infura.io/v3/50597910853247b38793be4ec6b05dc8');
+	const web3_1155 = new Web3_1155(Web3_1155.givenProvider || 'https://responsive-fittest-water.base-mainnet.quiknode.pro/dc8bde64fcdc0963ee78c756104a3c7318677cac/');
 	//const web3_1155 = new Web3_1155(Web3_1155.givenProvider || 'https://polygon-mainnet.infura.io/v3/9aad89c8e515457ab8b7805f5da593ea');
 
 	const publicClient = createPublicClient({
