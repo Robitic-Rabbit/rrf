@@ -4842,7 +4842,7 @@ const Home = () => {
 									)}
 
 									<div className='view' onClick={handleViewClick}><span className='viewTxt'>View NFT</span> <img src={eye} /></div>
-									<div className='view' onClick={handleViewClickNFTs}><span className='viewTxt'>View My Armoury NFTs</span> <img src={eye} /></div>
+									<div className='view' onClick={handleViewClickNFTs}><span className='viewTxt'>View My Armory NFTs</span> <img src={eye} /></div>
 
 								</div>
 
