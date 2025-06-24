@@ -6,9 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
 import { Web3Modal } from '@web3modal/react'
 import { configureChains, createConfig, mainnet, WagmiConfig } from 'wagmi'
+import { base } from 'wagmi/chains';
 //import { mainnet } from 'wagmi/chains'
 
-const chains = [mainnet]
+//CHANGE THE NETWORK TO MAINNET WHEN ON THE HOME.JS
+
+const chains = [base]
 const projectId = '1ee662092220d9e279a243cd7270bbae'
 
 const { publicClient } = configureChains(chains, [w3mProvider({ projectId })])
