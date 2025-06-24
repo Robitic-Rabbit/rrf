@@ -1,22 +1,28 @@
-import React from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import Home from "../src/Pages/Home";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+
+import SignIn from "./Pages/SignIn";
+import SignUp from "./Pages/SignUp";
+import Home from "./Pages/Home";
 
 function App() {
+  return (
+    <div>
+      <ul id="bg-animation">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
 
-	return (
-		<div>
-			<BrowserRouter>
-				<Routes>
-
-					<Route path='/' element={<Home />} />
-
-				</Routes>
-			</BrowserRouter>
-
-		</div>
-
-	)
+      <BrowserRouter>
+        <Routes>
+          <Route path="/inventory" element={<Home />} />
+          <Route path="/" element={<SignIn />} />
+          <Route path="/sign-up" element={<SignUp />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
