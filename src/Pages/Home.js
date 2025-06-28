@@ -2915,6 +2915,11 @@ const Home = () => {
 		}
 	})
 
+	BigInt.prototype.toJSON = function () {
+		return this.toString();
+	};
+
+
 	//const transport = webSocket(websocketUrl);
 
 	const transport = webSocket('wss://mainnet.infura.io/ws/v3/50597910853247b38793be4ec6b05dc8')
@@ -3007,7 +3012,7 @@ const Home = () => {
 	const [showDetails, setShowDetails] = useState(false); // Track when to show details
 	const [fadeOut, setFadeOut] = useState(false); // Track fade-out effect
 	const [_showAllArmories, setShowAllArmories] = useState(0); // Track fade-out effect
-
+	const [loadingPreviews, setLoadingPreviews] = useState({});
 
 	const contract_1155 = new web3_1155.eth.Contract(ABIArmoury, addressArmoury);
 	//const Web3 = require('web3'); 
@@ -4170,8 +4175,7 @@ const Home = () => {
 		}
 	};
 
-
-	const fetchMetadata = async (tkId) => {
+	const fetchMetadata = async (tkId, isPreview = false) => {
 		console.log("Fetching Metadata for Token ID:", tkId);
 		setLoadingImg(true); // Start loading
 
@@ -4192,7 +4196,6 @@ const Home = () => {
 				}).filter(id => id !== null);
 
 				console.log("Matched Traits:", matchedTraits);
-
 
 				const upgradedStatuses = await Promise.all(
 					matchedTraits.map(async (traitId) => {
@@ -4215,7 +4218,6 @@ const Home = () => {
 				const upgradedTraitsArray = userUpgradedMatches; // Store upgraded trait IDs in an array
 				console.log("Array of Upgraded Trait IDs:", upgradedTraitsArray);
 
-
 				// Fetch upgraded traits from blockchain
 				const upgradedTraits = await getUpgradedTraits();
 
@@ -4225,11 +4227,9 @@ const Home = () => {
 
 				console.log("2-- :" + upgradedTraitsNumbers);
 
-
 				// Find upgraded traits in this NFT
 				const upgradedMatches = matchedTraits.filter(id => upgradedTraitsNumbers.includes(id));
 				console.log("3-- :" + upgradedMatches);
-
 
 				console.log("Upgraded Traits in this NFT:", upgradedMatches);
 
@@ -4242,7 +4242,6 @@ const Home = () => {
 				console.log("upgradedTraitDetails : " + JSON.stringify(upgradedTraitDetails));
 				setUpgradedTraitDetails(upgradedTraitDetails);
 
-
 				// Map upgraded trait IDs to their Type & Name
 				const upgradedTraitDetails2 = userUpgradedMatches.map(id => {
 					const trait = traitIdList.find(trait => trait.id === id);
@@ -4252,13 +4251,16 @@ const Home = () => {
 				console.log("upgradedTraitDetails2 : " + JSON.stringify(upgradedTraitDetails2));
 				setUpgradedTraitDetails2(upgradedTraitDetails2);
 
-
 				fetch("https://roboticrabbitsyndicate.io:3001/api/createUpgradeImg", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
 					},
-					body: JSON.stringify({ _upgradedTraitDetails: upgradedTraitDetails, _upgradedTraitDetails2: upgradedTraitDetails2 })
+					body: JSON.stringify({
+						_upgradedTraitDetails: upgradedTraitDetails,
+						_upgradedTraitDetails2: upgradedTraitDetails2,
+						isPreview: isPreview // Add this flag
+					})
 				})
 					.then(response => response.json())
 					.then(data => {
@@ -4272,14 +4274,12 @@ const Home = () => {
 
 				console.log("Upgraded Trait Details:", upgradedTraitDetails);
 
-				//return upgradedImageUrls; // Return all matching image URLs
+				setLoadingImg(false);
+				setShowPopup(true);
+
 			} else {
 				console.error("Invalid attributes format");
 			}
-
-			setLoadingImg(false);
-			//await new Promise(resolve => setTimeout(resolve, 2000));
-			setShowPopup(true);
 
 		} catch (err) {
 			console.error("Error fetching metadata:", err.message);
@@ -4349,7 +4349,6 @@ const Home = () => {
 	return (
 		<div>
 			{showDetails ? (
-
 				<>
 					<canvas id="canvas" style={{ display: 'none' }}></canvas> {/* Canvas for image processing */}
 
@@ -4751,26 +4750,66 @@ const Home = () => {
 
 									{imageLoaded && _upgradedTraitDetails && _upgradedTraitDetails.length > 0 && (
 										<div className='traitUpgradeMain'>
-											{_upgradedTraitDetails
-												.filter(trait =>
-													!["Background", "Special Power", "Weapons", "Gear"].includes(trait.type) &&
-													!_upgradedTraitDetails2.some(t2 => t2.type === trait.type) // Exclude matching trait types
-												)
-												.map((trait, index) => (
-													<button
-														key={index}
-														className="traitUpgrade"
-														onClick={() => sendUpgradeDetails(trait.type, trait.name, _showImg)}
-													>
-														{trait.type}
-													</button>
-												))
-											}
+											<div className="preview-section">
+												{_upgradedTraitDetails
+													.filter(trait =>
+														!["Background", "Special Power", "Weapons", "Gear"].includes(trait.type) &&
+														!_upgradedTraitDetails2.some(t2 => t2.type === trait.type)
+													)
+													.map((trait, index) => (
+														<div key={index} className="trait-actions">
+															<button
+																className="traitUpgrade" id="previewId"
+																onClick={() => {
+																	setLoadingPreviews(prev => ({ ...prev, [trait.type]: true }));
+																	fetch("https://roboticrabbitsyndicate.io:3001/api/createPreview", {
+																		method: "POST",
+																		headers: {
+																			"Content-Type": "application/json"
+																		},
+																		body: JSON.stringify({
+																			traitType: trait.type,
+																			traitName: trait.name,
+																			tokenId: _showImg,
+																			isPreview: true
+																		})
+																	})
+																		.then(response => response.json())
+																		.then(data => {
+																			if (data.image) {
+																				document.getElementById("generatedImage").src = data.image;
+																				setImageLoaded(false); // Trigger reload
+																				setTimeout(() => {
+																					setImageLoaded(true);
+																					setLoadingPreviews(prev => ({ ...prev, [trait.type]: false }));
+																				}, 100);
+																			}
+																		})
+																		.catch(error => {
+																			console.error("Error:", error);
+																			setLoadingPreviews(prev => ({ ...prev, [trait.type]: false }));
+																		});
+																}}
+																disabled={loadingPreviews[trait.type]}
+															>
+																{loadingPreviews[trait.type] ? (
+																	<div className="preview-loader"></div>
+																) : (
+																	`Preview ${trait.type}`
+																)}
+															</button>
+															<button
+																className="traitUpgrade"
+																onClick={() => sendUpgradeDetails(trait.type, trait.name, _showImg)}
+															>
+																Upgrade {trait.type}
+															</button>
+														</div>
+													))
+												}
+											</div>
 										</div>
 									)}
-
-
-
 								</div>
 							)}
 
@@ -4998,16 +5037,16 @@ const Home = () => {
 							{_connected ? (
 								<>
 									{/*<button className='checkAccess2' onClick={() => disconnectWallet()}
-										style={{
-											position: 'absolute',
-											top: '50%',
-											left: '50%',
-											transform: 'translate(-50%, -50%)',
-											zIndex: 10,
-										}}>
-										{walletAddress === "" ? "Connect Wallet" : shortenAddress(walletAddress)}
-										<br />
-									</button>*/}
+													style={{
+														position: 'absolute',
+														top: '50%',
+														left: '50%',
+														transform: 'translate(-50%, -50%)',
+														zIndex: 10,
+													}}>
+													{walletAddress === "" ? "Connect Wallet" : shortenAddress(walletAddress)}
+													<br />
+												</button>*/}
 
 									<button class="connectNew" onClick={connectWalletScanner}
 										style={{
@@ -5038,7 +5077,6 @@ const Home = () => {
 
 
 			)}
-
 		</div>
 	)
 
