@@ -24,6 +24,12 @@ import scanner_error_mob from '../assets/CarroTechScannerUI/IMG_3321.png';
 import syndiacte from '../assets/syndicate.png';
 import armory from '../assets/armory.png';
 
+import brickBgJpg from "../assets/background/brick-bg.jpg";
+import brickBgWebp from "../assets/background/brick-bg.webp";
+import bgJpg from "../assets/background/bg.jpg";
+import bgWebp from "../assets/background/bg.webp";
+
+
 const ops = () => {
 	window.open("#");
 }
@@ -4348,177 +4354,243 @@ const Home = () => {
 
 	return (
 		<div>
- 
-				<>
-					<canvas id="canvas" style={{ display: 'none' }}></canvas> {/* Canvas for image processing */}
 
-					<div className='wrapperMain'>
+			<>
+				<canvas id="canvas" style={{ display: 'none' }}></canvas> {/* Canvas for image processing */}
 
-						<div className="Wrpperr">
-							<div className="in-header">
-								<div id="headerH1">Inventory</div>
-								{_connected ? (
-									<button class="connect" onClick={() => disconnectWallet()}>
-										{walletAddress === "" ? "Connect Wallet" : shortenAddress(walletAddress)}
-									</button>
-								) : (
-									<button class="connect" onClick={() => { open(); }}>Wallet</button>
-								)}
+				<div className="wrapperMain">
+					<div
+						style={{
+							position: "fixed",
+							inset: 0,
+							backgroundColor: "black",
+						}}
+					>
+						<picture>
+							<source srcSet={brickBgWebp} />
+							<img
+								src={brickBgJpg}
+								alt="Inventory brick background"
+								style={{
+									width: "100%",
+									height: "100%",
+									objectFit: "cover",
+									objectPosition: "center",
+								}}
+							/>
+						</picture>
+					</div>
+					<div
+						style={{
+							position: "fixed",
+							top: 0,
+							left: 0,
+							right: 0,
+							height: "50%",
+							backgroundColor: "black",
+						}}
+					>
+						<picture>
+							<source srcSet={bgWebp} />
+							<img
+								src={bgJpg}
+								alt="Inventory background"
+								style={{
+									width: "100%",
+									height: "100%",
+									objectFit: "cover",
+									objectPosition: "center",
+								}}
+							/>
+						</picture>
+					</div>
+					<div
+						style={{
+							position: "fixed",
+							top: 0,
+							bottom: 0,
+							left: 0,
+							right: 0,
+							margin: "auto",
+							width: "100%",
+							height: "20%",
+							backgroundImage:
+								"linear-gradient(to bottom, rgba(0,0,0,0), black, rgba(0,0,0,0))",
+						}}
+					></div>
+					<div
+						style={{
+							position: "fixed",
+							inset: 0,
+							backgroundColor: "rgba(0,0,0,0.7)",
+						}}
+					></div>
+
+					<div className="Wrpperr">
+						<div className="in-header">
+							<div id="headerH1">Inventory</div>
+							{_connected ? (
+								<button class="connect" onClick={() => disconnectWallet()}>
+									{walletAddress === "" ? "Connect Wallet" : shortenAddress(walletAddress)}
+								</button>
+							) : (
+								<button class="connect" onClick={() => { open(); }}>Wallet</button>
+							)}
+						</div>
+
+
+						<div className="set-image" id="forPc">
+
+							<div id="box1" className={'inventory-container'}>
+
+								<img src={syndiacte} alt="Inventory Background" className="inventory-image" />
+
+								{_loadingImgs > 0 ?
+									<div className="nft-overlay">
+										<div className='load'>Loading...</div>
+									</div> :
+
+
+									<div className="nft-overlay">
+										<div className='showNftsSection'>
+
+											{_tokenArray.map((tokenId, index) => (
+												<div key={index} className="nft-card" onClick={() => handleClick(tokenId)}
+													style={{
+														backgroundColor: selectedToken === tokenId ? "#02e25f70" : "transparent",
+													}}>
+													<img
+														//src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnniw7Q92zB8NbAQW5whTVOGOOqVO6E7wM4A&s"} // Replace with your NFT image URL pattern
+														//src={`https://robotic-rabbit-collection.s3.amazonaws.com/${tokenId}.png`} // Replace with your NFT image URL pattern
+														src={imageUrls[tokenId]}
+														alt={`NFT ${tokenId}`}
+														className="nft-image"
+													/>
+
+													<p className="nft-text">Token ID: <br /> {tokenId.toString()}</p>
+												</div>
+											))}
+
+											{_tokenArray.length < 1 && _connected ?
+												<p className='load2'>No NFTs found.</p> : null}
+
+										</div>
+									</div>
+
+								}
+
 							</div>
 
-
-							<div className="set-image" id="forPc">
-
-								<div id="box1" className={'inventory-container'}>
-
-									<img src={syndiacte} alt="Inventory Background" className="inventory-image" />
-
-									{_loadingImgs > 0 ?
-										<div className="nft-overlay">
-											<div className='load'>Loading...</div>
-										</div> :
+							{_popDivOpen ?
+								<div className="inventory-container">
+									{/* Background image */}
+									<img id="box2" src={armory} alt="Inventory Background" className="inventory-image" />
 
 
-										<div className="nft-overlay">
-											<div className='showNftsSection'>
+									{_connected ?
+										<>
+											{_tokenArray.length > 1 && _connected ?
+												<>
+													{!(_choiceIndex === 0 || _choiceIndex === 1 || _choiceIndex === 2 || _loadingImgs2 > 0) && (
+														<button className='refresg-overlay'>
+															{/*<div className='txtR'>Select Your NFT to view the items</div>*/}
+														</button>
+													)}
+												</> : <button className='refresg-overlay'>
+													{/*<div className='txtR'>Select Your NFT to view the items</div>*/}
+												</button>
+											}
+										</> :
 
-												{_tokenArray.map((tokenId, index) => (
-													<div key={index} className="nft-card" onClick={() => handleClick(tokenId)}
-														style={{
-															backgroundColor: selectedToken === tokenId ? "#02e25f70" : "transparent",
-														}}>
-														<img
-															//src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnniw7Q92zB8NbAQW5whTVOGOOqVO6E7wM4A&s"} // Replace with your NFT image URL pattern
-															//src={`https://robotic-rabbit-collection.s3.amazonaws.com/${tokenId}.png`} // Replace with your NFT image URL pattern
-															src={imageUrls[tokenId]}
-															alt={`NFT ${tokenId}`}
-															className="nft-image"
-														/>
-
-														<p className="nft-text">Token ID: <br /> {tokenId.toString()}</p>
-													</div>
-												))}
-
-												{_tokenArray.length < 1 && _connected ?
-													<p className='load2'>No NFTs found.</p> : null}
-
-											</div>
-										</div>
+										<button className='refresg-overlay'>
+											<div className='txtR'>Connect your wallet to view the items</div>
+										</button>
 
 									}
+									<>
+										{_loadingImgs2 > 0 ? (
+											<div className="nft-overlay">
+												<div className='load'>Loading...</div>
+											</div>
+										) : (
 
-								</div>
-
-								{_popDivOpen ?
-									<div className="inventory-container">
-										{/* Background image */}
-										<img id="box2" src={armory} alt="Inventory Background" className="inventory-image" />
-
-
-										{_connected ?
 											<>
-												{_tokenArray.length > 1 && _connected ?
-													<>
-														{!(_choiceIndex === 0 || _choiceIndex === 1 || _choiceIndex === 2 || _loadingImgs2 > 0) && (
-															<button className='refresg-overlay'>
-																{/*<div className='txtR'>Select Your NFT to view the items</div>*/}
-															</button>
+												{_choiceIndex === 0 && (
+													<div className="nft-overlay2">
+														{_tokenArray_1155.length > 0 ? (
+															<>
+																<div className='choose2'>Choose a Special Power</div>
+																<div className="nft-grid">
+																	{_tokenArray_1155.map((token) => (
+																		<div className="nft-card" key={token.tokenId} onClick={() => choosePower_SP(token.tokenId)}>
+																			<img
+																				src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
+																				alt={`NFT ${token.tokenId}`}
+																				className="nft-image"
+																			/>
+																			<p className='nft-text'>Token ID: {token.tokenId}</p>
+																			<p className='nft-text'>Balance: {token.balance.toString()}</p>
+																		</div>
+																	))}
+																</div>
+															</>
+														) : (
+															<p className='load2'>No Special Powers found.</p>
 														)}
-													</> : <button className='refresg-overlay'>
-														{/*<div className='txtR'>Select Your NFT to view the items</div>*/}
-													</button>
-												}
-											</> :
+													</div>
+												)}
 
-											<button className='refresg-overlay'>
-												<div className='txtR'>Connect your wallet to view the items</div>
-											</button>
+												{_choiceIndex === 1 && (
+													<div className="nft-overlay2">
+														{_tokenArray_1155.length > 0 ? (
+															<>
+																<div className='choose2'>Choose a Weapon</div>
+																<div className="nft-grid">
+																	{_tokenArray_1155.filter(token => token.tokenId !== 0).map((token) => (
+																		<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
+																			<img
+																				src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
+																				alt={`NFT ${token.tokenId}`}
+																				className="nft-image"
+																			/>
+																			<p className='nft-text'>Token ID: {token.tokenId}</p>
+																			<p className='nft-text'>Balance: {token.balance.toString()}</p>
+																		</div>
+																	))}
+																</div>
+															</>
+														) : (
+															<p className='load2'>No Weapons found.</p>
+														)}
+													</div>
+												)}
 
-										}
-										<>
-											{_loadingImgs2 > 0 ? (
-												<div className="nft-overlay">
-													<div className='load'>Loading...</div>
-												</div>
-											) : (
+												{_choiceIndex === 2 && (
+													<div className="nft-overlay2">
+														{_tokenArray_1155.length > 0 ? (
+															<>
+																<div className='choose2'>Choose a Drone</div>
+																<div className="nft-grid">
+																	{_tokenArray_1155.map((token) => (
+																		<div className="nft-card" key={token.tokenId} onClick={() => choosePower_Drn(token.tokenId)}>
+																			<img
+																				src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
+																				alt={`NFT ${token.tokenId}`}
+																				className="nft-image"
+																			/>
+																			<p className='nft-text'>Token ID: {token.tokenId}</p>
+																			<p className='nft-text'>Balance: {token.balance.toString()}</p>
+																		</div>
+																	))}
+																</div>
+															</>
+														) : (
+															<p className='load2'>No Drones found.</p>
+														)}
+													</div>
+												)}
 
-												<>
-													{_choiceIndex === 0 && (
-														<div className="nft-overlay2">
-															{_tokenArray_1155.length > 0 ? (
-																<>
-																	<div className='choose2'>Choose a Special Power</div>
-																	<div className="nft-grid">
-																		{_tokenArray_1155.map((token) => (
-																			<div className="nft-card" key={token.tokenId} onClick={() => choosePower_SP(token.tokenId)}>
-																				<img
-																					src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
-																					alt={`NFT ${token.tokenId}`}
-																					className="nft-image"
-																				/>
-																				<p className='nft-text'>Token ID: {token.tokenId}</p>
-																				<p className='nft-text'>Balance: {token.balance.toString()}</p>
-																			</div>
-																		))}
-																	</div>
-																</>
-															) : (
-																<p className='load2'>No Special Powers found.</p>
-															)}
-														</div>
-													)}
-
-													{_choiceIndex === 1 && (
-														<div className="nft-overlay2">
-															{_tokenArray_1155.length > 0 ? (
-																<>
-																	<div className='choose2'>Choose a Weapon</div>
-																	<div className="nft-grid">
-																		{_tokenArray_1155.filter(token => token.tokenId !== 0).map((token) => (
-																			<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
-																				<img
-																					src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
-																					alt={`NFT ${token.tokenId}`}
-																					className="nft-image"
-																				/>
-																				<p className='nft-text'>Token ID: {token.tokenId}</p>
-																				<p className='nft-text'>Balance: {token.balance.toString()}</p>
-																			</div>
-																		))}
-																	</div>
-																</>
-															) : (
-																<p className='load2'>No Weapons found.</p>
-															)}
-														</div>
-													)}
-
-													{_choiceIndex === 2 && (
-														<div className="nft-overlay2">
-															{_tokenArray_1155.length > 0 ? (
-																<>
-																	<div className='choose2'>Choose a Drone</div>
-																	<div className="nft-grid">
-																		{_tokenArray_1155.map((token) => (
-																			<div className="nft-card" key={token.tokenId} onClick={() => choosePower_Drn(token.tokenId)}>
-																				<img
-																					src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
-																					alt={`NFT ${token.tokenId}`}
-																					className="nft-image"
-																				/>
-																				<p className='nft-text'>Token ID: {token.tokenId}</p>
-																				<p className='nft-text'>Balance: {token.balance.toString()}</p>
-																			</div>
-																		))}
-																	</div>
-																</>
-															) : (
-																<p className='load2'>No Drones found.</p>
-															)}
-														</div>
-													)}
-
-													{/*_choiceIndex >= 3 && (
+												{/*_choiceIndex >= 3 && (
 											<div className="nft-overlay2">
 												{_tokenArray_1155.length > 0 ? (
 													<>
@@ -4542,353 +4614,353 @@ const Home = () => {
 												)}
 											</div>
 										)*/}
+											</>
+
+
+										)}
+									</>
+
+
+								</div>
+
+								: null}
+
+
+						</div>
+
+						<div className="set-image" id="forMob">
+
+							<div id="box1T" className='boxWraper'>
+								<img className='lineImg' src={syndiacte_line} />
+								<div id="box1" className='inventory-container'>
+
+
+									{_loadingImgs > 0 ?
+										<div className="nft-overlay">
+											<div className='load'>Loading...</div>
+										</div> :
+
+										<div className="nft-overlay--2">
+
+											{_tokenArray.map((tokenId, index) => (
+												<div key={index} className="nft-card" onClick={() => handleClick(tokenId)}
+													style={{
+														backgroundColor: selectedToken === tokenId ? "#02e25f70" : "transparent",
+													}}>
+													<img
+														//src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnniw7Q92zB8NbAQW5whTVOGOOqVO6E7wM4A&s"} // Replace with your NFT image URL pattern
+														//src={`https://robotic-rabbit-collection.s3.amazonaws.com/${tokenId}.png`} // Replace with your NFT image URL pattern
+														src={imageUrls[tokenId]}
+														alt={`NFT ${tokenId}`}
+														className="nft-image"
+													/>
+
+													<p className="nft-text">Token ID: <br /> {tokenId.toString()}</p>
+												</div>
+											))}
+
+											{_tokenArray.length < 1 && _connected ?
+												<p className='load2'>No NFTs found.</p> : null}
+
+										</div>
+									}
+
+								</div>
+							</div>
+
+							{_popDivOpen ?
+								<div id="box2T" className='boxWraper2'>
+									<img className='lineImg' src={armory_line} />
+
+									<div className="inventory-container2">
+										{/* Background image */}
+
+										{_connected ?
+											<>
+												{_tokenArray.length > 1 && _connected ?
+													<>
+														{!(_choiceIndex === 0 || _choiceIndex === 1 || _choiceIndex === 2 || _loadingImgs2 > 0) && (
+															<button className='refresg-overlay'>
+																{/*<div className='txtR'>Select Your NFT to view the items</div>*/}
+															</button>
+														)}
+													</> : <button className='refresg-overlay'>
+														<div className='txtR'>You need to have NFT to view the items</div>
+													</button>
+												}
+											</> :
+
+											<button className='refresg-overlay'>
+												<div className='txtR'>Connect your wallet to view the items</div>
+											</button>
+
+										}
+										<>
+											{_loadingImgs2 > 0 ? (
+												<div className="nft-overlay">
+													<div className='load'>Loading...</div>
+												</div>
+											) : (
+												<>
+													{_choiceIndex === 0 && (
+														<div className="nft-overlay">
+															<div>
+																{_tokenArray_1155.length > 0 ? (
+																	<>
+																		<div className='choose2'>Choose a Special Power</div>
+																		<div className="nft-overlay--2">
+																			{_tokenArray_1155.map((token) => (
+																				<div className="nft-card" key={token.tokenId} onClick={() => choosePower_SP(token.tokenId)}>
+																					<img
+																						src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
+																						alt={`NFT ${token.tokenId}`}
+																						className="nft-image"
+																					/>
+																					<p className='nft-text'>Token ID: {token.tokenId}</p>
+																					<p className='nft-text'>Balance: {token.balance.toString()}</p>
+																				</div>
+																			))}
+																		</div>
+																	</>
+																) : (
+																	<p className='load2'>No Special Powers found.</p>
+																)}
+															</div>
+														</div>
+													)}
+
+													{_choiceIndex === 1 && (
+														<div className="nft-overlay">
+															<div>
+
+																{_tokenArray_1155.length > 0 ? (
+																	<>
+																		<div className='choose2'>Choose a Weapon</div>
+
+																		<div className="nft-overlay--2">
+																			{_tokenArray_1155.filter(token => token.tokenId !== 0)
+																				.map((token) => (
+																					<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
+																						<img
+																							src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
+																							alt={`NFT ${token.tokenId}`}
+																							className="nft-image"
+																						/>
+																						<p className='nft-text'>Token ID: {token.tokenId}</p>
+																						<p className='nft-text'>Balance: {token.balance.toString()}</p>
+																					</div>
+																				))}
+																		</div>
+																	</>
+																) : (
+																	<p className='load2'>No Weapons found.</p>
+																)}
+															</div>
+														</div>
+													)}
+
+													{_choiceIndex === 2 && (
+														<div className="nft-overlay">
+															<div>
+
+																{_tokenArray_1155.length > 0 ? (
+																	<>
+																		<div className='choose2'>Choose a Drone</div>
+																		<div className="nft-overlay--2">
+																			{_tokenArray_1155.map((token) => (
+																				<div className="nft-card" key={token.tokenId} onClick={() => choosePower_Drn(token.tokenId)}>
+																					<img
+																						src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
+																						alt={`NFT ${token.tokenId}`}
+																						className="nft-image"
+																					/>
+																					<p className='nft-text'>Token ID: {token.tokenId}</p>
+																					<p className='nft-text'>Balance: {token.balance.toString()}</p>
+																				</div>
+																			))}
+																		</div>
+																	</>
+																) : (
+																	<p className='load2'>No Drone found.</p>
+																)}
+															</div>
+														</div>
+													)}
+
 												</>
-
-
 											)}
 										</>
 
 
 									</div>
-
-									: null}
-
-
-							</div>
-
-							<div className="set-image" id="forMob">
-
-								<div id="box1T" className='boxWraper'>
-									<img className='lineImg' src={syndiacte_line} />
-									<div id="box1" className='inventory-container'>
-
-
-										{_loadingImgs > 0 ?
-											<div className="nft-overlay">
-												<div className='load'>Loading...</div>
-											</div> :
-
-											<div className="nft-overlay--2">
-
-												{_tokenArray.map((tokenId, index) => (
-													<div key={index} className="nft-card" onClick={() => handleClick(tokenId)}
-														style={{
-															backgroundColor: selectedToken === tokenId ? "#02e25f70" : "transparent",
-														}}>
-														<img
-															//src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnniw7Q92zB8NbAQW5whTVOGOOqVO6E7wM4A&s"} // Replace with your NFT image URL pattern
-															//src={`https://robotic-rabbit-collection.s3.amazonaws.com/${tokenId}.png`} // Replace with your NFT image URL pattern
-															src={imageUrls[tokenId]}
-															alt={`NFT ${tokenId}`}
-															className="nft-image"
-														/>
-
-														<p className="nft-text">Token ID: <br /> {tokenId.toString()}</p>
-													</div>
-												))}
-
-												{_tokenArray.length < 1 && _connected ?
-													<p className='load2'>No NFTs found.</p> : null}
-
-											</div>
-										}
-
-									</div>
 								</div>
+								: null}
 
-								{_popDivOpen ?
-									<div id="box2T" className='boxWraper2'>
-										<img className='lineImg' src={armory_line} />
+						</div>
 
-										<div className="inventory-container2">
-											{/* Background image */}
+						{imageUrl && (
+							<div className="popupImg">
+								<button className="popup-closeInImg" onClick={closePopup}>×</button>
+								{/*<img src={`https://robotic-rabbit-metadata-live-replica05.s3.us-east-2.amazonaws.com/${_showImg}.png`} alt="NFT" id="popup-img" />*/}
+								<img src={_viewNFTImg} alt="NFT" id="popup-img" />
+							</div>
+						)}
 
-											{_connected ?
-												<>
-													{_tokenArray.length > 1 && _connected ?
-														<>
-															{!(_choiceIndex === 0 || _choiceIndex === 1 || _choiceIndex === 2 || _loadingImgs2 > 0) && (
-																<button className='refresg-overlay'>
-																	{/*<div className='txtR'>Select Your NFT to view the items</div>*/}
-																</button>
+						{showPopup && (
+							<div className="popupImg">
+								<button className="popup-closeInImg" onClick={() => setShowPopup(false)}>×</button>
+
+								{/* Show "Loading..." until the image is loaded */}
+								{!imageLoaded && <p className='ldtxt'>Loading...</p>}
+
+								<img
+									id="generatedImage"
+									alt="Generated NFT"
+									onLoad={() => setImageLoaded(true)}
+									style={{ display: imageLoaded ? "block" : "none" }}
+								/>
+
+								{imageLoaded && _upgradedTraitDetails && _upgradedTraitDetails.length > 0 && (
+									<div className='traitUpgradeMain'>
+										<div className="preview-section">
+											{_upgradedTraitDetails
+												.filter(trait =>
+													!["Background", "Special Power", "Weapons", "Gear"].includes(trait.type) &&
+													!_upgradedTraitDetails2.some(t2 => t2.type === trait.type)
+												)
+												.map((trait, index) => (
+													<div key={index} className="trait-actions">
+														<button
+															className="traitUpgrade" id="previewId"
+															onClick={() => {
+																setLoadingPreviews(prev => ({ ...prev, [trait.type]: true }));
+																fetch("https://roboticrabbitsyndicate.io:3001/api/createPreview", {
+																	method: "POST",
+																	headers: {
+																		"Content-Type": "application/json"
+																	},
+																	body: JSON.stringify({
+																		traitType: trait.type,
+																		traitName: trait.name,
+																		tokenId: _showImg,
+																		isPreview: true
+																	})
+																})
+																	.then(response => response.json())
+																	.then(data => {
+																		if (data.image) {
+																			document.getElementById("generatedImage").src = data.image;
+																			setImageLoaded(false); // Trigger reload
+																			setTimeout(() => {
+																				setImageLoaded(true);
+																				setLoadingPreviews(prev => ({ ...prev, [trait.type]: false }));
+																			}, 100);
+																		}
+																	})
+																	.catch(error => {
+																		console.error("Error:", error);
+																		setLoadingPreviews(prev => ({ ...prev, [trait.type]: false }));
+																	});
+															}}
+															disabled={loadingPreviews[trait.type]}
+														>
+															{loadingPreviews[trait.type] ? (
+																<div className="preview-loader"></div>
+															) : (
+																`Preview ${trait.type}`
 															)}
-														</> : <button className='refresg-overlay'>
-															<div className='txtR'>You need to have NFT to view the items</div>
 														</button>
-													}
-												</> :
-
-												<button className='refresg-overlay'>
-													<div className='txtR'>Connect your wallet to view the items</div>
-												</button>
-
-											}
-											<>
-												{_loadingImgs2 > 0 ? (
-													<div className="nft-overlay">
-														<div className='load'>Loading...</div>
+														<button
+															className="traitUpgrade"
+															onClick={() => sendUpgradeDetails(trait.type, trait.name, _showImg)}
+														>
+															Upgrade {trait.type}
+														</button>
 													</div>
-												) : (
-													<>
-														{_choiceIndex === 0 && (
-															<div className="nft-overlay">
-																<div>
-																	{_tokenArray_1155.length > 0 ? (
-																		<>
-																			<div className='choose2'>Choose a Special Power</div>
-																			<div className="nft-overlay--2">
-																				{_tokenArray_1155.map((token) => (
-																					<div className="nft-card" key={token.tokenId} onClick={() => choosePower_SP(token.tokenId)}>
-																						<img
-																							src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
-																							alt={`NFT ${token.tokenId}`}
-																							className="nft-image"
-																						/>
-																						<p className='nft-text'>Token ID: {token.tokenId}</p>
-																						<p className='nft-text'>Balance: {token.balance.toString()}</p>
-																					</div>
-																				))}
-																			</div>
-																		</>
-																	) : (
-																		<p className='load2'>No Special Powers found.</p>
-																	)}
-																</div>
-															</div>
-														)}
-
-														{_choiceIndex === 1 && (
-															<div className="nft-overlay">
-																<div>
-
-																	{_tokenArray_1155.length > 0 ? (
-																		<>
-																			<div className='choose2'>Choose a Weapon</div>
-
-																			<div className="nft-overlay--2">
-																				{_tokenArray_1155.filter(token => token.tokenId !== 0)
-																					.map((token) => (
-																						<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
-																							<img
-																								src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
-																								alt={`NFT ${token.tokenId}`}
-																								className="nft-image"
-																							/>
-																							<p className='nft-text'>Token ID: {token.tokenId}</p>
-																							<p className='nft-text'>Balance: {token.balance.toString()}</p>
-																						</div>
-																					))}
-																			</div>
-																		</>
-																	) : (
-																		<p className='load2'>No Weapons found.</p>
-																	)}
-																</div>
-															</div>
-														)}
-
-														{_choiceIndex === 2 && (
-															<div className="nft-overlay">
-																<div>
-
-																	{_tokenArray_1155.length > 0 ? (
-																		<>
-																			<div className='choose2'>Choose a Drone</div>
-																			<div className="nft-overlay--2">
-																				{_tokenArray_1155.map((token) => (
-																					<div className="nft-card" key={token.tokenId} onClick={() => choosePower_Drn(token.tokenId)}>
-																						<img
-																							src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
-																							alt={`NFT ${token.tokenId}`}
-																							className="nft-image"
-																						/>
-																						<p className='nft-text'>Token ID: {token.tokenId}</p>
-																						<p className='nft-text'>Balance: {token.balance.toString()}</p>
-																					</div>
-																				))}
-																			</div>
-																		</>
-																	) : (
-																		<p className='load2'>No Drone found.</p>
-																	)}
-																</div>
-															</div>
-														)}
-
-													</>
-												)}
-											</>
-
-
+												))
+											}
 										</div>
 									</div>
-									: null}
-
+								)}
 							</div>
+						)}
 
-							{imageUrl && (
-								<div className="popupImg">
-									<button className="popup-closeInImg" onClick={closePopup}>×</button>
-									{/*<img src={`https://robotic-rabbit-metadata-live-replica05.s3.us-east-2.amazonaws.com/${_showImg}.png`} alt="NFT" id="popup-img" />*/}
-									<img src={_viewNFTImg} alt="NFT" id="popup-img" />
-								</div>
-							)}
+						{_weaponDiv ?
+							<div class="popup-containerIn">
+								<div class="popupIn">
+									<div class="popup-closeIn" onClick={weaponDivClose}>×</div>
 
-							{showPopup && (
-								<div className="popupImg">
-									<button className="popup-closeInImg" onClick={() => setShowPopup(false)}>×</button>
+									<div className="upgrades" onClick={() => fetchMetadata(_showImg)}>
+										<span className="viewTxt">{loadingImg ? "Fetching..." : "Check Upgrades"}</span>
+									</div>
 
-									{/* Show "Loading..." until the image is loaded */}
-									{!imageLoaded && <p className='ldtxt'>Loading...</p>}
+									{error ? (
+										<p style={{ color: "red" }}>Error: {error}</p>
+									) : (
+										<div className='popupInTxt'>
 
-									<img
-										id="generatedImage"
-										alt="Generated NFT"
-										onLoad={() => setImageLoaded(true)}
-										style={{ display: imageLoaded ? "block" : "none" }}
-									/>
+											<p className='removeSection'>
+												<div><strong>Special Power:</strong> {specialPower}</div>
+												{_mintingSpecial && _mintingSpecial.length > 0 && _mintingSpecial[0] ? (
+													<img
+														src={`https://armory-data.s3.us-east-2.amazonaws.com/${_mintingSpecial[0]}.png`}
+														alt="Special Power"
+													/>
+												) : (
+													<div></div>
+												)}
 
-									{imageLoaded && _upgradedTraitDetails && _upgradedTraitDetails.length > 0 && (
-										<div className='traitUpgradeMain'>
-											<div className="preview-section">
-												{_upgradedTraitDetails
-													.filter(trait =>
-														!["Background", "Special Power", "Weapons", "Gear"].includes(trait.type) &&
-														!_upgradedTraitDetails2.some(t2 => t2.type === trait.type)
-													)
-													.map((trait, index) => (
-														<div key={index} className="trait-actions">
-															<button
-																className="traitUpgrade" id="previewId"
-																onClick={() => {
-																	setLoadingPreviews(prev => ({ ...prev, [trait.type]: true }));
-																	fetch("https://roboticrabbitsyndicate.io:3001/api/createPreview", {
-																		method: "POST",
-																		headers: {
-																			"Content-Type": "application/json"
-																		},
-																		body: JSON.stringify({
-																			traitType: trait.type,
-																			traitName: trait.name,
-																			tokenId: _showImg,
-																			isPreview: true
-																		})
-																	})
-																		.then(response => response.json())
-																		.then(data => {
-																			if (data.image) {
-																				document.getElementById("generatedImage").src = data.image;
-																				setImageLoaded(false); // Trigger reload
-																				setTimeout(() => {
-																					setImageLoaded(true);
-																					setLoadingPreviews(prev => ({ ...prev, [trait.type]: false }));
-																				}, 100);
-																			}
-																		})
-																		.catch(error => {
-																			console.error("Error:", error);
-																			setLoadingPreviews(prev => ({ ...prev, [trait.type]: false }));
-																		});
-																}}
-																disabled={loadingPreviews[trait.type]}
-															>
-																{loadingPreviews[trait.type] ? (
-																	<div className="preview-loader"></div>
-																) : (
-																	`Preview ${trait.type}`
-																)}
-															</button>
-															<button
-																className="traitUpgrade"
-																onClick={() => sendUpgradeDetails(trait.type, trait.name, _showImg)}
-															>
-																Upgrade {trait.type}
-															</button>
-														</div>
-													))
+												{specialPower !== "None" ?
+													<div><button onClick={removeTrait_SP}>Remove</button></div> :
+													<div><button onClick={handleConnectPoly_SP}>Add</button></div>
 												}
-											</div>
+											</p>
+
+											<p className='removeSection'>
+												<div><strong>Weapons and Gear:</strong> {weaponsAndGear}</div>
+
+												{_mintingWeapon && _mintingWeapon.length > 0 && _mintingWeapon[0] ? (
+													<img
+														src={`https://armory-data.s3.us-east-2.amazonaws.com/${_mintingWeapon[0]}.png`}
+														alt="Weapons and Gear"
+													/>
+												) : (
+													<div></div>
+												)}
+
+												{weaponsAndGear !== "None" ?
+													<div><button onClick={removeTrait_WG}>Remove</button></div> :
+													<div><button onClick={handleConnectPoly_WP}>Add</button></div>
+												}
+											</p>
+
+											<p className='removeSection'>
+												<div><strong>Drone:</strong> {_drone}</div>
+												{_mintingDrones && _mintingDrones.length > 0 && _mintingDrones[0] ? (
+													<img
+														src={`https://armory-data.s3.us-east-2.amazonaws.com/${_mintingDrones[0]}.png`}
+														alt="Drone"
+													/>
+												) : (
+													<div></div>
+												)}
+
+												{_drone !== "None" && _drone !== 'Not found' ?
+													<div><button onClick={removeTrait_Drn}>Remove</button></div> :
+													<div><button onClick={handleConnectPoly_Drn}>Add</button></div>
+												}
+											</p>
 										</div>
 									)}
+
+									<div className='view' onClick={handleViewClick}><span className='viewTxt'>View NFT</span> <img src={eye} /></div>
+									<div className='view' onClick={handleViewClickNFTs}><span className='viewTxt'>View My Armoury NFTs</span> <img src={eye} /></div>
+
 								</div>
-							)}
 
-							{_weaponDiv ?
-								<div class="popup-containerIn">
-									<div class="popupIn">
-										<div class="popup-closeIn" onClick={weaponDivClose}>×</div>
+							</div> : null}
 
-										<div className="upgrades" onClick={() => fetchMetadata(_showImg)}>
-											<span className="viewTxt">{loadingImg ? "Fetching..." : "Check Upgrades"}</span>
-										</div>
-
-										{error ? (
-											<p style={{ color: "red" }}>Error: {error}</p>
-										) : (
-											<div className='popupInTxt'>
-
-												<p className='removeSection'>
-													<div><strong>Special Power:</strong> {specialPower}</div>
-													{_mintingSpecial && _mintingSpecial.length > 0 && _mintingSpecial[0] ? (
-														<img
-															src={`https://armory-data.s3.us-east-2.amazonaws.com/${_mintingSpecial[0]}.png`}
-															alt="Special Power"
-														/>
-													) : (
-														<div></div>
-													)}
-
-													{specialPower !== "None" ?
-														<div><button onClick={removeTrait_SP}>Remove</button></div> :
-														<div><button onClick={handleConnectPoly_SP}>Add</button></div>
-													}
-												</p>
-
-												<p className='removeSection'>
-													<div><strong>Weapons and Gear:</strong> {weaponsAndGear}</div>
-
-													{_mintingWeapon && _mintingWeapon.length > 0 && _mintingWeapon[0] ? (
-														<img
-															src={`https://armory-data.s3.us-east-2.amazonaws.com/${_mintingWeapon[0]}.png`}
-															alt="Weapons and Gear"
-														/>
-													) : (
-														<div></div>
-													)}
-
-													{weaponsAndGear !== "None" ?
-														<div><button onClick={removeTrait_WG}>Remove</button></div> :
-														<div><button onClick={handleConnectPoly_WP}>Add</button></div>
-													}
-												</p>
-
-												<p className='removeSection'>
-													<div><strong>Drone:</strong> {_drone}</div>
-													{_mintingDrones && _mintingDrones.length > 0 && _mintingDrones[0] ? (
-														<img
-															src={`https://armory-data.s3.us-east-2.amazonaws.com/${_mintingDrones[0]}.png`}
-															alt="Drone"
-														/>
-													) : (
-														<div></div>
-													)}
-
-													{_drone !== "None" && _drone !== 'Not found' ?
-														<div><button onClick={removeTrait_Drn}>Remove</button></div> :
-														<div><button onClick={handleConnectPoly_Drn}>Add</button></div>
-													}
-												</p>
-											</div>
-										)}
-
-										<div className='view' onClick={handleViewClick}><span className='viewTxt'>View NFT</span> <img src={eye} /></div>
-										<div className='view' onClick={handleViewClickNFTs}><span className='viewTxt'>View My Armoury NFTs</span> <img src={eye} /></div>
-
-									</div>
-
-								</div> : null}
-
-							{/*:
+						{/*:
 
 										<div id="dd" class="popup-containerIn">
 											<div class="popupIn">
@@ -4897,131 +4969,131 @@ const Home = () => {
 											</div>
 										</div>*/}
 
-							{_showAllArmories > 0 ?
-								<>
-									<div id="dd" class="popup-containerIn--2">
-										<div class="popupInNew">
-											<div class="popup-closeIn" onClick={closeBtn2}>×</div>
+						{_showAllArmories > 0 ?
+							<>
+								<div id="dd" class="popup-containerIn--2">
+									<div class="popupInNew">
+										<div class="popup-closeIn" onClick={closeBtn2}>×</div>
 
 
-											{_tokenArray_1155.length > 0 ? (
-												<>
-													<div className='titleR'>My Armory NFTs</div>
+										{_tokenArray_1155.length > 0 ? (
+											<>
+												<div className='titleR'>My Armory NFTs</div>
 
-													<div className="nft-gridNew">
-														{_tokenArray_1155.map((token) => (
-															<div
-																className="nft-card"
-																key={token.tokenId}
+												<div className="nft-gridNew">
+													{_tokenArray_1155.map((token) => (
+														<div
+															className="nft-card"
+															key={token.tokenId}
 
-															>
-																<img
-																	src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}${token.tokenId === 0 ? ".WEBP" : ".png"}`}
-																	alt={`NFT ${token.tokenId}`}
-																	className="nft-image"
-																/>
+														>
+															<img
+																src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}${token.tokenId === 0 ? ".WEBP" : ".png"}`}
+																alt={`NFT ${token.tokenId}`}
+																className="nft-image"
+															/>
 
-																<p className='nft-text'>Token ID: {token.tokenId}</p>
-																<p className='nft-text'>Balance: {token.balance.toString()}</p>
-															</div>
-														))}
-													</div>
-												</>) : (
-												<>
-													{_loadingNfts ?
-														<div className='load'>Searching NFTs...</div> :
-														<p className='load2'>
-															<p className='load2'>No NFTs found.</p>
-														</p>}
-												</>
-											)}
+															<p className='nft-text'>Token ID: {token.tokenId}</p>
+															<p className='nft-text'>Balance: {token.balance.toString()}</p>
+														</div>
+													))}
+												</div>
+											</>) : (
+											<>
+												{_loadingNfts ?
+													<div className='load'>Searching NFTs...</div> :
+													<p className='load2'>
+														<p className='load2'>No NFTs found.</p>
+													</p>}
+											</>
+										)}
 
 
 
-										</div>
 									</div>
-								</>
-								: null}
+								</div>
+							</>
+							: null}
 
-							{_successMsg > 0 ?
-								< div id="dd" class="popup-containerIn">
+						{_successMsg > 0 ?
+							< div id="dd" class="popup-containerIn">
+								<div class="popupIn">
+									<div class="popup-closeIn" onClick={closeBtn}>×</div>
+
+									<div className='popupInTxt'>
+										<img id='checkImg' src={check} />
+										<div className='successMsg'>Equipped Successfully!</div>
+									</div>
+
+								</div>
+
+							</div>
+							: null}
+
+						{_errorMsg > 0 ?
+							< div id="dd" class="popup-containerIn">
+								<div class="popupIn">
+									<div class="popup-closeIn" onClick={closeBtn2}>×</div>
+
+									<div className='popupInTxt'>
+										<img id='checkImg' src={errorImg} />
+										<div className='errorMsg'>Network error</div>
+									</div>
+
+								</div>
+
+							</div> : null}
+
+						{_errorMsg_remove > 0 ?
+							< div id="dd" class="popup-containerIn">
+								<div class="popupIn">
+									<div class="popup-closeIn" onClick={closeBtn2}>×</div>
+
+									<div className='popupInTxt'>
+										<img id='checkImg' src={errorImg} />
+										<div className='errorMsg'>Network error</div>
+									</div>
+
+								</div>
+
+							</div> : null}
+
+						{_msg_loading > 0 ?
+							< div id="dd" class="popup-containerIn2">
+								<div className='popupInTxt'>
+									<div class="loader"></div>
+									<div className="backMsg">
+										{status}
+										{_satusLoadTilImg > 0 ?
+											<>Fetching Images...</>
+											: null}
+									</div>
+								</div>
+
+							</div> : null}
+
+						{_successMsg_remove > 0 ?
+							< div id="dd" class="popup-containerIn">
+								< div class="popup-containerIn">
 									<div class="popupIn">
 										<div class="popup-closeIn" onClick={closeBtn}>×</div>
 
 										<div className='popupInTxt'>
 											<img id='checkImg' src={check} />
-											<div className='successMsg'>Equipped Successfully!</div>
+											<div className='successMsg'>{status}</div>
 										</div>
 
 									</div>
 
 								</div>
-								: null}
-
-							{_errorMsg > 0 ?
-								< div id="dd" class="popup-containerIn">
-									<div class="popupIn">
-										<div class="popup-closeIn" onClick={closeBtn2}>×</div>
-
-										<div className='popupInTxt'>
-											<img id='checkImg' src={errorImg} />
-											<div className='errorMsg'>Network error</div>
-										</div>
-
-									</div>
-
-								</div> : null}
-
-							{_errorMsg_remove > 0 ?
-								< div id="dd" class="popup-containerIn">
-									<div class="popupIn">
-										<div class="popup-closeIn" onClick={closeBtn2}>×</div>
-
-										<div className='popupInTxt'>
-											<img id='checkImg' src={errorImg} />
-											<div className='errorMsg'>Network error</div>
-										</div>
-
-									</div>
-
-								</div> : null}
-
-							{_msg_loading > 0 ?
-								< div id="dd" class="popup-containerIn2">
-									<div className='popupInTxt'>
-										<div class="loader"></div>
-										<div className="backMsg">
-											{status}
-											{_satusLoadTilImg > 0 ?
-												<>Fetching Images...</>
-												: null}
-										</div>
-									</div>
-
-								</div> : null}
-
-							{_successMsg_remove > 0 ?
-								< div id="dd" class="popup-containerIn">
-									< div class="popup-containerIn">
-										<div class="popupIn">
-											<div class="popup-closeIn" onClick={closeBtn}>×</div>
-
-											<div className='popupInTxt'>
-												<img id='checkImg' src={check} />
-												<div className='successMsg'>{status}</div>
-											</div>
-
-										</div>
-
-									</div>
-								</div> : null}
+							</div> : null}
 
 
 
-						</div>
-					</div >
-				</>
-			 
+					</div>
+				</div >
+			</>
+
 		</div>
 	)
 
