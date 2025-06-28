@@ -1404,334 +1404,343 @@ const CONTRACT_ABI = [
 
 
 const SignUpPage = () => {
-  const navigate = useNavigate();
-  const { open } = useWeb3Modal();
-  const { chain } = useNetwork();
-  const { switchNetwork } = useSwitchNetwork();
-  const { address, isConnected } = useAccount();
-  const { disconnect } = useDisconnect();
+	const navigate = useNavigate();
+	const { open } = useWeb3Modal();
+	const { chain } = useNetwork();
+	const { switchNetwork } = useSwitchNetwork();
+	const { address, isConnected } = useAccount();
+	const { disconnect } = useDisconnect();
 
-  const [username, setUsername] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-  const [isRegistered, setIsRegistered] = useState(false);
+	const [username, setUsername] = useState("");
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [error, setError] = useState("");
+	const [success, setSuccess] = useState("");
+	const [isRegistered, setIsRegistered] = useState(false);
 
-  const formatErrorMessage = (error) => {
-    if (!error) return "";
-    if (error.message?.includes("User rejected the request")) {
-      return "Transaction was cancelled";
-    }
-    if (error.message?.includes("Request Arguments")) {
-      return "Transaction failed. Please try again";
-    }
-    return error.message || "Something went wrong";
-  };
+	const formatErrorMessage = (error) => {
+		if (!error) return "";
+		if (error.message?.includes("User rejected the request")) {
+			return "Transaction was cancelled";
+		}
+		if (error.message?.includes("Request Arguments")) {
+			return "Transaction failed. Please try again";
+		}
+		return error.message || "Something went wrong";
+	};
 
-  const contractConfig = {
-    address: CONTRACT_ADDRESS,
-    abi: CONTRACT_ABI,
-  };
+	const contractConfig = {
+		address: CONTRACT_ADDRESS,
+		abi: CONTRACT_ABI,
+	};
 
-  const { data: userData, refetch: refetchUser } = useContractRead({
-    ...contractConfig,
-    functionName: 'getUser',
-    args: [address],
-    enabled: false,
-  });
+	const { data: userData, refetch: refetchUser } = useContractRead({
+		...contractConfig,
+		functionName: 'getUser',
+		args: [address],
+		enabled: false,
+	});
 
-  const { writeAsync: registerUser } = useContractWrite({
-    ...contractConfig,
-    functionName: 'register',
-  });
+	const { writeAsync: registerUser } = useContractWrite({
+		...contractConfig,
+		functionName: 'register',
+	});
 
-  const [pendingTxHash, setPendingTxHash] = useState(null);
-  const { data: txReceipt, isLoading: isWaitingForTx } = useWaitForTransaction({
-    hash: pendingTxHash,
-    enabled: !!pendingTxHash,
-  });
+	const [pendingTxHash, setPendingTxHash] = useState(null);
+	const { data: txReceipt, isLoading: isWaitingForTx } = useWaitForTransaction({
+		hash: pendingTxHash,
+		enabled: !!pendingTxHash,
+	});
 
-  const handleConnect = async () => {
-    try {
-      await open();
-      if (chain?.id !== base.id) {
-        try {
-          await switchNetwork?.(base.id);
-          setError("");
-          checkUserRegistration();
-          return;
-        } catch (switchError) {
-          console.error("Failed to switch network:", switchError);
-          setError("Please switch to Base network in your wallet");
-        }
-      }
-      setError("");
-    } catch (err) {
-      console.error("Connection error:", err);
-      setError(formatErrorMessage(err));
-    }
-  };
+	const handleConnect = async () => {
+		try {
+			await open();
+			if (chain?.id !== base.id) {
+				try {
+					await switchNetwork?.(base.id);
+					setError("");
+					checkUserRegistration();
+					return;
+				} catch (switchError) {
+					console.error("Failed to switch network:", switchError);
+					setError("Please switch to Base network in your wallet");
+				}
+			}
+			setError("");
+		} catch (err) {
+			console.error("Connection error:", err);
+			setError(formatErrorMessage(err));
+		}
+	};
 
-  useEffect(() => {
-    if (isConnected && chain?.id !== base.id) {
-      setError("Please switch to Base network");
-    } else {
-      setError("");
-    }
-  }, [isConnected, chain]);
+	useEffect(() => {
+		if (isConnected && chain?.id !== base.id) {
+			setError("Please switch to Base network");
+		} else {
+			setError("");
+		}
+	}, [isConnected, chain]);
 
-  const checkUserRegistration = async () => {
-    if (!address) return;
+	const checkUserRegistration = async () => {
+		if (!address) return;
 
-    try {
-      const { data } = await refetchUser();
+		try {
+			const { data } = await refetchUser();
 
-      if (data && data[2]) {
-        setUsername(data[0]);
-        setIsRegistered(true);
-        setError("You are already registered. Please sign in instead.");
-        setSuccess("");
-      } else {
-        setIsRegistered(false);
-        setError("");
-      }
-    } catch (err) {
-      console.error("Registration check error:", err);
-      setError(formatErrorMessage(err));
-      setIsRegistered(false);
-    }
-  };
+			if (data && data[2]) {
+				setUsername(data[0]);
+				setIsRegistered(true);
+				setError("You are already registered. Please sign in instead.");
+				setSuccess("");
+			} else {
+				setIsRegistered(false);
+				setError("");
+			}
+		} catch (err) {
+			console.error("Registration check error:", err);
+			setError(formatErrorMessage(err));
+			setIsRegistered(false);
+		}
+	};
 
-  useEffect(() => {
-    if (isConnected && address) {
-      checkUserRegistration();
-    } else {
-      setUsername("");
-      setIsRegistered(false);
-      setSuccess("");
-    }
-  }, [isConnected, address]);
+	useEffect(() => {
+		if (isConnected && address) {
+			checkUserRegistration();
+		} else {
+			setUsername("");
+			setIsRegistered(false);
+			setSuccess("");
+		}
+	}, [isConnected, address]);
 
-  useEffect(() => {
-    if (txReceipt && pendingTxHash) {
-      setSuccess("Registration complete! Redirecting to dashboard...");
-      setIsRegistered(true);
-      setPendingTxHash(null);
+	useEffect(() => {
+		if (txReceipt && pendingTxHash) {
+			setSuccess("Registration complete! Redirecting to dashboard...");
+			setIsRegistered(true);
+			setPendingTxHash(null);
 
-      setTimeout(() => {
-        navigate("/inventory");
-      }, 2000);
-    }
-  }, [txReceipt, pendingTxHash, navigate]);
+			setTimeout(() => {
+				navigate("/inventory");
+			}, 2000);
+		}
+	}, [txReceipt, pendingTxHash, navigate]);
 
-  const handleDisconnect = () => {
-    disconnect();
-    setUsername("");
-    setIsRegistered(false);
-    setSuccess("Wallet disconnected");
-  };
+	const handleDisconnect = () => {
+		disconnect();
+		setUsername("");
+		setIsRegistered(false);
+		setSuccess("Wallet disconnected");
+	};
 
-  const handleSubmit = async () => {
+	const handleSubmit = async () => {
 
-    if (!isConnected) {
-      setError("Please connect your wallet first");
-      return;
-    }
+		if (!isConnected) {
+			setError("Please connect your wallet first");
+			return;
+		}
 
-    if (chain?.id !== base.id) {
-      setError("Please switch to Base network");
-      return;
-    }
+		if (chain?.id !== base.id) {
+			setError("Please switch to Base network");
+			return;
+		}
 
-    if (!username) {
-      setError("Please enter a username");
-      return;
-    }
+		if (!username) {
+			setError("Please enter a username");
+			return;
+		}
 
-    if (isRegistered) {
-      setError("You are already registered. Please sign in instead.");
-      return;
-    }
+		if (isRegistered) {
+			setError("You are already registered. Please sign in instead.");
+			return;
+		}
 
-    setIsSubmitting(true);
-    setError("");
+		setIsSubmitting(true);
+		setError("");
 
-    try {
-      const tx = await registerUser({
-        args: [username],
-      });
+		try {
+			const tx = await registerUser({
+				args: [username],
+			});
 
-      setSuccess("Registration transaction sent! Waiting for confirmation...");
-      setPendingTxHash(tx.hash);
+			setSuccess("Registration transaction sent! Waiting for confirmation...");
+			setPendingTxHash(tx.hash);
 
-    } catch (err) {
-      console.error("Registration error:", err);
-      setError(formatErrorMessage(err));
-      setIsSubmitting(false);
-    }
-  };
+		} catch (err) {
+			console.error("Registration error:", err);
+			setError(formatErrorMessage(err));
+			setIsSubmitting(false);
+		}
+	};
 
-  useEffect(() => {
-    if (isWaitingForTx) {
-      setIsSubmitting(true);
-    } else if (!pendingTxHash) {
-      setIsSubmitting(false);
-    }
-  }, [isWaitingForTx, pendingTxHash]);
+	useEffect(() => {
+		if (isWaitingForTx) {
+			setIsSubmitting(true);
+		} else if (!pendingTxHash) {
+			setIsSubmitting(false);
+		}
+	}, [isWaitingForTx, pendingTxHash]);
 
-  const shortenAddress = (addr) => {
-    return addr ? `${addr.slice(0, 6)}...${addr.slice(-4)}` : "";
-  };
+	const shortenAddress = (addr) => {
+		return addr ? `${addr.slice(0, 6)}...${addr.slice(-4)}` : "";
+	};
 
-  // Handle sign in navigation
-  const handleSignInClick = () => {
-    navigate("/");
-  };
+	// Handle sign in navigation
+	const handleSignInClick = () => {
+		navigate("/");
+	};
 
-  return (
-    <div className="font-montserrat relative bg-fixed text-[12px] text-white sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[19px] 2xl:text-[20px]">
-      <div className="absolute inset-0 bg-black/70"></div>
+	return (
+		<>
+			<ul id="bg-animation">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
 
-      <div className={cn(classes["custom-grid"], "relative min-h-dvh")}>
-        {/* Video section */}
-        <div
-          className={cn(
-            "relative flex items-center justify-center bg-black",
-            classes["image-area"]
-          )}
-        >
-          <img src={jet} alt="Log In" />
+			<div className="font-montserrat relative bg-fixed text-[12px] text-white sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[19px] 2xl:text-[20px]">
+				<div className="absolute inset-0 bg-black/70"></div>
 
-          <div className="absolute top-full right-0 left-0 h-[50%] -translate-y-1/2 bg-gradient-to-b from-transparent via-black to-transparent lg:hidden"></div>
-          <div className="absolute top-0 bottom-0 left-0 w-[50%] -translate-x-1/2 bg-gradient-to-r from-transparent via-black to-transparent"></div>
+				<div className={cn(classes["custom-grid"], "relative min-h-dvh")}>
+					{/* Video section */}
+					<div
+						className={cn(
+							"relative flex items-center justify-center bg-black",
+							classes["image-area"]
+						)}
+					>
+						<img src={jet} alt="Log In" />
 
-          <button
-            onClick={() => navigate("/home")}
-            className="hover:bg-primary focus:bg-primary absolute top-[1em] left-[1em] z-50 cursor-pointer rounded-full p-[0.3em] text-[30px] transition-all hover:text-black focus:text-black"
-          >
-            <FaArrowLeft />
-          </button>
-        </div>
+						<div className="absolute top-full right-0 left-0 h-[50%] -translate-y-1/2 bg-gradient-to-b from-transparent via-black to-transparent lg:hidden"></div>
+						<div className="absolute top-0 bottom-0 left-0 w-[50%] -translate-x-1/2 bg-gradient-to-r from-transparent via-black to-transparent"></div>
 
-        {/* Form section */}
-        <div
-          className={cn(
-            "flex items-center justify-center p-[2em]",
-            classes["form-area"]
-          )}
-        >
-          <FormSection>
-            <div>
-              <p className="text-center">
-                To continue, please sign up with your credentials.
-              </p>
+						<button
+							onClick={() => navigate("/home")}
+							className="hover:bg-primary focus:bg-primary absolute top-[1em] left-[1em] z-50 cursor-pointer rounded-full p-[0.3em] text-[30px] transition-all hover:text-black focus:text-black"
+						>
+							<FaArrowLeft />
+						</button>
+					</div>
 
-              {error && (
-                <div className="rounded bg-red-500/10 p-2 text-center text-[0.8em] text-red-500">
-                  {error}
-                </div>
-              )}
-              {success && (
-                <div className="rounded bg-green-500/10 p-2 text-center text-[0.8em] text-green-500">
-                  {success}
-                </div>
-              )}
+					{/* Form section */}
+					<div
+						className={cn(
+							"flex items-center justify-center p-[2em]",
+							classes["form-area"]
+						)}
+					>
+						<FormSection>
+							<div>
+								<p className="text-center">
+									To continue, please sign up with your credentials.
+								</p>
 
-              <ul className="flex flex-col items-center space-y-2 px-[1em] text-center">
-                <li className="flex items-center gap-2">
-                  <span className="text-[#5ff48b]">✔</span>
-                  <span>Secure login</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-[#5ff48b]">✔</span>
-                  <span>Your data stays private</span>
-                </li>
-              </ul>
+								{error && (
+									<div className="rounded bg-red-500/10 p-2 text-center text-[0.8em] text-red-500">
+										{error}
+									</div>
+								)}
+								{success && (
+									<div className="rounded bg-green-500/10 p-2 text-center text-[0.8em] text-green-500">
+										{success}
+									</div>
+								)}
 
-              <div className="my-[0.5em] flex items-center justify-between gap-[0.5em]">
-                <hr className="grow border-t-white/30" />
-                <p className="flex shrink-0 items-end gap-[0.2em] opacity-50">
-                  <IoStar className="text-[0.8em]" />
-                  <IoStar className="-translate-y-[0.1em]" />
-                  <IoStar className="text-[0.8em]" />
-                </p>
-                <hr className="grow border-t-white/30" />
-              </div>
+								<ul className="flex flex-col items-center space-y-2 px-[1em] text-center">
+									<li className="flex items-center gap-2">
+										<span className="text-[#5ff48b]">✔</span>
+										<span>Secure login</span>
+									</li>
+									<li className="flex items-center gap-2">
+										<span className="text-[#5ff48b]">✔</span>
+										<span>Your data stays private</span>
+									</li>
+								</ul>
 
-              <div className="mb-4">
-                <label className="mb-2 block text-white">Username</label>
-                <input
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  className="w-full rounded border border-gray-600 bg-gray-800 p-3 text-white"
-                  disabled={isRegistered || isSubmitting}
-                  placeholder="Enter your username"
-                  maxLength={32}
-                  required
-                />
-              </div>
+								<div className="my-[0.5em] flex items-center justify-between gap-[0.5em]">
+									<hr className="grow border-t-white/30" />
+									<p className="flex shrink-0 items-end gap-[0.2em] opacity-50">
+										<IoStar className="text-[0.8em]" />
+										<IoStar className="-translate-y-[0.1em]" />
+										<IoStar className="text-[0.8em]" />
+									</p>
+									<hr className="grow border-t-white/30" />
+								</div>
 
-              <div className="flex flex-col gap-2">
-                {!isConnected ? (
-                  <OutlineButton
-                    type="button"
-                    onClick={handleConnect}
-                    className="w-full px-[1em] uppercase"
-                  >
-                    Connect Wallet
-                  </OutlineButton>
-                ) : (
-                  <div className="space-y-2">
-                    <p className="mx-auto w-full text-center font-mono text-[0.8em]">
-                      {shortenAddress(address)}
-                      {chain?.id !== base.id && (
-                        <span className="block text-red-500">
-                          Wrong network! Please switch to Base
-                        </span>
-                      )}
-                    </p>
-                    <OutlineButton
-                      type="button"
-                      onClick={handleDisconnect}
-                      className="w-full px-[1em] uppercase"
-                    >
-                      Disconnect
-                    </OutlineButton>
-                  </div>
-                )}
+								<div className="mb-4">
+									<label className="mb-2 block text-white">Username</label>
+									<input
+										type="text"
+										value={username}
+										onChange={(e) => setUsername(e.target.value)}
+										className="w-full rounded border border-gray-600 bg-gray-800 p-3 text-white"
+										disabled={isRegistered || isSubmitting}
+										placeholder="Enter your username"
+										maxLength={32}
+										required
+									/>
+								</div>
 
-                <GradientButton
-                  type="button"
-                  onClick={handleSubmit}
-                  disabled={!isConnected || isRegistered || isSubmitting || !username || chain?.id !== base.id}
-                  className={`mt-[1em] w-full uppercase ${!isConnected || isRegistered || isSubmitting || !username || chain?.id !== base.id
-                      ? "cursor-not-allowed opacity-50"
-                      : ""
-                    }`}
-                >
-                  {isSubmitting ? (
-                    isWaitingForTx ? "Confirming..." : "Registering..."
-                  ) : "Sign Up"}
-                </GradientButton>
-              </div>
+								<div className="flex flex-col gap-2">
+									{!isConnected ? (
+										<OutlineButton
+											type="button"
+											onClick={handleConnect}
+											className="w-full px-[1em] uppercase"
+										>
+											Connect Wallet
+										</OutlineButton>
+									) : (
+										<div className="space-y-2">
+											<p className="mx-auto w-full text-center font-mono text-[0.8em]">
+												{shortenAddress(address)}
+												{chain?.id !== base.id && (
+													<span className="block text-red-500">
+														Wrong network! Please switch to Base
+													</span>
+												)}
+											</p>
+											<OutlineButton
+												type="button"
+												onClick={handleDisconnect}
+												className="w-full px-[1em] uppercase"
+											>
+												Disconnect
+											</OutlineButton>
+										</div>
+									)}
 
-              <div className="mt-4 text-center">
-                <span>Have an account already?</span>&nbsp;
-                <button
-                  type="button"
-                  onClick={handleSignInClick}
-                  className="text-[#5ff48b] hover:opacity-90"
-                >
-                  Sign In
-                </button>
-              </div>
-            </div>
-          </FormSection>
-        </div>
-      </div>
-    </div>
-  );
+									<GradientButton
+										type="button"
+										onClick={handleSubmit}
+										disabled={!isConnected || isRegistered || isSubmitting || !username || chain?.id !== base.id}
+										className={`mt-[1em] w-full uppercase ${!isConnected || isRegistered || isSubmitting || !username || chain?.id !== base.id
+											? "cursor-not-allowed opacity-50"
+											: ""
+											}`}
+									>
+										{isSubmitting ? (
+											isWaitingForTx ? "Confirming..." : "Registering..."
+										) : "Sign Up"}
+									</GradientButton>
+								</div>
+
+								<div className="mt-4 text-center">
+									<span>Have an account already?</span>&nbsp;
+									<button
+										type="button"
+										onClick={handleSignInClick}
+										className="text-[#5ff48b] hover:opacity-90"
+									>
+										Sign In
+									</button>
+								</div>
+							</div>
+						</FormSection>
+					</div>
+				</div>
+			</div>
+		</>
+	);
 };
 
 export default SignUpPage;
