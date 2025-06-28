@@ -100,9 +100,11 @@
   0% {
     text-shadow: 0 0 5px #ff6600a2, 0 0 10px #ff6600ab;
   }
+
   50% {
     text-shadow: 0 0 10px #ff6600a4, 0 0 20px #ff660094;
   }
+
   100% {
     text-shadow: 0 0 5px #ff66009d, 0 0 10px #ff660086;
   }
@@ -129,22 +131,31 @@
 }
 
 .nft-gridNew {
-  display: flex; /* Changed from grid to flex */
+  display: flex;
+  /* Changed from grid to flex */
   gap: 10px;
-  padding: 10px 0; /* Add some vertical padding */
-  overflow-x: auto; /* Horizontal scrolling */
-  overflow-y: hidden; /* Prevent vertical scrolling */
-  white-space: nowrap; /* Prevent items from wrapping */
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  padding: 10px 0;
+  /* Add some vertical padding */
+  overflow-x: auto;
+  /* Horizontal scrolling */
+  overflow-y: hidden;
+  /* Prevent vertical scrolling */
+  white-space: nowrap;
+  /* Prevent items from wrapping */
+  -webkit-overflow-scrolling: touch;
+  /* Smooth scrolling on iOS */
 }
 
 .popupInNew {
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 450px;
-  max-width: 90vw; /* Add this for better mobile responsiveness */
-  max-height: 90vh; /* Limit height */
-  overflow: hidden; /* Prevent overall scrolling */
+  max-width: 90vw;
+  /* Add this for better mobile responsiveness */
+  max-height: 90vh;
+  /* Limit height */
+  overflow: hidden;
+  /* Prevent overall scrolling */
   animation: slideIn 0.3s ease-out;
   background: rgba(255, 255, 255, 0.397);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -167,7 +178,7 @@
 }
 
 
-.titleR{
+.titleR {
   color: #00ff66;
   text-align: center;
   font-size: 24px;
@@ -298,48 +309,56 @@ h6 {
   font-family: "Archivo" !important;
   font-weight: normal;
 }
+
 /* General landscape styling for tablets and larger phones */
 
 /* Base styles for scanners */
 .scanners img {
   width: 100%;
   height: auto;
-  object-fit: contain; /* Ensures full image is visible */
-  max-height: 105vh; /* Limits height to viewport */
+  object-fit: contain;
+  /* Ensures full image is visible */
+  max-height: 105vh;
+  /* Limits height to viewport */
 }
 
 /* Landscape orientation - general */
 @media screen and (orientation: landscape) {
   .scanners img {
     width: auto;
-    height: 80vh; /* Fill most of viewport height */
-    max-width: 100%; /* Prevent horizontal overflow */
+    height: 80vh;
+    /* Fill most of viewport height */
+    max-width: 100%;
+    /* Prevent horizontal overflow */
   }
 }
 
 /* Very small mobile landscape (like iPhone SE) */
 @media screen and (max-width: 700px) and (orientation: landscape) {
   .scanners img {
-    height: 70vh; /* Slightly smaller for very small screens */
+    height: 70vh;
+    /* Slightly smaller for very small screens */
   }
 }
 
 /* Taller mobile landscape (common modern phones) */
 @media screen and (min-width: 700px) and (max-width: 900px) and (orientation: landscape) {
   .scanners img {
-    height: 85vh; /* More height for taller screens */
+    height: 85vh;
+    /* More height for taller screens */
   }
 }
 
 /* Desktop landscape */
 @media screen and (min-width: 900px) and (orientation: landscape) {
   .scanners img {
-    height: 90vh; /* Even more height for desktop */
+    height: 90vh;
+    /* Even more height for desktop */
   }
 }
 
 @media screen and (max-width: 499px) {
-  
+
   .checkAccess2 {
     font-size: 14px;
     cursor: pointer;
@@ -355,7 +374,7 @@ h6 {
     margin-top: -100px;
     color: white;
   }
- 
+
   .scanners img {
     width: 400px;
     height: auto;
@@ -363,9 +382,11 @@ h6 {
   }
 
   .connectNew {
-    width: 60px; /* Or any fixed size */
+    width: 60px;
+    /* Or any fixed size */
     height: 60px;
-    padding: 0; /* Remove padding to maintain perfect circle */
+    padding: 0;
+    /* Remove padding to maintain perfect circle */
     font-size: 12px;
     background-color: rgba(255, 255, 255, 0.171);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -381,7 +402,7 @@ h6 {
     justify-content: center;
     margin-top: -30px;
   }
-  
+
   #forPc {
     display: none;
   }
@@ -1037,7 +1058,7 @@ h6 {
     margin-top: -100px;
     color: white;
   }
-  
+
   .scanners img {
     width: 450px;
     height: auto;
@@ -1045,9 +1066,11 @@ h6 {
   }
 
   .connectNew {
-    width: 60px; /* Or any fixed size */
+    width: 60px;
+    /* Or any fixed size */
     height: 60px;
-    padding: 0; /* Remove padding to maintain perfect circle */
+    padding: 0;
+    /* Remove padding to maintain perfect circle */
     font-size: 12px;
     background-color: rgba(255, 255, 255, 0.171);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -1063,7 +1086,7 @@ h6 {
     justify-content: center;
     margin-top: -35px;
   }
-  
+
   #forPc {
     display: none;
   }
@@ -1730,12 +1753,14 @@ h6 {
     margin-top: -70px;
     color: white;
   }
-  
-  
+
+
   .connectNew {
-    width: 90px; /* Or any fixed size */
+    width: 90px;
+    /* Or any fixed size */
     height: 90px;
-    padding: 0; /* Remove padding to maintain perfect circle */
+    padding: 0;
+    /* Remove padding to maintain perfect circle */
     font-size: 16px;
     background-color: rgba(255, 255, 255, 0.281);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -1750,7 +1775,7 @@ h6 {
     align-items: center;
     justify-content: center;
   }
-  
+
   #forPc {
     display: none;
   }
@@ -2406,12 +2431,14 @@ h6 {
     margin-top: -70px;
     color: white;
   }
-  
-  
+
+
   .connectNew {
-    width: 90px; /* Or any fixed size */
+    width: 90px;
+    /* Or any fixed size */
     height: 90px;
-    padding: 0; /* Remove padding to maintain perfect circle */
+    padding: 0;
+    /* Remove padding to maintain perfect circle */
     font-size: 16px;
     background-color: rgba(255, 255, 255, 0.281);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -2426,7 +2453,7 @@ h6 {
     align-items: center;
     justify-content: center;
   }
-  
+
   #forMob {
     display: none;
   }
@@ -3054,12 +3081,14 @@ h6 {
     margin-top: -70px;
     color: white;
   }
-  
-  
+
+
   .connectNew {
-    width: 90px; /* Or any fixed size */
+    width: 90px;
+    /* Or any fixed size */
     height: 90px;
-    padding: 0; /* Remove padding to maintain perfect circle */
+    padding: 0;
+    /* Remove padding to maintain perfect circle */
     font-size: 16px;
     background-color: rgba(255, 255, 255, 0.281);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -3074,7 +3103,7 @@ h6 {
     align-items: center;
     justify-content: center;
   }
-  
+
   #forMob {
     display: none;
   }
@@ -3700,12 +3729,14 @@ h6 {
     margin-top: -70px;
     color: white;
   }
-  
-  
+
+
   .connectNew {
-    width: 90px; /* Or any fixed size */
+    width: 90px;
+    /* Or any fixed size */
     height: 90px;
-    padding: 0; /* Remove padding to maintain perfect circle */
+    padding: 0;
+    /* Remove padding to maintain perfect circle */
     font-size: 16px;
     background-color: rgba(255, 255, 255, 0.281);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -3720,7 +3751,7 @@ h6 {
     align-items: center;
     justify-content: center;
   }
-  
+
   #forMob {
     display: none;
   }
@@ -3818,6 +3849,8 @@ h6 {
     margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
+    z-index: 1000000;
+    position: relative;
   }
 
 
@@ -4341,11 +4374,12 @@ h6 {
   gap: 10px;
 }
 
-.preview-btn{
+.preview-btn {
   height: fit-content;
 }
 
-.preview-btn, .traitUpgrade {
+.preview-btn,
+.traitUpgrade {
   padding: 8px 16px;
   border: none;
   border-radius: 4px;
@@ -4375,7 +4409,7 @@ h6 {
   display: inline-block;
   width: 16px;
   height: 16px;
-  border: 2px solid rgba(255,255,255,0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   border-top-color: #fff;
   animation: spin 1s ease-in-out infinite;
@@ -4383,11 +4417,14 @@ h6 {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .preview-btn {
-  min-width: 150px; /* Ensure consistent button width */
+  min-width: 150px;
+  /* Ensure consistent button width */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4400,7 +4437,21 @@ h6 {
   background-color: #2E7D32;
 }
 
-#previewId{
-background-color: #4CAF50;
+#previewId {
+  background-color: #4CAF50;
 }
- 
+
+
+.in-header {
+  z-index: 1;
+  position: relative;
+}
+
+  #forMob {
+    z-index: 1;
+    position: relative;
+  }
+
+  .popup-containerIn {
+    z-index: 1;
+  }
