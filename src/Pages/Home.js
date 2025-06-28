@@ -1496,252 +1496,6 @@ let address = "0x494702c6317F049dFEF9235D29D5A5FB62FD271a";
 
 let ABIArmoury = [
 	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			}
-		],
-		"name": "OperatorNotAllowed",
-		"type": "error"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "bool",
-				"name": "approved",
-				"type": "bool"
-			}
-		],
-		"name": "ApprovalForAll",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "previousOwner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "OwnershipTransferred",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256[]",
-				"name": "ids",
-				"type": "uint256[]"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256[]",
-				"name": "values",
-				"type": "uint256[]"
-			}
-		],
-		"name": "TransferBatch",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "value",
-				"type": "uint256"
-			}
-		],
-		"name": "TransferSingle",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "string",
-				"name": "value",
-				"type": "string"
-			},
-			{
-				"indexed": true,
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			}
-		],
-		"name": "URI",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "string",
-				"name": "username",
-				"type": "string"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "wallet",
-				"type": "address"
-			}
-		],
-		"name": "UserRegistered",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "string",
-				"name": "username",
-				"type": "string"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "wallet",
-				"type": "address"
-			}
-		],
-		"name": "WalletAdded",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "string",
-				"name": "username",
-				"type": "string"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "wallet",
-				"type": "address"
-			}
-		],
-		"name": "WalletRemoved",
-		"type": "event"
-	},
-	{
-		"stateMutability": "payable",
-		"type": "fallback"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "MintingQuantity",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "OPERATOR_FILTER_REGISTRY",
-		"outputs": [
-			{
-				"internalType": "contract IOperatorFilterRegistry",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -1783,52 +1537,45 @@ let ABIArmoury = [
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			}
+		],
+		"name": "OperatorNotAllowed",
+		"type": "error"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
 				"internalType": "address",
 				"name": "account",
 				"type": "address"
 			},
 			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			}
-		],
-		"name": "balanceOf",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address[]",
-				"name": "accounts",
-				"type": "address[]"
+				"indexed": true,
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
 			},
 			{
-				"internalType": "uint256[]",
-				"name": "ids",
-				"type": "uint256[]"
+				"indexed": false,
+				"internalType": "bool",
+				"name": "approved",
+				"type": "bool"
 			}
 		],
-		"name": "balanceOfBatch",
-		"outputs": [
-			{
-				"internalType": "uint256[]",
-				"name": "",
-				"type": "uint256[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
+		"name": "ApprovalForAll",
+		"type": "event"
 	},
 	{
 		"inputs": [
@@ -1854,32 +1601,6 @@ let ABIArmoury = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "callbackGasLimit",
-		"outputs": [
-			{
-				"internalType": "uint32",
-				"name": "",
-				"type": "uint32"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "contractURI",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "uint256[]",
@@ -1900,251 +1621,10 @@ let ABIArmoury = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			}
-		],
-		"name": "exists",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "freeMinted",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "free_mint_status",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getUpgradedTraits",
-		"outputs": [
-			{
-				"internalType": "uint256[]",
-				"name": "",
-				"type": "uint256[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "userAddress",
-				"type": "address"
-			}
-		],
-		"name": "getUser",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "username",
-				"type": "string"
-			},
-			{
-				"internalType": "address[]",
-				"name": "wallets",
-				"type": "address[]"
-			},
-			{
-				"internalType": "bool",
-				"name": "isRegistered",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "username",
-				"type": "string"
-			}
-		],
-		"name": "getUserByUsername",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "userName",
-				"type": "string"
-			},
-			{
-				"internalType": "address[]",
-				"name": "wallets",
-				"type": "address[]"
-			},
-			{
-				"internalType": "bool",
-				"name": "isRegistered",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [],
 		"name": "incrementId",
 		"outputs": [],
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			}
-		],
-		"name": "isApprovedForAll",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "traitId",
-				"type": "uint256"
-			}
-		],
-		"name": "isTraitUpgraded",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "nftId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "traitId",
-				"type": "uint256"
-			}
-		],
-		"name": "isTraitUpgradedOfTheNftId",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "lastRandomNumber",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "lastRequestId",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "max_ids",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "max_per_wallet",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -2219,127 +1699,23 @@ let ABIArmoury = [
 		"type": "function"
 	},
 	{
+		"anonymous": false,
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "mintingAddress",
-		"outputs": [
-			{
+				"indexed": true,
 				"internalType": "address",
-				"name": "",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
 				"type": "address"
 			}
 		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "name",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "numWords",
-		"outputs": [
-			{
-				"internalType": "uint32",
-				"name": "",
-				"type": "uint32"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "owner",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "premiumPercentageLink",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "premiumPercentageNative",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "publicSaleCost",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "public_mint_status",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "randomResult",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
+		"name": "OwnershipTransferred",
+		"type": "event"
 	},
 	{
 		"inputs": [
@@ -2375,19 +1751,6 @@ let ABIArmoury = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "requestConfirmations",
-		"outputs": [
-			{
-				"internalType": "uint16",
-				"name": "",
-				"type": "uint16"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -2398,35 +1761,6 @@ let ABIArmoury = [
 		"name": "resetTokenRoyalty",
 		"outputs": [],
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_tokenId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_salePrice",
-				"type": "uint256"
-			}
-		],
-		"name": "royaltyInfo",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -2645,6 +1979,19 @@ let ABIArmoury = [
 	{
 		"inputs": [
 			{
+				"internalType": "uint256[]",
+				"name": "traitIds",
+				"type": "uint256[]"
+			}
+		],
+		"name": "setUpgradedTraits",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "string",
 				"name": "newuri",
 				"type": "string"
@@ -2656,16 +2003,725 @@ let ABIArmoury = [
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "toggle_free_mint_status",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "toggle_public_mint_status",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
 		"inputs": [
 			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
 				"internalType": "uint256[]",
-				"name": "traitIds",
+				"name": "ids",
+				"type": "uint256[]"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256[]",
+				"name": "values",
 				"type": "uint256[]"
 			}
 		],
-		"name": "setUpgradedTraits",
+		"name": "TransferBatch",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "TransferSingle",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "value",
+				"type": "string"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "URI",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "string",
+				"name": "username",
+				"type": "string"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "wallet",
+				"type": "address"
+			}
+		],
+		"name": "UserRegistered",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "string",
+				"name": "username",
+				"type": "string"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "wallet",
+				"type": "address"
+			}
+		],
+		"name": "WalletAdded",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "string",
+				"name": "username",
+				"type": "string"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "wallet",
+				"type": "address"
+			}
+		],
+		"name": "WalletRemoved",
+		"type": "event"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "fallback"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "nftId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "traitId",
+				"type": "uint256"
+			}
+		],
+		"name": "upgradeTraitsByUser",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "withdraw",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address[]",
+				"name": "accounts",
+				"type": "address[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "ids",
+				"type": "uint256[]"
+			}
+		],
+		"name": "balanceOfBatch",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "callbackGasLimit",
+		"outputs": [
+			{
+				"internalType": "uint32",
+				"name": "",
+				"type": "uint32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "contractURI",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "exists",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "free_mint_status",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "freeMinted",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getUpgradedTraits",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "userAddress",
+				"type": "address"
+			}
+		],
+		"name": "getUser",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "username",
+				"type": "string"
+			},
+			{
+				"internalType": "address[]",
+				"name": "wallets",
+				"type": "address[]"
+			},
+			{
+				"internalType": "bool",
+				"name": "isRegistered",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "username",
+				"type": "string"
+			}
+		],
+		"name": "getUserByUsername",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "userName",
+				"type": "string"
+			},
+			{
+				"internalType": "address[]",
+				"name": "wallets",
+				"type": "address[]"
+			},
+			{
+				"internalType": "bool",
+				"name": "isRegistered",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			}
+		],
+		"name": "isApprovedForAll",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "traitId",
+				"type": "uint256"
+			}
+		],
+		"name": "isTraitUpgraded",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "nftId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "traitId",
+				"type": "uint256"
+			}
+		],
+		"name": "isTraitUpgradedOfTheNftId",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "lastRandomNumber",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "lastRequestId",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "max_ids",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "max_per_wallet",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "mintingAddress",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "MintingQuantity",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "numWords",
+		"outputs": [
+			{
+				"internalType": "uint32",
+				"name": "",
+				"type": "uint32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "OPERATOR_FILTER_REGISTRY",
+		"outputs": [
+			{
+				"internalType": "contract IOperatorFilterRegistry",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "premiumPercentageLink",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "premiumPercentageNative",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "public_mint_status",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "publicSaleCost",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "randomResult",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "requestConfirmations",
+		"outputs": [
+			{
+				"internalType": "uint16",
+				"name": "",
+				"type": "uint16"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_tokenId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_salePrice",
+				"type": "uint256"
+			}
+		],
+		"name": "royaltyInfo",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -2701,20 +2757,6 @@ let ABIArmoury = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "toggle_free_mint_status",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "toggle_public_mint_status",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -2731,37 +2773,6 @@ let ABIArmoury = [
 			}
 		],
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "nftId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "traitId",
-				"type": "uint256"
-			}
-		],
-		"name": "upgradeTraitsByUser",
-		"outputs": [],
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -2824,30 +2835,6 @@ let ABIArmoury = [
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "userTraitUpgrades",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
 				"internalType": "string",
 				"name": "",
 				"type": "string"
@@ -2872,6 +2859,30 @@ let ABIArmoury = [
 	{
 		"inputs": [
 			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "userTraitUpgrades",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -2887,21 +2898,10 @@ let ABIArmoury = [
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "withdraw",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"stateMutability": "payable",
-		"type": "receive"
 	}
 ];
 
-let addressArmoury = "0x23122F5a267E5087d6974C5762Eb11AA9d5dCCD6";
+let addressArmoury = "0xf18A312cEC54398df00636Ef852C96982D024d88";
 
 const maxSupply = 555;
 
@@ -4355,242 +4355,243 @@ const Home = () => {
 	return (
 		<div>
 
-			<>
-				<canvas id="canvas" style={{ display: 'none' }}></canvas> {/* Canvas for image processing */}
+			{showDetails ? (
+				<>
+					<canvas id="canvas" style={{ display: 'none' }}></canvas> {/* Canvas for image processing */}
 
-				<div className="wrapperMain">
-					<div
-						style={{
-							position: "fixed",
-							inset: 0,
-							backgroundColor: "black",
-						}}
-					>
-						<picture>
-							<source srcSet={brickBgWebp} />
-							<img
-								src={brickBgJpg}
-								alt="Inventory brick background"
-								style={{
-									width: "100%",
-									height: "100%",
-									objectFit: "cover",
-									objectPosition: "center",
-								}}
-							/>
-						</picture>
-					</div>
-					<div
-						style={{
-							position: "fixed",
-							top: 0,
-							left: 0,
-							right: 0,
-							height: "50%",
-							backgroundColor: "black",
-						}}
-					>
-						<picture>
-							<source srcSet={bgWebp} />
-							<img
-								src={bgJpg}
-								alt="Inventory background"
-								style={{
-									width: "100%",
-									height: "100%",
-									objectFit: "cover",
-									objectPosition: "center",
-								}}
-							/>
-						</picture>
-					</div>
-					<div
-						style={{
-							position: "fixed",
-							top: 0,
-							bottom: 0,
-							left: 0,
-							right: 0,
-							margin: "auto",
-							width: "100%",
-							height: "20%",
-							backgroundImage:
-								"linear-gradient(to bottom, rgba(0,0,0,0), black, rgba(0,0,0,0))",
-						}}
-					></div>
-					<div
-						style={{
-							position: "fixed",
-							inset: 0,
-							backgroundColor: "rgba(0,0,0,0.7)",
-						}}
-					></div>
-
-					<div className="Wrpperr">
-						<div className="in-header">
-							<div id="headerH1">Inventory</div>
-							{_connected ? (
-								<button class="connect" onClick={() => disconnectWallet()}>
-									{walletAddress === "" ? "Connect Wallet" : shortenAddress(walletAddress)}
-								</button>
-							) : (
-								<button class="connect" onClick={() => { open(); }}>Wallet</button>
-							)}
+					<div className="wrapperMain">
+						<div
+							style={{
+								position: "fixed",
+								inset: 0,
+								backgroundColor: "black",
+							}}
+						>
+							<picture>
+								<source srcSet={brickBgWebp} />
+								<img
+									src={brickBgJpg}
+									alt="Inventory brick background"
+									style={{
+										width: "100%",
+										height: "100%",
+										objectFit: "cover",
+										objectPosition: "center",
+									}}
+								/>
+							</picture>
 						</div>
+						<div
+							style={{
+								position: "fixed",
+								top: 0,
+								left: 0,
+								right: 0,
+								height: "50%",
+								backgroundColor: "black",
+							}}
+						>
+							<picture>
+								<source srcSet={bgWebp} />
+								<img
+									src={bgJpg}
+									alt="Inventory background"
+									style={{
+										width: "100%",
+										height: "100%",
+										objectFit: "cover",
+										objectPosition: "center",
+									}}
+								/>
+							</picture>
+						</div>
+						<div
+							style={{
+								position: "fixed",
+								top: 0,
+								bottom: 0,
+								left: 0,
+								right: 0,
+								margin: "auto",
+								width: "100%",
+								height: "20%",
+								backgroundImage:
+									"linear-gradient(to bottom, rgba(0,0,0,0), black, rgba(0,0,0,0))",
+							}}
+						></div>
+						<div
+							style={{
+								position: "fixed",
+								inset: 0,
+								backgroundColor: "rgba(0,0,0,0.7)",
+							}}
+						></div>
 
-
-						<div className="set-image" id="forPc">
-
-							<div id="box1" className={'inventory-container'}>
-
-								<img src={syndiacte} alt="Inventory Background" className="inventory-image" />
-
-								{_loadingImgs > 0 ?
-									<div className="nft-overlay">
-										<div className='load'>Loading...</div>
-									</div> :
-
-
-									<div className="nft-overlay">
-										<div className='showNftsSection'>
-
-											{_tokenArray.map((tokenId, index) => (
-												<div key={index} className="nft-card" onClick={() => handleClick(tokenId)}
-													style={{
-														backgroundColor: selectedToken === tokenId ? "#02e25f70" : "transparent",
-													}}>
-													<img
-														//src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnniw7Q92zB8NbAQW5whTVOGOOqVO6E7wM4A&s"} // Replace with your NFT image URL pattern
-														//src={`https://robotic-rabbit-collection.s3.amazonaws.com/${tokenId}.png`} // Replace with your NFT image URL pattern
-														src={imageUrls[tokenId]}
-														alt={`NFT ${tokenId}`}
-														className="nft-image"
-													/>
-
-													<p className="nft-text">Token ID: <br /> {tokenId.toString()}</p>
-												</div>
-											))}
-
-											{_tokenArray.length < 1 && _connected ?
-												<p className='load2'>No NFTs found.</p> : null}
-
-										</div>
-									</div>
-
-								}
-
+						<div className="Wrpperr">
+							<div className="in-header">
+								<div id="headerH1">Inventory</div>
+								{_connected ? (
+									<button class="connect" onClick={() => disconnectWallet()}>
+										{walletAddress === "" ? "Connect Wallet" : shortenAddress(walletAddress)}
+									</button>
+								) : (
+									<button class="connect" onClick={() => { open(); }}>Wallet</button>
+								)}
 							</div>
 
-							{_popDivOpen ?
-								<div className="inventory-container">
-									{/* Background image */}
-									<img id="box2" src={armory} alt="Inventory Background" className="inventory-image" />
+
+							<div className="set-image" id="forPc">
+
+								<div id="box1" className={'inventory-container'}>
+
+									<img src={syndiacte} alt="Inventory Background" className="inventory-image" />
+
+									{_loadingImgs > 0 ?
+										<div className="nft-overlay">
+											<div className='load'>Loading...</div>
+										</div> :
 
 
-									{_connected ?
-										<>
-											{_tokenArray.length > 1 && _connected ?
-												<>
-													{!(_choiceIndex === 0 || _choiceIndex === 1 || _choiceIndex === 2 || _loadingImgs2 > 0) && (
-														<button className='refresg-overlay'>
-															{/*<div className='txtR'>Select Your NFT to view the items</div>*/}
-														</button>
-													)}
-												</> : <button className='refresg-overlay'>
-													{/*<div className='txtR'>Select Your NFT to view the items</div>*/}
-												</button>
-											}
-										</> :
+										<div className="nft-overlay">
+											<div className='showNftsSection'>
 
-										<button className='refresg-overlay'>
-											<div className='txtR'>Connect your wallet to view the items</div>
-										</button>
+												{_tokenArray.map((tokenId, index) => (
+													<div key={index} className="nft-card" onClick={() => handleClick(tokenId)}
+														style={{
+															backgroundColor: selectedToken === tokenId ? "#02e25f70" : "transparent",
+														}}>
+														<img
+															//src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnniw7Q92zB8NbAQW5whTVOGOOqVO6E7wM4A&s"} // Replace with your NFT image URL pattern
+															//src={`https://robotic-rabbit-collection.s3.amazonaws.com/${tokenId}.png`} // Replace with your NFT image URL pattern
+															src={imageUrls[tokenId]}
+															alt={`NFT ${tokenId}`}
+															className="nft-image"
+														/>
+
+														<p className="nft-text">Token ID: <br /> {tokenId.toString()}</p>
+													</div>
+												))}
+
+												{_tokenArray.length < 1 && _connected ?
+													<p className='load2'>No NFTs found.</p> : null}
+
+											</div>
+										</div>
 
 									}
-									<>
-										{_loadingImgs2 > 0 ? (
-											<div className="nft-overlay">
-												<div className='load'>Loading...</div>
-											</div>
-										) : (
 
+								</div>
+
+								{_popDivOpen ?
+									<div className="inventory-container">
+										{/* Background image */}
+										<img id="box2" src={armory} alt="Inventory Background" className="inventory-image" />
+
+
+										{_connected ?
 											<>
-												{_choiceIndex === 0 && (
-													<div className="nft-overlay2">
-														{_tokenArray_1155.length > 0 ? (
-															<>
-																<div className='choose2'>Choose a Special Power</div>
-																<div className="nft-grid">
-																	{_tokenArray_1155.map((token) => (
-																		<div className="nft-card" key={token.tokenId} onClick={() => choosePower_SP(token.tokenId)}>
-																			<img
-																				src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
-																				alt={`NFT ${token.tokenId}`}
-																				className="nft-image"
-																			/>
-																			<p className='nft-text'>Token ID: {token.tokenId}</p>
-																			<p className='nft-text'>Balance: {token.balance.toString()}</p>
-																		</div>
-																	))}
-																</div>
-															</>
-														) : (
-															<p className='load2'>No Special Powers found.</p>
+												{_tokenArray.length > 1 && _connected ?
+													<>
+														{!(_choiceIndex === 0 || _choiceIndex === 1 || _choiceIndex === 2 || _loadingImgs2 > 0) && (
+															<button className='refresg-overlay'>
+																{/*<div className='txtR'>Select Your NFT to view the items</div>*/}
+															</button>
 														)}
-													</div>
-												)}
+													</> : <button className='refresg-overlay'>
+														{/*<div className='txtR'>Select Your NFT to view the items</div>*/}
+													</button>
+												}
+											</> :
 
-												{_choiceIndex === 1 && (
-													<div className="nft-overlay2">
-														{_tokenArray_1155.length > 0 ? (
-															<>
-																<div className='choose2'>Choose a Weapon</div>
-																<div className="nft-grid">
-																	{_tokenArray_1155.filter(token => token.tokenId !== 0).map((token) => (
-																		<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
-																			<img
-																				src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
-																				alt={`NFT ${token.tokenId}`}
-																				className="nft-image"
-																			/>
-																			<p className='nft-text'>Token ID: {token.tokenId}</p>
-																			<p className='nft-text'>Balance: {token.balance.toString()}</p>
-																		</div>
-																	))}
-																</div>
-															</>
-														) : (
-															<p className='load2'>No Weapons found.</p>
-														)}
-													</div>
-												)}
+											<button className='refresg-overlay'>
+												<div className='txtR'>Connect your wallet to view the items</div>
+											</button>
 
-												{_choiceIndex === 2 && (
-													<div className="nft-overlay2">
-														{_tokenArray_1155.length > 0 ? (
-															<>
-																<div className='choose2'>Choose a Drone</div>
-																<div className="nft-grid">
-																	{_tokenArray_1155.map((token) => (
-																		<div className="nft-card" key={token.tokenId} onClick={() => choosePower_Drn(token.tokenId)}>
-																			<img
-																				src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
-																				alt={`NFT ${token.tokenId}`}
-																				className="nft-image"
-																			/>
-																			<p className='nft-text'>Token ID: {token.tokenId}</p>
-																			<p className='nft-text'>Balance: {token.balance.toString()}</p>
-																		</div>
-																	))}
-																</div>
-															</>
-														) : (
-															<p className='load2'>No Drones found.</p>
-														)}
-													</div>
-												)}
+										}
+										<>
+											{_loadingImgs2 > 0 ? (
+												<div className="nft-overlay">
+													<div className='load'>Loading...</div>
+												</div>
+											) : (
 
-												{/*_choiceIndex >= 3 && (
+												<>
+													{_choiceIndex === 0 && (
+														<div className="nft-overlay2">
+															{_tokenArray_1155.length > 0 ? (
+																<>
+																	<div className='choose2'>Choose a Special Power</div>
+																	<div className="nft-grid">
+																		{_tokenArray_1155.map((token) => (
+																			<div className="nft-card" key={token.tokenId} onClick={() => choosePower_SP(token.tokenId)}>
+																				<img
+																					src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
+																					alt={`NFT ${token.tokenId}`}
+																					className="nft-image"
+																				/>
+																				<p className='nft-text'>Token ID: {token.tokenId}</p>
+																				<p className='nft-text'>Balance: {token.balance.toString()}</p>
+																			</div>
+																		))}
+																	</div>
+																</>
+															) : (
+																<p className='load2'>No Special Powers found.</p>
+															)}
+														</div>
+													)}
+
+													{_choiceIndex === 1 && (
+														<div className="nft-overlay2">
+															{_tokenArray_1155.length > 0 ? (
+																<>
+																	<div className='choose2'>Choose a Weapon</div>
+																	<div className="nft-grid">
+																		{_tokenArray_1155.filter(token => token.tokenId !== 0).map((token) => (
+																			<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
+																				<img
+																					src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
+																					alt={`NFT ${token.tokenId}`}
+																					className="nft-image"
+																				/>
+																				<p className='nft-text'>Token ID: {token.tokenId}</p>
+																				<p className='nft-text'>Balance: {token.balance.toString()}</p>
+																			</div>
+																		))}
+																	</div>
+																</>
+															) : (
+																<p className='load2'>No Weapons found.</p>
+															)}
+														</div>
+													)}
+
+													{_choiceIndex === 2 && (
+														<div className="nft-overlay2">
+															{_tokenArray_1155.length > 0 ? (
+																<>
+																	<div className='choose2'>Choose a Drone</div>
+																	<div className="nft-grid">
+																		{_tokenArray_1155.map((token) => (
+																			<div className="nft-card" key={token.tokenId} onClick={() => choosePower_Drn(token.tokenId)}>
+																				<img
+																					src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
+																					alt={`NFT ${token.tokenId}`}
+																					className="nft-image"
+																				/>
+																				<p className='nft-text'>Token ID: {token.tokenId}</p>
+																				<p className='nft-text'>Balance: {token.balance.toString()}</p>
+																			</div>
+																		))}
+																	</div>
+																</>
+															) : (
+																<p className='load2'>No Drones found.</p>
+															)}
+														</div>
+													)}
+
+													{/*_choiceIndex >= 3 && (
 											<div className="nft-overlay2">
 												{_tokenArray_1155.length > 0 ? (
 													<>
@@ -4614,133 +4615,103 @@ const Home = () => {
 												)}
 											</div>
 										)*/}
-											</>
+												</>
 
 
-										)}
-									</>
+											)}
+										</>
 
 
-								</div>
+									</div>
 
-								: null}
-
-
-						</div>
-
-						<div className="set-image" id="forMob">
-
-							<div id="box1T" className='boxWraper'>
-								<img className='lineImg' src={syndiacte_line} />
-								<div id="box1" className='inventory-container'>
+									: null}
 
 
-									{_loadingImgs > 0 ?
-										<div className="nft-overlay">
-											<div className='load'>Loading...</div>
-										</div> :
-
-										<div className="nft-overlay--2">
-
-											{_tokenArray.map((tokenId, index) => (
-												<div key={index} className="nft-card" onClick={() => handleClick(tokenId)}
-													style={{
-														backgroundColor: selectedToken === tokenId ? "#02e25f70" : "transparent",
-													}}>
-													<img
-														//src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnniw7Q92zB8NbAQW5whTVOGOOqVO6E7wM4A&s"} // Replace with your NFT image URL pattern
-														//src={`https://robotic-rabbit-collection.s3.amazonaws.com/${tokenId}.png`} // Replace with your NFT image URL pattern
-														src={imageUrls[tokenId]}
-														alt={`NFT ${tokenId}`}
-														className="nft-image"
-													/>
-
-													<p className="nft-text">Token ID: <br /> {tokenId.toString()}</p>
-												</div>
-											))}
-
-											{_tokenArray.length < 1 && _connected ?
-												<p className='load2'>No NFTs found.</p> : null}
-
-										</div>
-									}
-
-								</div>
 							</div>
 
-							{_popDivOpen ?
-								<div id="box2T" className='boxWraper2'>
-									<img className='lineImg' src={armory_line} />
+							<div className="set-image" id="forMob">
 
-									<div className="inventory-container2">
-										{/* Background image */}
+								<div id="box1T" className='boxWraper'>
+									<img className='lineImg' src={syndiacte_line} />
+									<div id="box1" className='inventory-container'>
 
-										{_connected ?
-											<>
-												{_tokenArray.length > 1 && _connected ?
-													<>
-														{!(_choiceIndex === 0 || _choiceIndex === 1 || _choiceIndex === 2 || _loadingImgs2 > 0) && (
-															<button className='refresg-overlay'>
-																{/*<div className='txtR'>Select Your NFT to view the items</div>*/}
-															</button>
-														)}
-													</> : <button className='refresg-overlay'>
-														<div className='txtR'>You need to have NFT to view the items</div>
-													</button>
-												}
-											</> :
 
-											<button className='refresg-overlay'>
-												<div className='txtR'>Connect your wallet to view the items</div>
-											</button>
+										{_loadingImgs > 0 ?
+											<div className="nft-overlay">
+												<div className='load'>Loading...</div>
+											</div> :
 
+											<div className="nft-overlay--2">
+
+												{_tokenArray.map((tokenId, index) => (
+													<div key={index} className="nft-card" onClick={() => handleClick(tokenId)}
+														style={{
+															backgroundColor: selectedToken === tokenId ? "#02e25f70" : "transparent",
+														}}>
+														<img
+															//src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnniw7Q92zB8NbAQW5whTVOGOOqVO6E7wM4A&s"} // Replace with your NFT image URL pattern
+															//src={`https://robotic-rabbit-collection.s3.amazonaws.com/${tokenId}.png`} // Replace with your NFT image URL pattern
+															src={imageUrls[tokenId]}
+															alt={`NFT ${tokenId}`}
+															className="nft-image"
+														/>
+
+														<p className="nft-text">Token ID: <br /> {tokenId.toString()}</p>
+													</div>
+												))}
+
+												{_tokenArray.length < 1 && _connected ?
+													<p className='load2'>No NFTs found.</p> : null}
+
+											</div>
 										}
-										<>
-											{_loadingImgs2 > 0 ? (
-												<div className="nft-overlay">
-													<div className='load'>Loading...</div>
-												</div>
-											) : (
+
+									</div>
+								</div>
+
+								{_popDivOpen ?
+									<div id="box2T" className='boxWraper2'>
+										<img className='lineImg' src={armory_line} />
+
+										<div className="inventory-container2">
+											{/* Background image */}
+
+											{_connected ?
 												<>
-													{_choiceIndex === 0 && (
-														<div className="nft-overlay">
-															<div>
-																{_tokenArray_1155.length > 0 ? (
-																	<>
-																		<div className='choose2'>Choose a Special Power</div>
-																		<div className="nft-overlay--2">
-																			{_tokenArray_1155.map((token) => (
-																				<div className="nft-card" key={token.tokenId} onClick={() => choosePower_SP(token.tokenId)}>
-																					<img
-																						src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
-																						alt={`NFT ${token.tokenId}`}
-																						className="nft-image"
-																					/>
-																					<p className='nft-text'>Token ID: {token.tokenId}</p>
-																					<p className='nft-text'>Balance: {token.balance.toString()}</p>
-																				</div>
-																			))}
-																		</div>
-																	</>
-																) : (
-																	<p className='load2'>No Special Powers found.</p>
-																)}
-															</div>
-														</div>
-													)}
+													{_tokenArray.length > 1 && _connected ?
+														<>
+															{!(_choiceIndex === 0 || _choiceIndex === 1 || _choiceIndex === 2 || _loadingImgs2 > 0) && (
+																<button className='refresg-overlay'>
+																	{/*<div className='txtR'>Select Your NFT to view the items</div>*/}
+																</button>
+															)}
+														</> : <button className='refresg-overlay'>
+															<div className='txtR'>You need to have NFT to view the items</div>
+														</button>
+													}
+												</> :
 
-													{_choiceIndex === 1 && (
-														<div className="nft-overlay">
-															<div>
+												<button className='refresg-overlay'>
+													<div className='txtR'>Connect your wallet to view the items</div>
+												</button>
 
-																{_tokenArray_1155.length > 0 ? (
-																	<>
-																		<div className='choose2'>Choose a Weapon</div>
-
-																		<div className="nft-overlay--2">
-																			{_tokenArray_1155.filter(token => token.tokenId !== 0)
-																				.map((token) => (
-																					<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
+											}
+											<>
+												{_loadingImgs2 > 0 ? (
+													<div className="nft-overlay">
+														<div className='load'>Loading...</div>
+													</div>
+												) : (
+													<>
+														{_choiceIndex === 0 && (
+															<div className="nft-overlay">
+																<div>
+																	{_tokenArray_1155.length > 0 ? (
+																		<>
+																			<div className='choose2'>Choose a Special Power</div>
+																			<div className="nft-overlay--2">
+																				{_tokenArray_1155.map((token) => (
+																					<div className="nft-card" key={token.tokenId} onClick={() => choosePower_SP(token.tokenId)}>
 																						<img
 																							src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
 																							alt={`NFT ${token.tokenId}`}
@@ -4750,217 +4721,247 @@ const Home = () => {
 																						<p className='nft-text'>Balance: {token.balance.toString()}</p>
 																					</div>
 																				))}
-																		</div>
-																	</>
-																) : (
-																	<p className='load2'>No Weapons found.</p>
-																)}
+																			</div>
+																		</>
+																	) : (
+																		<p className='load2'>No Special Powers found.</p>
+																	)}
+																</div>
 															</div>
-														</div>
-													)}
+														)}
 
-													{_choiceIndex === 2 && (
-														<div className="nft-overlay">
-															<div>
+														{_choiceIndex === 1 && (
+															<div className="nft-overlay">
+																<div>
 
-																{_tokenArray_1155.length > 0 ? (
-																	<>
-																		<div className='choose2'>Choose a Drone</div>
-																		<div className="nft-overlay--2">
-																			{_tokenArray_1155.map((token) => (
-																				<div className="nft-card" key={token.tokenId} onClick={() => choosePower_Drn(token.tokenId)}>
-																					<img
-																						src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
-																						alt={`NFT ${token.tokenId}`}
-																						className="nft-image"
-																					/>
-																					<p className='nft-text'>Token ID: {token.tokenId}</p>
-																					<p className='nft-text'>Balance: {token.balance.toString()}</p>
-																				</div>
-																			))}
-																		</div>
-																	</>
-																) : (
-																	<p className='load2'>No Drone found.</p>
-																)}
+																	{_tokenArray_1155.length > 0 ? (
+																		<>
+																			<div className='choose2'>Choose a Weapon</div>
+
+																			<div className="nft-overlay--2">
+																				{_tokenArray_1155.filter(token => token.tokenId !== 0)
+																					.map((token) => (
+																						<div className="nft-card" key={token.tokenId} onClick={() => choosePower_WP(token.tokenId)}>
+																							<img
+																								src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
+																								alt={`NFT ${token.tokenId}`}
+																								className="nft-image"
+																							/>
+																							<p className='nft-text'>Token ID: {token.tokenId}</p>
+																							<p className='nft-text'>Balance: {token.balance.toString()}</p>
+																						</div>
+																					))}
+																			</div>
+																		</>
+																	) : (
+																		<p className='load2'>No Weapons found.</p>
+																	)}
+																</div>
 															</div>
-														</div>
-													)}
+														)}
 
-												</>
-											)}
-										</>
+														{_choiceIndex === 2 && (
+															<div className="nft-overlay">
+																<div>
+
+																	{_tokenArray_1155.length > 0 ? (
+																		<>
+																			<div className='choose2'>Choose a Drone</div>
+																			<div className="nft-overlay--2">
+																				{_tokenArray_1155.map((token) => (
+																					<div className="nft-card" key={token.tokenId} onClick={() => choosePower_Drn(token.tokenId)}>
+																						<img
+																							src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}.png`}
+																							alt={`NFT ${token.tokenId}`}
+																							className="nft-image"
+																						/>
+																						<p className='nft-text'>Token ID: {token.tokenId}</p>
+																						<p className='nft-text'>Balance: {token.balance.toString()}</p>
+																					</div>
+																				))}
+																			</div>
+																		</>
+																	) : (
+																		<p className='load2'>No Drone found.</p>
+																	)}
+																</div>
+															</div>
+														)}
+
+													</>
+												)}
+											</>
 
 
-									</div>
-								</div>
-								: null}
-
-						</div>
-
-						{imageUrl && (
-							<div className="popupImg">
-								<button className="popup-closeInImg" onClick={closePopup}>×</button>
-								{/*<img src={`https://robotic-rabbit-metadata-live-replica05.s3.us-east-2.amazonaws.com/${_showImg}.png`} alt="NFT" id="popup-img" />*/}
-								<img src={_viewNFTImg} alt="NFT" id="popup-img" />
-							</div>
-						)}
-
-						{showPopup && (
-							<div className="popupImg">
-								<button className="popup-closeInImg" onClick={() => setShowPopup(false)}>×</button>
-
-								{/* Show "Loading..." until the image is loaded */}
-								{!imageLoaded && <p className='ldtxt'>Loading...</p>}
-
-								<img
-									id="generatedImage"
-									alt="Generated NFT"
-									onLoad={() => setImageLoaded(true)}
-									style={{ display: imageLoaded ? "block" : "none" }}
-								/>
-
-								{imageLoaded && _upgradedTraitDetails && _upgradedTraitDetails.length > 0 && (
-									<div className='traitUpgradeMain'>
-										<div className="preview-section">
-											{_upgradedTraitDetails
-												.filter(trait =>
-													!["Background", "Special Power", "Weapons", "Gear"].includes(trait.type) &&
-													!_upgradedTraitDetails2.some(t2 => t2.type === trait.type)
-												)
-												.map((trait, index) => (
-													<div key={index} className="trait-actions">
-														<button
-															className="traitUpgrade" id="previewId"
-															onClick={() => {
-																setLoadingPreviews(prev => ({ ...prev, [trait.type]: true }));
-																fetch("https://roboticrabbitsyndicate.io:3001/api/createPreview", {
-																	method: "POST",
-																	headers: {
-																		"Content-Type": "application/json"
-																	},
-																	body: JSON.stringify({
-																		traitType: trait.type,
-																		traitName: trait.name,
-																		tokenId: _showImg,
-																		isPreview: true
-																	})
-																})
-																	.then(response => response.json())
-																	.then(data => {
-																		if (data.image) {
-																			document.getElementById("generatedImage").src = data.image;
-																			setImageLoaded(false); // Trigger reload
-																			setTimeout(() => {
-																				setImageLoaded(true);
-																				setLoadingPreviews(prev => ({ ...prev, [trait.type]: false }));
-																			}, 100);
-																		}
-																	})
-																	.catch(error => {
-																		console.error("Error:", error);
-																		setLoadingPreviews(prev => ({ ...prev, [trait.type]: false }));
-																	});
-															}}
-															disabled={loadingPreviews[trait.type]}
-														>
-															{loadingPreviews[trait.type] ? (
-																<div className="preview-loader"></div>
-															) : (
-																`Preview ${trait.type}`
-															)}
-														</button>
-														<button
-															className="traitUpgrade"
-															onClick={() => sendUpgradeDetails(trait.type, trait.name, _showImg)}
-														>
-															Upgrade {trait.type}
-														</button>
-													</div>
-												))
-											}
 										</div>
 									</div>
-								)}
+									: null}
+
 							</div>
-						)}
 
-						{_weaponDiv ?
-							<div class="popup-containerIn">
-								<div class="popupIn">
-									<div class="popup-closeIn" onClick={weaponDivClose}>×</div>
+							{imageUrl && (
+								<div className="popupImg">
+									<button className="popup-closeInImg" onClick={closePopup}>×</button>
+									{/*<img src={`https://robotic-rabbit-metadata-live-replica05.s3.us-east-2.amazonaws.com/${_showImg}.png`} alt="NFT" id="popup-img" />*/}
+									<img src={_viewNFTImg} alt="NFT" id="popup-img" />
+								</div>
+							)}
 
-									<div className="upgrades" onClick={() => fetchMetadata(_showImg)}>
-										<span className="viewTxt">{loadingImg ? "Fetching..." : "Check Upgrades"}</span>
-									</div>
+							{showPopup && (
+								<div className="popupImg">
+									<button className="popup-closeInImg" onClick={() => setShowPopup(false)}>×</button>
 
-									{error ? (
-										<p style={{ color: "red" }}>Error: {error}</p>
-									) : (
-										<div className='popupInTxt'>
+									{/* Show "Loading..." until the image is loaded */}
+									{!imageLoaded && <p className='ldtxt'>Loading...</p>}
 
-											<p className='removeSection'>
-												<div><strong>Special Power:</strong> {specialPower}</div>
-												{_mintingSpecial && _mintingSpecial.length > 0 && _mintingSpecial[0] ? (
-													<img
-														src={`https://armory-data.s3.us-east-2.amazonaws.com/${_mintingSpecial[0]}.png`}
-														alt="Special Power"
-													/>
-												) : (
-													<div></div>
-												)}
+									<img
+										id="generatedImage"
+										alt="Generated NFT"
+										onLoad={() => setImageLoaded(true)}
+										style={{ display: imageLoaded ? "block" : "none" }}
+									/>
 
-												{specialPower !== "None" ?
-													<div><button onClick={removeTrait_SP}>Remove</button></div> :
-													<div><button onClick={handleConnectPoly_SP}>Add</button></div>
+									{imageLoaded && _upgradedTraitDetails && _upgradedTraitDetails.length > 0 && (
+										<div className='traitUpgradeMain'>
+											<div className="preview-section">
+												{_upgradedTraitDetails
+													.filter(trait =>
+														!["Background", "Special Power", "Weapons", "Gear"].includes(trait.type) &&
+														!_upgradedTraitDetails2.some(t2 => t2.type === trait.type)
+													)
+													.map((trait, index) => (
+														<div key={index} className="trait-actions">
+															<button
+																className="traitUpgrade" id="previewId"
+																onClick={() => {
+																	setLoadingPreviews(prev => ({ ...prev, [trait.type]: true }));
+																	fetch("https://roboticrabbitsyndicate.io:3001/api/createPreview", {
+																		method: "POST",
+																		headers: {
+																			"Content-Type": "application/json"
+																		},
+																		body: JSON.stringify({
+																			traitType: trait.type,
+																			traitName: trait.name,
+																			tokenId: _showImg,
+																			isPreview: true
+																		})
+																	})
+																		.then(response => response.json())
+																		.then(data => {
+																			if (data.image) {
+																				document.getElementById("generatedImage").src = data.image;
+																				setImageLoaded(false); // Trigger reload
+																				setTimeout(() => {
+																					setImageLoaded(true);
+																					setLoadingPreviews(prev => ({ ...prev, [trait.type]: false }));
+																				}, 100);
+																			}
+																		})
+																		.catch(error => {
+																			console.error("Error:", error);
+																			setLoadingPreviews(prev => ({ ...prev, [trait.type]: false }));
+																		});
+																}}
+																disabled={loadingPreviews[trait.type]}
+															>
+																{loadingPreviews[trait.type] ? (
+																	<div className="preview-loader"></div>
+																) : (
+																	`Preview ${trait.type}`
+																)}
+															</button>
+															<button
+																className="traitUpgrade"
+																onClick={() => sendUpgradeDetails(trait.type, trait.name, _showImg)}
+															>
+																Upgrade {trait.type}
+															</button>
+														</div>
+													))
 												}
-											</p>
-
-											<p className='removeSection'>
-												<div><strong>Weapons and Gear:</strong> {weaponsAndGear}</div>
-
-												{_mintingWeapon && _mintingWeapon.length > 0 && _mintingWeapon[0] ? (
-													<img
-														src={`https://armory-data.s3.us-east-2.amazonaws.com/${_mintingWeapon[0]}.png`}
-														alt="Weapons and Gear"
-													/>
-												) : (
-													<div></div>
-												)}
-
-												{weaponsAndGear !== "None" ?
-													<div><button onClick={removeTrait_WG}>Remove</button></div> :
-													<div><button onClick={handleConnectPoly_WP}>Add</button></div>
-												}
-											</p>
-
-											<p className='removeSection'>
-												<div><strong>Drone:</strong> {_drone}</div>
-												{_mintingDrones && _mintingDrones.length > 0 && _mintingDrones[0] ? (
-													<img
-														src={`https://armory-data.s3.us-east-2.amazonaws.com/${_mintingDrones[0]}.png`}
-														alt="Drone"
-													/>
-												) : (
-													<div></div>
-												)}
-
-												{_drone !== "None" && _drone !== 'Not found' ?
-													<div><button onClick={removeTrait_Drn}>Remove</button></div> :
-													<div><button onClick={handleConnectPoly_Drn}>Add</button></div>
-												}
-											</p>
+											</div>
 										</div>
 									)}
-
-									<div className='view' onClick={handleViewClick}><span className='viewTxt'>View NFT</span> <img src={eye} /></div>
-									<div className='view' onClick={handleViewClickNFTs}><span className='viewTxt'>View My Armoury NFTs</span> <img src={eye} /></div>
-
 								</div>
+							)}
 
-							</div> : null}
+							{_weaponDiv ?
+								<div class="popup-containerIn">
+									<div class="popupIn">
+										<div class="popup-closeIn" onClick={weaponDivClose}>×</div>
 
-						{/*:
+										<div className="upgrades" onClick={() => fetchMetadata(_showImg)}>
+											<span className="viewTxt">{loadingImg ? "Fetching..." : "Check Upgrades"}</span>
+										</div>
+
+										{error ? (
+											<p style={{ color: "red" }}>Error: {error}</p>
+										) : (
+											<div className='popupInTxt'>
+
+												<p className='removeSection'>
+													<div><strong>Special Power:</strong> {specialPower}</div>
+													{_mintingSpecial && _mintingSpecial.length > 0 && _mintingSpecial[0] ? (
+														<img
+															src={`https://armory-data.s3.us-east-2.amazonaws.com/${_mintingSpecial[0]}.png`}
+															alt="Special Power"
+														/>
+													) : (
+														<div></div>
+													)}
+
+													{specialPower !== "None" ?
+														<div><button onClick={removeTrait_SP}>Remove</button></div> :
+														<div><button onClick={handleConnectPoly_SP}>Add</button></div>
+													}
+												</p>
+
+												<p className='removeSection'>
+													<div><strong>Weapons and Gear:</strong> {weaponsAndGear}</div>
+
+													{_mintingWeapon && _mintingWeapon.length > 0 && _mintingWeapon[0] ? (
+														<img
+															src={`https://armory-data.s3.us-east-2.amazonaws.com/${_mintingWeapon[0]}.png`}
+															alt="Weapons and Gear"
+														/>
+													) : (
+														<div></div>
+													)}
+
+													{weaponsAndGear !== "None" ?
+														<div><button onClick={removeTrait_WG}>Remove</button></div> :
+														<div><button onClick={handleConnectPoly_WP}>Add</button></div>
+													}
+												</p>
+
+												<p className='removeSection'>
+													<div><strong>Drone:</strong> {_drone}</div>
+													{_mintingDrones && _mintingDrones.length > 0 && _mintingDrones[0] ? (
+														<img
+															src={`https://armory-data.s3.us-east-2.amazonaws.com/${_mintingDrones[0]}.png`}
+															alt="Drone"
+														/>
+													) : (
+														<div></div>
+													)}
+
+													{_drone !== "None" && _drone !== 'Not found' ?
+														<div><button onClick={removeTrait_Drn}>Remove</button></div> :
+														<div><button onClick={handleConnectPoly_Drn}>Add</button></div>
+													}
+												</p>
+											</div>
+										)}
+
+										<div className='view' onClick={handleViewClick}><span className='viewTxt'>View NFT</span> <img src={eye} /></div>
+										<div className='view' onClick={handleViewClickNFTs}><span className='viewTxt'>View My Armoury NFTs</span> <img src={eye} /></div>
+
+									</div>
+
+								</div> : null}
+
+							{/*:
 
 										<div id="dd" class="popup-containerIn">
 											<div class="popupIn">
@@ -4969,131 +4970,186 @@ const Home = () => {
 											</div>
 										</div>*/}
 
-						{_showAllArmories > 0 ?
-							<>
-								<div id="dd" class="popup-containerIn--2">
-									<div class="popupInNew">
-										<div class="popup-closeIn" onClick={closeBtn2}>×</div>
+							{_showAllArmories > 0 ?
+								<>
+									<div id="dd" class="popup-containerIn--2">
+										<div class="popupInNew">
+											<div class="popup-closeIn" onClick={closeBtn2}>×</div>
 
 
-										{_tokenArray_1155.length > 0 ? (
-											<>
-												<div className='titleR'>My Armory NFTs</div>
+											{_tokenArray_1155.length > 0 ? (
+												<>
+													<div className='titleR'>My Armory NFTs</div>
 
-												<div className="nft-gridNew">
-													{_tokenArray_1155.map((token) => (
-														<div
-															className="nft-card"
-															key={token.tokenId}
+													<div className="nft-gridNew">
+														{_tokenArray_1155.map((token) => (
+															<div
+																className="nft-card"
+																key={token.tokenId}
 
-														>
-															<img
-																src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}${token.tokenId === 0 ? ".WEBP" : ".png"}`}
-																alt={`NFT ${token.tokenId}`}
-																className="nft-image"
-															/>
+															>
+																<img
+																	src={`https://armory-data.s3.us-east-2.amazonaws.com/${token.tokenId}${token.tokenId === 0 ? ".WEBP" : ".png"}`}
+																	alt={`NFT ${token.tokenId}`}
+																	className="nft-image"
+																/>
 
-															<p className='nft-text'>Token ID: {token.tokenId}</p>
-															<p className='nft-text'>Balance: {token.balance.toString()}</p>
-														</div>
-													))}
-												</div>
-											</>) : (
-											<>
-												{_loadingNfts ?
-													<div className='load'>Searching NFTs...</div> :
-													<p className='load2'>
-														<p className='load2'>No NFTs found.</p>
-													</p>}
-											</>
-										)}
+																<p className='nft-text'>Token ID: {token.tokenId}</p>
+																<p className='nft-text'>Balance: {token.balance.toString()}</p>
+															</div>
+														))}
+													</div>
+												</>) : (
+												<>
+													{_loadingNfts ?
+														<div className='load'>Searching NFTs...</div> :
+														<p className='load2'>
+															<p className='load2'>No NFTs found.</p>
+														</p>}
+												</>
+											)}
 
 
 
+										</div>
 									</div>
-								</div>
-							</>
-							: null}
+								</>
+								: null}
 
-						{_successMsg > 0 ?
-							< div id="dd" class="popup-containerIn">
-								<div class="popupIn">
-									<div class="popup-closeIn" onClick={closeBtn}>×</div>
-
-									<div className='popupInTxt'>
-										<img id='checkImg' src={check} />
-										<div className='successMsg'>Equipped Successfully!</div>
-									</div>
-
-								</div>
-
-							</div>
-							: null}
-
-						{_errorMsg > 0 ?
-							< div id="dd" class="popup-containerIn">
-								<div class="popupIn">
-									<div class="popup-closeIn" onClick={closeBtn2}>×</div>
-
-									<div className='popupInTxt'>
-										<img id='checkImg' src={errorImg} />
-										<div className='errorMsg'>Network error</div>
-									</div>
-
-								</div>
-
-							</div> : null}
-
-						{_errorMsg_remove > 0 ?
-							< div id="dd" class="popup-containerIn">
-								<div class="popupIn">
-									<div class="popup-closeIn" onClick={closeBtn2}>×</div>
-
-									<div className='popupInTxt'>
-										<img id='checkImg' src={errorImg} />
-										<div className='errorMsg'>Network error</div>
-									</div>
-
-								</div>
-
-							</div> : null}
-
-						{_msg_loading > 0 ?
-							< div id="dd" class="popup-containerIn2">
-								<div className='popupInTxt'>
-									<div class="loader"></div>
-									<div className="backMsg">
-										{status}
-										{_satusLoadTilImg > 0 ?
-											<>Fetching Images...</>
-											: null}
-									</div>
-								</div>
-
-							</div> : null}
-
-						{_successMsg_remove > 0 ?
-							< div id="dd" class="popup-containerIn">
-								< div class="popup-containerIn">
+							{_successMsg > 0 ?
+								< div id="dd" class="popup-containerIn">
 									<div class="popupIn">
 										<div class="popup-closeIn" onClick={closeBtn}>×</div>
 
 										<div className='popupInTxt'>
 											<img id='checkImg' src={check} />
-											<div className='successMsg'>{status}</div>
+											<div className='successMsg'>Equipped Successfully!</div>
 										</div>
 
 									</div>
 
 								</div>
-							</div> : null}
+								: null}
+
+							{_errorMsg > 0 ?
+								< div id="dd" class="popup-containerIn">
+									<div class="popupIn">
+										<div class="popup-closeIn" onClick={closeBtn2}>×</div>
+
+										<div className='popupInTxt'>
+											<img id='checkImg' src={errorImg} />
+											<div className='errorMsg'>Network error</div>
+										</div>
+
+									</div>
+
+								</div> : null}
+
+							{_errorMsg_remove > 0 ?
+								< div id="dd" class="popup-containerIn">
+									<div class="popupIn">
+										<div class="popup-closeIn" onClick={closeBtn2}>×</div>
+
+										<div className='popupInTxt'>
+											<img id='checkImg' src={errorImg} />
+											<div className='errorMsg'>Network error</div>
+										</div>
+
+									</div>
+
+								</div> : null}
+
+							{_msg_loading > 0 ?
+								< div id="dd" class="popup-containerIn2">
+									<div className='popupInTxt'>
+										<div class="loader"></div>
+										<div className="backMsg">
+											{status}
+											{_satusLoadTilImg > 0 ?
+												<>Fetching Images...</>
+												: null}
+										</div>
+									</div>
+
+								</div> : null}
+
+							{_successMsg_remove > 0 ?
+								< div id="dd" class="popup-containerIn">
+									< div class="popup-containerIn">
+										<div class="popupIn">
+											<div class="popup-closeIn" onClick={closeBtn}>×</div>
+
+											<div className='popupInTxt'>
+												<img id='checkImg' src={check} />
+												<div className='successMsg'>{status}</div>
+											</div>
+
+										</div>
+
+									</div>
+								</div> : null}
 
 
 
+						</div>
+					</div >
+				</>
+			) : (
+				<div className={`scanner-container ${fadeOut ? 'fade-out' : ''}`}>
+					<div className="scanners">
+						<img
+							src={getImageSrc()}
+							alt="Scanner sequence"
+							onClick={handleImageClick}
+							style={{ cursor: 'pointer' }}
+						/>
 					</div>
-				</div >
-			</>
 
+					{currentImage === 'scanner_1' && (
+						<>
+							{_connected ? (
+								<>
+									{/*<button className='checkAccess2' onClick={() => disconnectWallet()}
+													style={{
+														position: 'absolute',
+														top: '50%',
+														left: '50%',
+														transform: 'translate(-50%, -50%)',
+														zIndex: 10,
+													}}>
+													{walletAddress === "" ? "Connect Wallet" : shortenAddress(walletAddress)}
+													<br />
+												</button>*/}
+
+									<button class="connectNew" onClick={connectWalletScanner}
+										style={{
+											position: 'absolute',
+											top: '50%',
+											left: '50%',
+											transform: 'translate(-50%, -50%)',
+											zIndex: 10,
+										}}>
+										Check Access
+									</button>
+								</>
+							) : (
+								<button class="connectNew" onClick={() => { open(); }}
+									style={{
+										position: 'absolute',
+										top: '50%',
+										left: '50%',
+										transform: 'translate(-50%, -50%)',
+										zIndex: 10,
+									}}
+								>Connect</button>
+							)}
+						</>
+					)}
+
+				</div>
+
+
+			)}
 		</div>
 	)
 
