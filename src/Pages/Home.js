@@ -4686,7 +4686,7 @@ const Home = () => {
 																</button>
 															)}
 														</> : <button className='refresg-overlay'>
-															<div className='txtR'>You need to have NFT to view the items</div>
+															{/*<div className='txtR'>You need to have NFT to view the items</div>*/}
 														</button>
 													}
 												</> :
